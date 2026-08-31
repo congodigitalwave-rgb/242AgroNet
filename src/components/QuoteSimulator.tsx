@@ -20,7 +20,6 @@ import {
   Droplet,
   ChevronRight
 } from "lucide-react";
-import jsPDF from "jspdf";
 import confetti from "canvas-confetti";
 import { QUARTIERS_POINTE_NOIRE, CONTACT_INFO, PACKS_DATA } from "../data";
 import { QuoteConfig, SimulationResult, AgroPack } from "../types";
@@ -198,8 +197,9 @@ export const QuoteSimulator: React.FC<QuoteSimulatorProps> = ({ initialPack }) =
   ]);
 
   // Handle PDF Generation
-  const handleDownloadPDF = () => {
+  const handleDownloadPDF = async () => {
     try {
+      const { jsPDF } = await import("jspdf");
       const doc = new jsPDF();
       const ref = `242AGRO-${Date.now().toString().slice(-6)}`;
 

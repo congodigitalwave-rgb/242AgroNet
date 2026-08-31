@@ -3,6 +3,27 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      // Safeguard for sandboxed iframe environments where window.fetch has only a getter
+      (function() {
+        try {
+          const originalFetch = window.fetch;
+          let currentFetch = originalFetch;
+          Object.defineProperty(window, 'fetch', {
+            get: function() {
+              return currentFetch;
+            },
+            set: function(val) {
+              currentFetch = val;
+            },
+            configurable: true,
+            enumerable: true
+          });
+        } catch (e) {
+          // Ignore if property cannot be redefined
+        }
+      })();
+    </script>
     <title>242Agro - Agriculture Urbaine Hors-Sol & Élevage Intégré | Pointe-Noire</title>
     <meta name="description" content="Transformez votre espace en moteur de sécurité alimentaire et de rentabilité à Pointe-Noire. Potagers hors-sol, élevage intégré clé en main et simulateur de devis." />
     <meta property="og:title" content="242Agro - Agriculture Urbaine Hors-Sol & Élevage Intégré" />

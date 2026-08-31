@@ -10,13 +10,15 @@ import { PaymentSchedule } from "./components/PaymentSchedule";
 import { ContactSection } from "./components/ContactSection";
 import { Footer } from "./components/Footer";
 import { AIAgronomistAdvisor } from "./components/AIAgronomistAdvisor";
+import { QRCodeModal } from "./components/QRCodeModal";
 import { AnimatedBackground } from "./components/AnimatedBackground";
-import { MessageSquare, Calculator, Sparkles, Phone } from "lucide-react";
+import { MessageSquare, Calculator, Sparkles, Phone, QrCode } from "lucide-react";
 import { CONTACT_INFO } from "./data";
 import { AgroPack } from "./types";
 
 export default function App() {
   const [isAdvisorOpen, setIsAdvisorOpen] = useState(false);
+  const [isQRCodeOpen, setIsQRCodeOpen] = useState(false);
   const [selectedPackForSimulator, setSelectedPackForSimulator] = useState<AgroPack | null>(null);
 
   const handleOpenSimulator = () => {
@@ -44,6 +46,7 @@ export default function App() {
       <Navbar
         onOpenSimulator={handleOpenSimulator}
         onOpenAdvisor={() => setIsAdvisorOpen(true)}
+        onOpenQRCode={() => setIsQRCodeOpen(true)}
       />
 
       {/* Main Content */}
@@ -76,7 +79,7 @@ export default function App() {
       </main>
 
       {/* Footer */}
-      <Footer />
+      <Footer onOpenQRCode={() => setIsQRCodeOpen(true)} />
 
       {/* AI Agronomist Modal (Gemini 3.7 Flash) */}
       <AIAgronomistAdvisor
@@ -84,9 +87,25 @@ export default function App() {
         onClose={() => setIsAdvisorOpen(false)}
       />
 
-      {/* Floating Action Buttons */}
-      <div className="fixed bottom-6 right-6 z-40 flex flex-col items-end gap-3 pointer-events-none">
+      {/* QR Code Modal for Netlify URL */}
+      <QRCodeModal
+        isOpen={isQRCodeOpen}
+        onClose={() => setIsQRCodeOpen(false)}
+      />
+
+      {/* Floating Action Buttons - elevated to bottom-20 / bottom-24 so Netlify badge does not obstruct */}
+      <div className="fixed bottom-20 sm:bottom-24 right-4 sm:right-6 z-40 flex flex-col items-end gap-2.5 sm:gap-3 pointer-events-none">
         
+        {/* Floating QR Code Button */}
+        <button
+          onClick={() => setIsQRCodeOpen(true)}
+          className="pointer-events-auto flex items-center gap-2 bg-[#0c1322]/90 hover:bg-[#131d33] text-emerald-400 hover:text-emerald-300 px-3.5 py-2.5 rounded-full font-bold text-xs shadow-xl shadow-black/60 transition-all hover:scale-105 cursor-pointer border border-emerald-500/30 backdrop-blur-md"
+          title="Code QR du site https://242agropn.netlify.app/"
+        >
+          <QrCode className="w-4 h-4 text-emerald-400" />
+          <span className="hidden sm:inline">Code QR</span>
+        </button>
+
         {/* Floating AI Button */}
         <button
           onClick={() => setIsAdvisorOpen(true)}

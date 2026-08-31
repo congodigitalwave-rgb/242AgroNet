@@ -12,6 +12,7 @@ export const IMAGES = {
 export const CONTACT_INFO = {
   brandName: "242Agro",
   tagline: "L'agriculture urbaine hors-sol, clé en main à Pointe-Noire",
+  websiteUrl: "https://242agropn.netlify.app/",
   phone: "+242 06 874 22 77",
   phoneClean: "+242068742277",
   whatsappUrl: "https://wa.me/242068742277?text=Bonjour%20242Agro,%20je%20souhaite%20un%20devis%20ou%20une%20visite%20technique%20pour%20mon%20espace.",
