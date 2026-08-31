@@ -2,12 +2,82 @@ import { AgroPack } from "./types";
 import heroImg from "./assets/images/hero_urban_farm_1788211765004.jpg";
 import circularImg from "./assets/images/circular_ecosystem_1788211778747.jpg";
 import harvestImg from "./assets/images/fresh_harvest_1788211795414.jpg";
+import schoolFarmImg from "./assets/images/urban_school_farming_1788214797112.jpg";
+import rabbitHutchImg from "./assets/images/cuniculture_clapier_1788214814197.jpg";
+import courtyardHarvestImg from "./assets/images/courtyard_harvest_1788214830244.jpg";
 
 export const IMAGES = {
   hero: heroImg,
   circular: circularImg,
   harvest: harvestImg,
+  schoolFarm: schoolFarmImg,
+  rabbitHutch: rabbitHutchImg,
+  courtyardHarvest: courtyardHarvestImg,
 };
+
+export interface HeroSlide {
+  id: string;
+  image: string;
+  title: string;
+  subtitle: string;
+  badge: string;
+  badgeColor: "emerald" | "amber" | "teal" | "cyan";
+  statLabel: string;
+  statValue: string;
+}
+
+export const HERO_SLIDES: HeroSlide[] = [
+  {
+    id: "school-farm",
+    image: schoolFarmImg,
+    title: "École d'Agriculture Urbaine & Gouttières PVC",
+    subtitle: "Formation pratique et maraîchage hors-sol intensif à Pointe-Noire",
+    badge: "Formation & Savoir-Faire",
+    badgeColor: "emerald",
+    statLabel: "Capacité Maraîchère",
+    statValue: "180+ plants / module"
+  },
+  {
+    id: "rabbit-hutch",
+    image: rabbitHutchImg,
+    title: "Élevage Intégré & Cuniculture Urbaine",
+    subtitle: "Clapiers écologiques en bois & grillage adaptés aux cours et concessions",
+    badge: "Élevage Clé en Main",
+    badgeColor: "amber",
+    statLabel: "Apport Protéiné & Engrais",
+    statValue: "100% Circulaire"
+  },
+  {
+    id: "courtyard-harvest",
+    image: courtyardHarvestImg,
+    title: "Récoltes Fraîches & Légumes Bio",
+    subtitle: "Tomates savoureuses, piment, basilic et feuilles maraîchères locales",
+    badge: "Zéro Engrais Chimique",
+    badgeColor: "teal",
+    statLabel: "Première Récolte",
+    statValue: "Dès 3 semaines"
+  },
+  {
+    id: "hero-farm",
+    image: heroImg,
+    title: "Micro-Fermes Hors-Sol Urbaines",
+    subtitle: "Installation modulaire complète sur terrasse, balcon ou cour cimentée",
+    badge: "Production Continue",
+    badgeColor: "cyan",
+    statLabel: "Retour Investissement",
+    statValue: "665 000 FCFA / 6 mois"
+  },
+  {
+    id: "circular-system",
+    image: circularImg,
+    title: "Boucle Bio-Économique 242Agro",
+    subtitle: "Valorisation des déjections animales en lombricompost ultra-fertile",
+    badge: "0 FCFA d'Engrais",
+    badgeColor: "emerald",
+    statLabel: "Économie Annuelle",
+    statValue: "100% Autonome"
+  }
+];
 
 export const CONTACT_INFO = {
   brandName: "242Agro",

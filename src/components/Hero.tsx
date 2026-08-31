@@ -1,6 +1,19 @@
-import React from "react";
-import { ArrowRight, CheckCircle2, TrendingUp, Sparkles, Sprout, ShieldCheck, MapPin, Calculator } from "lucide-react";
-import { IMAGES, CONTACT_INFO } from "../data";
+import React, { useState, useEffect, useCallback } from "react";
+import {
+  ArrowRight,
+  CheckCircle2,
+  TrendingUp,
+  Sparkles,
+  Sprout,
+  ShieldCheck,
+  MapPin,
+  Calculator,
+  ChevronLeft,
+  ChevronRight,
+  Pause,
+  Play
+} from "lucide-react";
+import { HERO_SLIDES, CONTACT_INFO } from "../data";
 import { Logo242Agro } from "./Logo242Agro";
 
 interface HeroProps {
@@ -9,6 +22,27 @@ interface HeroProps {
 }
 
 export const Hero: React.FC<HeroProps> = ({ onOpenSimulator, onOpenAdvisor }) => {
+  const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+
+  const nextSlide = useCallback(() => {
+    setCurrentSlideIndex((prev) => (prev + 1) % HERO_SLIDES.length);
+  }, []);
+
+  const prevSlide = useCallback(() => {
+    setCurrentSlideIndex((prev) => (prev - 1 + HERO_SLIDES.length) % HERO_SLIDES.length);
+  }, []);
+
+  useEffect(() => {
+    if (!isAutoPlaying) return;
+    const timer = setInterval(() => {
+      nextSlide();
+    }, 4500);
+    return () => clearInterval(timer);
+  }, [isAutoPlaying, nextSlide]);
+
+  const activeSlide = HERO_SLIDES[currentSlideIndex];
+
   return (
     <section className="relative overflow-hidden pt-10 pb-20 lg:pt-16 lg:pb-28">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -107,50 +141,124 @@ export const Hero: React.FC<HeroProps> = ({ onOpenSimulator, onOpenAdvisor }) =>
 
           </div>
 
-          {/* Right Column: Visual Showcase Card */}
+          {/* Right Column: Dynamic Interactive Image Carousel */}
           <div className="lg:col-span-5 relative">
-            <div className="relative rounded-3xl overflow-hidden bg-white/5 backdrop-blur-2xl p-3 border border-white/15 shadow-2xl shadow-black/40 group">
+            <div 
+              onMouseEnter={() => setIsAutoPlaying(false)}
+              onMouseLeave={() => setIsAutoPlaying(true)}
+              className="relative rounded-3xl overflow-hidden bg-white/5 backdrop-blur-2xl p-3 border border-white/15 shadow-2xl shadow-black/50 group transition-all"
+            >
               
-              {/* Main Visual Image */}
-              <div className="relative rounded-2xl overflow-hidden aspect-[4/3] bg-slate-900">
-                <img
-                  src={IMAGES.hero}
-                  alt="Agriculture Urbaine 242Agro à Pointe-Noire"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                  referrerPolicy="no-referrer"
-                />
+              {/* Main Visual Image Viewport */}
+              <div className="relative rounded-2xl overflow-hidden aspect-[4/3] bg-slate-950">
+                {HERO_SLIDES.map((slide, idx) => (
+                  <div
+                    key={slide.id}
+                    className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
+                      idx === currentSlideIndex ? "opacity-100 z-10" : "opacity-0 z-0 pointer-events-none"
+                    }`}
+                  >
+                    <img
+                      src={slide.image}
+                      alt={slide.title}
+                      className="w-full h-full object-cover transform scale-100 group-hover:scale-105 transition-transform duration-1000 ease-out"
+                      referrerPolicy="no-referrer"
+                    />
+                    
+                    {/* Shadow overlay gradient */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-black/30" />
+                  </div>
+                ))}
                 
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-transparent to-black/20" />
-                
-                {/* Floating Metric Badge 1 */}
-                <div className="absolute top-4 left-4 bg-[#0a0f1d]/75 backdrop-blur-xl border border-emerald-400/30 rounded-2xl p-2.5 shadow-xl flex items-center gap-3">
-                  <div className="w-9 h-9 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold text-xs border border-emerald-500/30">
-                    +35%
+                {/* Floating Top Badge */}
+                <div className="absolute top-3.5 left-3.5 z-20 bg-[#0a0f1d]/85 backdrop-blur-xl border border-emerald-400/30 rounded-2xl p-2 sm:p-2.5 shadow-xl flex items-center gap-2.5">
+                  <div className="w-8 h-8 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold text-xs border border-emerald-500/30">
+                    <Sprout className="w-4 h-4" />
                   </div>
                   <div>
-                    <div className="text-[11px] uppercase tracking-wider text-slate-400 font-semibold">Croissance</div>
-                    <div className="text-xs font-bold text-white">Rendement Rapide</div>
+                    <div className="text-[10px] uppercase tracking-wider text-emerald-300 font-bold">
+                      {activeSlide.badge}
+                    </div>
+                    <div className="text-xs font-bold text-white max-w-[170px] truncate">
+                      {activeSlide.title}
+                    </div>
                   </div>
                 </div>
 
-                {/* Floating Metric Badge 2 */}
-                <div className="absolute bottom-4 right-4 bg-[#0a0f1d]/85 backdrop-blur-xl border border-amber-400/30 rounded-2xl p-3 shadow-xl text-right">
-                  <div className="text-[10px] uppercase tracking-wider text-amber-300 font-semibold">Retour Investissement</div>
-                  <div className="text-lg font-black text-white font-['Outfit']">665 000 FCFA</div>
-                  <div className="text-[10px] text-amber-200/80 font-medium">produits en 6 mois</div>
+                {/* Floating Stat Metric Badge */}
+                <div className="absolute top-3.5 right-3.5 z-20 bg-[#0a0f1d]/85 backdrop-blur-xl border border-amber-400/30 rounded-2xl px-3 py-2 shadow-xl text-right">
+                  <div className="text-[9px] uppercase tracking-wider text-amber-300 font-semibold">
+                    {activeSlide.statLabel}
+                  </div>
+                  <div className="text-xs sm:text-sm font-black text-white font-['Outfit']">
+                    {activeSlide.statValue}
+                  </div>
+                </div>
+
+                {/* Navigation Arrow Controls on Hover/Touch */}
+                <div className="absolute inset-x-2 top-1/2 -translate-y-1/2 z-20 flex justify-between pointer-events-none">
+                  <button
+                    onClick={prevSlide}
+                    className="pointer-events-auto w-9 h-9 rounded-full bg-black/60 hover:bg-black/80 text-white flex items-center justify-center backdrop-blur-md border border-white/20 shadow-lg transition-all opacity-80 hover:opacity-100 hover:scale-110 cursor-pointer"
+                    aria-label="Image précédente"
+                  >
+                    <ChevronLeft className="w-5 h-5" />
+                  </button>
+                  <button
+                    onClick={nextSlide}
+                    className="pointer-events-auto w-9 h-9 rounded-full bg-black/60 hover:bg-black/80 text-white flex items-center justify-center backdrop-blur-md border border-white/20 shadow-lg transition-all opacity-80 hover:opacity-100 hover:scale-110 cursor-pointer"
+                    aria-label="Image suivante"
+                  >
+                    <ChevronRight className="w-5 h-5" />
+                  </button>
+                </div>
+
+                {/* Slide Title & Subtitle at Bottom of Image */}
+                <div className="absolute bottom-3 inset-x-3 z-20 bg-slate-900/85 backdrop-blur-md p-2.5 rounded-xl border border-white/10 flex items-center justify-between">
+                  <div className="pr-2 truncate">
+                    <div className="text-xs font-bold text-white truncate">
+                      {activeSlide.title}
+                    </div>
+                    <div className="text-[11px] text-slate-300 truncate">
+                      {activeSlide.subtitle}
+                    </div>
+                  </div>
+                  <button
+                    onClick={() => setIsAutoPlaying((prev) => !prev)}
+                    className="p-1 rounded-lg bg-white/10 hover:bg-white/20 text-slate-300 hover:text-white transition-all cursor-pointer shrink-0"
+                    title={isAutoPlaying ? "Mettre en pause" : "Lancer le défilement automatique"}
+                  >
+                    {isAutoPlaying ? <Pause className="w-3 h-3" /> : <Play className="w-3 h-3 text-emerald-400" />}
+                  </button>
                 </div>
               </div>
 
-              {/* Bottom Quick Bar inside card */}
-              <div className="mt-3 p-3 bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 flex items-center justify-between text-xs text-slate-300">
-                <div className="flex items-center gap-3">
-                  <Logo242Agro size="sm" showText={false} withGlow={true} />
-                  <div>
-                    <span className="font-semibold text-white block">Micro-Ferme Urbaine Hors-Sol</span>
-                    <span className="text-[11px] text-slate-400">Bac bois &bull; Volailles &bull; Clapiers</span>
-                  </div>
+              {/* Slider Dots & Thumbnail Selector Bar */}
+              <div className="mt-3 p-2.5 bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 flex items-center justify-between gap-2">
+                <div className="flex items-center gap-1.5 overflow-x-auto py-0.5">
+                  {HERO_SLIDES.map((slide, idx) => (
+                    <button
+                      key={slide.id}
+                      onClick={() => setCurrentSlideIndex(idx)}
+                      className={`h-2 rounded-full transition-all cursor-pointer ${
+                        idx === currentSlideIndex
+                          ? "w-7 bg-emerald-400"
+                          : "w-2 bg-white/25 hover:bg-white/50"
+                      }`}
+                      title={slide.title}
+                      aria-label={`Aller à la diapositive ${idx + 1}`}
+                    />
+                  ))}
                 </div>
-                <span className="text-emerald-400 font-bold bg-emerald-500/10 px-2.5 py-1 rounded-full border border-emerald-500/20 text-[11px]">100% Organique</span>
+
+                <div className="flex items-center gap-2 text-[11px] text-slate-300 font-medium">
+                  <span className="text-emerald-400 font-bold">
+                    {currentSlideIndex + 1}
+                  </span>
+                  <span>/</span>
+                  <span>{HERO_SLIDES.length}</span>
+                  <span className="hidden sm:inline text-slate-400 ml-1">projets à Pointe-Noire</span>
+                </div>
               </div>
 
             </div>

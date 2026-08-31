@@ -46,7 +46,6 @@ export default function App() {
       <Navbar
         onOpenSimulator={handleOpenSimulator}
         onOpenAdvisor={() => setIsAdvisorOpen(true)}
-        onOpenQRCode={() => setIsQRCodeOpen(true)}
       />
 
       {/* Main Content */}

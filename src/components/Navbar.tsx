@@ -1,15 +1,14 @@
 import React, { useState } from "react";
-import { Phone, MessageSquare, Menu, X, Calculator, Sparkles, ShieldCheck, QrCode } from "lucide-react";
+import { Phone, MessageSquare, Menu, X, Calculator, Sparkles, ShieldCheck } from "lucide-react";
 import { CONTACT_INFO } from "../data";
 import { Logo242Agro } from "./Logo242Agro";
 
 interface NavbarProps {
   onOpenSimulator: () => void;
   onOpenAdvisor: () => void;
-  onOpenQRCode?: () => void;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ onOpenSimulator, onOpenAdvisor, onOpenQRCode }) => {
+export const Navbar: React.FC<NavbarProps> = ({ onOpenSimulator, onOpenAdvisor }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
@@ -35,16 +34,6 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenSimulator, onOpenAdvisor, 
               <Sparkles className="w-3.5 h-3.5 text-amber-400 animate-pulse" />
               <span>Agronome IA</span>
             </button>
-            {onOpenQRCode && (
-              <button 
-                onClick={onOpenQRCode}
-                className="flex items-center gap-1.5 text-emerald-300 hover:text-emerald-200 transition-all cursor-pointer bg-emerald-500/10 hover:bg-emerald-500/20 px-3 py-1.5 rounded-full border border-emerald-500/30 backdrop-blur-md shadow-sm text-xs font-semibold"
-                title="Afficher & Télécharger le QR Code du site"
-              >
-                <QrCode className="w-3.5 h-3.5 text-emerald-400" />
-                <span>Code QR</span>
-              </button>
-            )}
           </nav>
 
           {/* Action CTAs */}
@@ -69,15 +58,6 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenSimulator, onOpenAdvisor, 
 
           {/* Mobile Menu Toggle */}
           <div className="flex lg:hidden items-center gap-2">
-            {onOpenQRCode && (
-              <button
-                onClick={onOpenQRCode}
-                className="text-xs bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-300 p-2 rounded-xl border border-emerald-500/30"
-                title="Code QR du site"
-              >
-                <QrCode className="w-4 h-4" />
-              </button>
-            )}
             <button
               onClick={onOpenSimulator}
               className="text-xs bg-emerald-600 hover:bg-emerald-500 text-white p-2 rounded-xl border border-white/10"
@@ -138,18 +118,6 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenSimulator, onOpenAdvisor, 
               <Sparkles className="w-4 h-4 text-amber-400" />
               <span>Diagnostic Agronome IA</span>
             </button>
-            {onOpenQRCode && (
-              <button
-                onClick={() => {
-                  setMobileMenuOpen(false);
-                  onOpenQRCode();
-                }}
-                className="flex items-center gap-2 text-left px-3 py-2 rounded-xl bg-emerald-500/10 text-emerald-300 border border-emerald-500/30"
-              >
-                <QrCode className="w-4 h-4 text-emerald-400" />
-                <span>Afficher le Code QR du site</span>
-              </button>
-            )}
           </div>
 
           <div className="pt-3 border-t border-white/10 flex flex-col gap-2">
