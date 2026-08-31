@@ -1,0 +1,70 @@
+export interface AgroPack {
+  id: string;
+  name: string;
+  subtitle: string;
+  price: number; // in FCFA
+  priceFormatted: string;
+  surface: string;
+  vegetablesYield: string;
+  hens?: number;
+  rabbits?: number;
+  compostYield?: string;
+  badge?: string;
+  description: string;
+  savingsOrRevenue: string;
+  discountNotice?: string;
+  features: string[];
+  recommendedFor: string;
+  isPopular?: boolean;
+}
+
+export interface QuoteConfig {
+  clientType: "famille" | "ecole_eglise" | "restaurant" | "investisseur";
+  surfaceArea: number; // in m2 (2 to 50+)
+  includePotager: boolean;
+  includePoules: boolean;
+  poulesCount: number; // 0, 10, 20, 30
+  includeLapins: boolean;
+  lapinesCount: number; // 0, 4, 8, 12
+  includeCompost: boolean;
+  includeSuiviMaintenance: boolean;
+  monthsMaintenance: number; // 3 included, 6 or 12
+  irrigationType: "manuelle" | "goutte_a_goutte";
+  clientName: string;
+  clientPhone: string;
+  clientEmail: string;
+  clientQuartier: string;
+  notes: string;
+}
+
+export interface SimulationResult {
+  totalPrice: number;
+  downPayment30: number;
+  deliveryPayment40: number;
+  harvestPayment30: number;
+  estimated6MonthProduction: {
+    vegetablesKg: number;
+    eggsCount: number;
+    meatKg: number;
+    compostBags: number;
+  };
+  estimated6MonthValue: {
+    vegetablesValue: number;
+    eggsValue: number;
+    meatValue: number;
+    compostValue: number;
+    totalValue: number;
+  };
+  netProfit6Months: number;
+  roiMonth: number;
+  breakEvenPercent: number;
+}
+
+export interface DiagnosticResult {
+  summary: string;
+  recommendedSetup: string;
+  productionEstimate6Months: string;
+  suggestedPack: string;
+  actionSteps: string[];
+  climateAdvicePointeNoire: string;
+}

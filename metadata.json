@@ -1,0 +1,6 @@
+{
+  "name": "242Agro - Agriculture Urbaine & Élevage Intégré",
+  "description": "Plateforme officielle de 242Agro : Potagers hors-sol, élevage intégré, simulateur de devis & ROI, et solutions d'agriculture urbaine clé en main à Pointe-Noire, Congo.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

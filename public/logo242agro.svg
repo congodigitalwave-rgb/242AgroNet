@@ -1,0 +1,101 @@
+<svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="silverRim" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="25%" stop-color="#CBD5E1" />
+      <stop offset="50%" stop-color="#FFFFFF" />
+      <stop offset="75%" stop-color="#94A3B8" />
+      <stop offset="100%" stop-color="#E2E8F0" />
+    </linearGradient>
+    <radialGradient id="innerRimShadow" cx="50%" cy="50%" r="50%">
+      <stop offset="90%" stop-color="#000000" stop-opacity="0" />
+      <stop offset="97%" stop-color="#000000" stop-opacity="0.15" />
+      <stop offset="100%" stop-color="#000000" stop-opacity="0.35" />
+    </radialGradient>
+    <linearGradient id="woodPlank1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#8D5B28" />
+      <stop offset="30%" stop-color="#B27B3D" />
+      <stop offset="70%" stop-color="#C48B47" />
+      <stop offset="100%" stop-color="#8A5826" />
+    </linearGradient>
+    <linearGradient id="woodPlank2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#784B1D" />
+      <stop offset="40%" stop-color="#A46E34" />
+      <stop offset="80%" stop-color="#B88040" />
+      <stop offset="100%" stop-color="#75471A" />
+    </linearGradient>
+    <radialGradient id="soilGradient" cx="50%" cy="70%" r="60%">
+      <stop offset="0%" stop-color="#633C1D" />
+      <stop offset="60%" stop-color="#452711" />
+      <stop offset="100%" stop-color="#2E1809" />
+    </radialGradient>
+    <linearGradient id="leafLeftGrad" x1="20%" y1="100%" x2="70%" y2="0%">
+      <stop offset="0%" stop-color="#3B8B23" />
+      <stop offset="50%" stop-color="#5BB32C" />
+      <stop offset="100%" stop-color="#7FD236" />
+    </linearGradient>
+    <linearGradient id="leafRightGrad" x1="80%" y1="100%" x2="30%" y2="0%">
+      <stop offset="0%" stop-color="#2D7A19" />
+      <stop offset="50%" stop-color="#4EAA22" />
+      <stop offset="100%" stop-color="#76CE30" />
+    </linearGradient>
+    <linearGradient id="veinGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#E2FAD0" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0.95" />
+    </linearGradient>
+  </defs>
+
+  <circle cx="200" cy="200" r="192" fill="url(#silverRim)" />
+  <circle cx="200" cy="200" r="184" fill="#FFFFFF" />
+  <circle cx="200" cy="200" r="184" fill="url(#innerRimShadow)" />
+
+  <path d="M 52 270 A 155 155 0 1 1 348 270" fill="none" stroke="#205B32" stroke-width="7" stroke-linecap="round" />
+
+  <path d="M 135 235 C 135 220, 160 212, 200 212 C 240 212, 265 220, 265 235 Z" fill="url(#soilGradient)" />
+  <ellipse cx="170" cy="225" rx="8" ry="4" fill="#452711" />
+  <ellipse cx="230" cy="227" rx="10" ry="5" fill="#452711" />
+  <ellipse cx="200" cy="223" rx="12" ry="6" fill="#5A3418" />
+
+  <rect x="130" y="234" width="140" height="18" rx="2" fill="url(#woodPlank1)" stroke="#593412" stroke-width="1.5" />
+  <line x1="140" y1="243" x2="260" y2="243" stroke="#9A652B" stroke-width="1" stroke-opacity="0.6" />
+  <circle cx="137" cy="243" r="2" fill="#3D200A" />
+  <circle cx="263" cy="243" r="2" fill="#3D200A" />
+
+  <rect x="130" y="254" width="140" height="18" rx="2" fill="url(#woodPlank2)" stroke="#593412" stroke-width="1.5" />
+  <line x1="145" y1="263" x2="255" y2="263" stroke="#875120" stroke-width="1" stroke-opacity="0.6" />
+  <circle cx="137" cy="263" r="2" fill="#3D200A" />
+  <circle cx="263" cy="263" r="2" fill="#3D200A" />
+
+  <rect x="130" y="234" width="7" height="38" fill="#6B3F15" />
+  <rect x="263" y="234" width="7" height="38" fill="#6B3F15" />
+
+  <path d="M 193 230 C 193 185, 196 145, 200 120 C 204 145, 207 185, 207 230 Z" fill="#32881E" />
+
+  <path d="M 200 170 C 175 168, 110 148, 85 85 C 138 68, 185 105, 200 170 Z" fill="url(#leafLeftGrad)" />
+  <path d="M 198 165 C 180 140, 145 110, 105 88" fill="none" stroke="url(#veinGrad)" stroke-width="4" stroke-linecap="round" />
+  <path d="M 165 135 C 145 138, 125 142, 115 146" fill="none" stroke="#D2F6B8" stroke-width="2" stroke-linecap="round" stroke-opacity="0.7" />
+  <path d="M 142 112 C 128 112, 112 114, 102 118" fill="none" stroke="#D2F6B8" stroke-width="2" stroke-linecap="round" stroke-opacity="0.7" />
+
+  <path d="M 200 170 C 225 168, 290 148, 315 85 C 262 68, 215 105, 200 170 Z" fill="url(#leafRightGrad)" />
+  <path d="M 202 165 C 220 140, 255 110, 295 88" fill="none" stroke="url(#veinGrad)" stroke-width="4" stroke-linecap="round" />
+  <path d="M 235 135 C 255 138, 275 142, 285 146" fill="none" stroke="#D2F6B8" stroke-width="2" stroke-linecap="round" stroke-opacity="0.7" />
+  <path d="M 258 112 C 272 112, 288 114, 298 118" fill="none" stroke="#D2F6B8" stroke-width="2" stroke-linecap="round" stroke-opacity="0.7" />
+
+  <!-- Chicken Silhouette -->
+  <g fill="#184524">
+    <path d="M 60 252 C 58 245, 62 238, 68 234 C 64 230, 60 220, 64 214 C 68 208, 72 208, 76 210 C 78 205, 84 204, 88 206 C 92 201, 98 203, 100 208 C 104 207, 108 210, 109 214 C 114 218, 118 226, 117 236 C 116 244, 112 250, 106 256 C 102 260, 96 264, 90 266 C 88 271, 88 274, 86 276 L 81 276 L 82 267 C 78 266, 74 263, 70 260 C 64 260, 61 257, 60 252 Z" />
+    <path d="M 108 211 L 115 213 L 109 217 Z" fill="#184524" />
+    <path d="M 94 199 C 97 197, 102 198, 103 203 C 100 202, 97 202, 94 199 Z" fill="#184524" />
+    <path d="M 62 230 C 54 220, 56 208, 63 216 Z" fill="#184524" />
+    <path d="M 57 240 C 48 232, 50 220, 58 228 Z" fill="#184524" />
+  </g>
+
+  <!-- Rabbit Silhouette -->
+  <g fill="#184524">
+    <path d="M 330 265 C 334 262, 337 258, 335 252 C 333 247, 328 245, 325 247 C 322 238, 316 230, 308 225 C 304 222, 298 220, 294 222 C 293 217, 294 207, 298 198 C 300 193, 297 190, 294 191 C 290 193, 288 202, 287 210 C 285 204, 285 195, 287 188 C 288 183, 284 181, 282 183 C 279 186, 278 196, 280 208 C 276 211, 274 216, 274 222 C 272 227, 276 232, 280 236 C 278 242, 279 250, 284 258 C 290 266, 300 270, 314 270 C 322 270, 327 268, 330 265 Z" />
+  </g>
+
+  <!-- Brand Typography -->
+  <text x="138" y="336" fill="#144626" font-size="48" font-weight="900" font-family="system-ui, -apple-system, sans-serif" letter-spacing="-1.5">242</text>
+  <text x="218" y="336" fill="#66B928" font-size="48" font-weight="900" font-family="system-ui, -apple-system, sans-serif" letter-spacing="-1.5">Agro</text>
+</svg>
