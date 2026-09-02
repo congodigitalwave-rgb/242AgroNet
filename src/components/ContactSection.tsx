@@ -21,14 +21,14 @@ export const ContactSection: React.FC = () => {
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
-          <div className="inline-flex items-center gap-2 bg-emerald-500/10 text-emerald-300 border border-emerald-500/30 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider backdrop-blur-xl">
-            <Phone className="w-3.5 h-3.5 text-emerald-400" />
+          <div className="inline-flex items-center gap-2 bg-lime-50 text-[#65a30d] border border-lime-200 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider shadow-xs">
+            <Phone className="w-3.5 h-3.5 text-[#65a30d]" />
             <span>Équipe Terrain à Pointe-Noire</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold font-['Outfit'] text-white">
+          <h2 className="text-3xl sm:text-4xl font-black font-['Outfit'] text-slate-950">
             Contactez 242Agro dès Aujourd'hui
           </h2>
-          <p className="text-slate-300 text-base sm:text-lg">
+          <p className="text-slate-600 text-base sm:text-lg">
             Réservez votre visite technique sous 48h ou posez toutes vos questions à nos agronomes.
           </p>
         </div>
@@ -42,15 +42,15 @@ export const ContactSection: React.FC = () => {
             <div className="grid sm:grid-cols-2 gap-4">
               <a
                 href={`tel:${CONTACT_INFO.phoneClean}`}
-                className="bg-white/5 backdrop-blur-2xl p-6 rounded-3xl border border-white/10 hover:border-emerald-400/50 transition-all group flex flex-col justify-between shadow-xl shadow-black/20"
+                className="bg-white p-6 rounded-3xl border border-slate-200 hover:border-lime-500 hover:shadow-xl transition-all group flex flex-col justify-between shadow-sm"
               >
-                <div className="w-12 h-12 rounded-2xl bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                <div className="w-12 h-12 rounded-2xl bg-lime-100 text-[#65a30d] border border-lime-200 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                   <Phone className="w-6 h-6" />
                 </div>
                 <div>
-                  <div className="text-xs text-slate-400 uppercase font-semibold">Téléphone direct</div>
-                  <div className="text-lg font-bold text-white font-['Outfit'] mt-1">{CONTACT_INFO.phone}</div>
-                  <div className="text-[11px] text-emerald-400 font-medium mt-1">Disponible 7j/7</div>
+                  <div className="text-xs text-slate-500 uppercase font-semibold">Téléphone direct</div>
+                  <div className="text-lg font-black text-slate-950 font-['Outfit'] mt-1">{CONTACT_INFO.phone}</div>
+                  <div className="text-[11px] text-[#65a30d] font-bold mt-1">Disponible 7j/7</div>
                 </div>
               </a>
 
@@ -58,50 +58,50 @@ export const ContactSection: React.FC = () => {
                 href={CONTACT_INFO.whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-emerald-950/30 backdrop-blur-2xl p-6 rounded-3xl border border-emerald-400/40 hover:border-emerald-300 transition-all group flex flex-col justify-between shadow-xl shadow-emerald-950/30"
+                className="bg-white p-6 rounded-3xl border-2 border-emerald-500 hover:shadow-xl transition-all group flex flex-col justify-between shadow-sm"
               >
-                <div className="w-12 h-12 rounded-2xl bg-emerald-500 text-white flex items-center justify-center mb-4 group-hover:scale-110 transition-transform shadow-lg shadow-emerald-950/40">
+                <div className="w-12 h-12 rounded-2xl bg-emerald-500 text-white flex items-center justify-center mb-4 group-hover:scale-110 transition-transform shadow-md shadow-emerald-500/30">
                   <MessageSquare className="w-6 h-6" />
                 </div>
                 <div>
-                  <div className="text-xs text-emerald-200 uppercase font-semibold">WhatsApp 242Agro</div>
-                  <div className="text-lg font-bold text-white font-['Outfit'] mt-1">Discuter en direct</div>
-                  <div className="text-[11px] text-emerald-300 font-medium mt-1">Réponse en moins de 15 min</div>
+                  <div className="text-xs text-emerald-700 uppercase font-semibold">WhatsApp 242Agro</div>
+                  <div className="text-lg font-black text-slate-950 font-['Outfit'] mt-1">Discuter en direct</div>
+                  <div className="text-[11px] text-emerald-600 font-bold mt-1">Réponse en moins de 15 min</div>
                 </div>
               </a>
             </div>
 
             {/* Location & Coverage */}
-            <div className="bg-white/5 backdrop-blur-2xl p-6 rounded-3xl border border-white/10 shadow-xl space-y-4">
+            <div className="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm space-y-4">
               <div className="flex items-start gap-3">
-                <MapPin className="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" />
+                <MapPin className="w-5 h-5 text-[#65a30d] shrink-0 mt-0.5" />
                 <div>
-                  <div className="font-bold text-sm text-white">Siège & Ateliers d'Assemblage</div>
-                  <div className="text-xs text-slate-300">Pointe-Noire, République du Congo</div>
-                  <div className="text-[11px] text-slate-400 mt-1 leading-relaxed">
+                  <div className="font-black text-sm text-slate-950">Siège & Ateliers d'Assemblage</div>
+                  <div className="text-xs text-slate-700">Pointe-Noire, République du Congo</div>
+                  <div className="text-[11px] text-slate-500 mt-1 leading-relaxed">
                     Interventions sur tous les arrondissements : Tié-Tié, Lumumba, Loandjili, Mongo-Poukou, Ngoyo, Mpita, Côte Sauvage, Vindoulou.
                   </div>
                 </div>
               </div>
 
-              <div className="flex items-center gap-3 pt-3 border-t border-white/10 text-xs text-slate-300">
-                <Clock className="w-4 h-4 text-amber-400" />
-                <span>Horaires d'installation : <strong className="text-white">Du Lundi au Samedi, 7h30 - 18h00</strong></span>
+              <div className="flex items-center gap-3 pt-3 border-t border-slate-100 text-xs text-slate-600">
+                <Clock className="w-4 h-4 text-amber-500" />
+                <span>Horaires d'installation : <strong className="text-slate-950">Du Lundi au Samedi, 7h30 - 18h00</strong></span>
               </div>
             </div>
 
             {/* Direct Question Form */}
-            <div className="bg-white/5 backdrop-blur-2xl p-6 sm:p-8 rounded-3xl border border-white/10 shadow-xl">
-              <h3 className="text-base font-bold text-white font-['Outfit'] mb-1">
+            <div className="bg-white p-6 sm:p-8 rounded-3xl border border-slate-200 shadow-xl">
+              <h3 className="text-base font-black text-slate-950 font-['Outfit'] mb-1">
                 Envoyer un message rapide
               </h3>
-              <p className="text-xs text-slate-300 mb-4">
+              <p className="text-xs text-slate-600 mb-4">
                 Laissez vos coordonnées, un conseiller agronomique vous rappelle dans la journée.
               </p>
 
               {sentMessage ? (
-                <div className="p-4 rounded-2xl bg-emerald-950/50 border border-emerald-500/40 text-emerald-300 text-xs flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                <div className="p-4 rounded-2xl bg-lime-50 border border-lime-300 text-[#65a30d] text-xs flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-[#65a30d] shrink-0" />
                   <span>Merci ! Votre message a été transmis à notre équipe de Pointe-Noire.</span>
                 </div>
               ) : (
@@ -113,7 +113,7 @@ export const ContactSection: React.FC = () => {
                       placeholder="Votre nom"
                       value={name}
                       onChange={(e) => setName(e.target.value)}
-                      className="w-full px-4 py-2.5 rounded-xl bg-white/5 border border-white/15 text-xs text-white placeholder-slate-400 focus:outline-none focus:border-emerald-400 transition-colors"
+                      className="w-full px-4 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-lime-500 focus:bg-white transition-colors"
                     />
                     <input
                       type="tel"
@@ -121,7 +121,7 @@ export const ContactSection: React.FC = () => {
                       placeholder="Numéro WhatsApp / Téléphone"
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
-                      className="w-full px-4 py-2.5 rounded-xl bg-white/5 border border-white/15 text-xs text-white placeholder-slate-400 focus:outline-none focus:border-emerald-400 transition-colors"
+                      className="w-full px-4 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-lime-500 focus:bg-white transition-colors"
                     />
                   </div>
                   <textarea
@@ -129,11 +129,11 @@ export const ContactSection: React.FC = () => {
                     placeholder="Votre question (ex: J'ai une cour à Ngoyo de 12m²...)"
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
-                    className="w-full px-4 py-2.5 rounded-xl bg-white/5 border border-white/15 text-xs text-white placeholder-slate-400 focus:outline-none focus:border-emerald-400 transition-colors resize-none"
+                    className="w-full px-4 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-lime-500 focus:bg-white transition-colors resize-none"
                   />
                   <button
                     type="submit"
-                    className="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 cursor-pointer transition-all border border-emerald-400/30 shadow-lg shadow-emerald-950/30"
+                    className="w-full py-3.5 px-4 rounded-xl bg-[#84cc16] hover:bg-lime-500 text-slate-950 font-black text-xs uppercase tracking-wider flex items-center justify-center gap-2 cursor-pointer transition-all border-2 border-lime-400 shadow-md shadow-lime-500/20 active:scale-95"
                   >
                     <Send className="w-3.5 h-3.5" />
                     <span>Envoyer ma demande</span>
@@ -148,10 +148,10 @@ export const ContactSection: React.FC = () => {
           <div className="lg:col-span-6 space-y-4">
             
             <div className="mb-4">
-              <span className="text-xs font-bold uppercase tracking-wider text-amber-400 bg-amber-500/10 px-3 py-1 rounded-full border border-amber-500/20">
+              <span className="text-xs font-bold uppercase tracking-wider text-amber-800 bg-amber-50 px-3 py-1 rounded-full border border-amber-200">
                 Foire Aux Questions
               </span>
-              <h3 className="text-2xl font-bold font-['Outfit'] text-white mt-2">
+              <h3 className="text-2xl font-black font-['Outfit'] text-slate-950 mt-2">
                 Tout ce que vous devez savoir
               </h3>
             </div>
@@ -162,21 +162,21 @@ export const ContactSection: React.FC = () => {
                 return (
                   <div
                     key={idx}
-                    className="bg-white/5 backdrop-blur-2xl border border-white/10 rounded-2xl overflow-hidden transition-all shadow-lg hover:border-white/20"
+                    className="bg-white border border-slate-200 rounded-2xl overflow-hidden transition-all shadow-sm hover:border-lime-500"
                   >
                     <button
                       onClick={() => setOpenFaqIndex(isOpen ? null : idx)}
                       className="w-full p-5 text-left flex items-center justify-between gap-4 cursor-pointer"
                     >
-                      <span className="font-bold text-sm text-white">{item.question}</span>
+                      <span className="font-bold text-sm text-slate-950">{item.question}</span>
                       {isOpen ? (
-                        <ChevronUp className="w-4 h-4 text-emerald-400 shrink-0" />
+                        <ChevronUp className="w-4 h-4 text-[#65a30d] shrink-0" />
                       ) : (
                         <ChevronDown className="w-4 h-4 text-slate-400 shrink-0" />
                       )}
                     </button>
                     {isOpen && (
-                      <div className="px-5 pb-5 text-xs text-slate-300 leading-relaxed border-t border-white/10 pt-3 animate-in fade-in">
+                      <div className="px-5 pb-5 text-xs text-slate-600 leading-relaxed border-t border-slate-100 pt-3 animate-in fade-in">
                         {item.answer}
                       </div>
                     )}

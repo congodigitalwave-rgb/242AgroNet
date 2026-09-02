@@ -38,53 +38,53 @@ export const CircularSolution: React.FC = () => {
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
-          <div className="inline-flex items-center gap-2 bg-emerald-500/10 text-emerald-300 border border-emerald-500/30 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider backdrop-blur-xl">
-            <RefreshCw className="w-3.5 h-3.5 text-emerald-400 animate-spin" style={{ animationDuration: '8s' }} />
+          <div className="inline-flex items-center gap-2 bg-lime-50 text-[#65a30d] border border-lime-200 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider shadow-xs">
+            <RefreshCw className="w-3.5 h-3.5 text-[#65a30d] animate-spin" style={{ animationDuration: '8s' }} />
             <span>Écosystème Autonome & Zéro Déchet</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white font-['Outfit']">
+          <h2 className="text-3xl sm:text-4xl font-black text-slate-950 font-['Outfit']">
             Notre Solution : Potagers Hors-Sol + Élevage Intégré
           </h2>
-          <p className="text-slate-300 text-base sm:text-lg">
+          <p className="text-slate-600 text-base sm:text-lg">
             Un système en circuit fermé conçu pour éliminer les coûts récurrents et maximiser la productivité de chaque mètre carré.
           </p>
         </div>
 
-        {/* The 3 Core Pillars (from Slide 3) */}
+        {/* The 3 Core Pillars */}
         <div className="grid md:grid-cols-3 gap-6 mb-16">
           
-          <div className="bg-[#0f172a] rounded-3xl p-6 border border-slate-700/80 shadow-xl shadow-black/40 hover:border-emerald-400/60 hover:-translate-y-1 transition-all">
-            <div className="w-10 h-10 rounded-2xl bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 flex items-center justify-center font-bold mb-4">
+          <div className="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm hover:shadow-xl hover:border-lime-500 hover:-translate-y-1 transition-all">
+            <div className="w-10 h-10 rounded-2xl bg-lime-50 text-[#65a30d] border border-lime-200 flex items-center justify-center font-bold mb-4">
               <CheckCircle2 className="w-5 h-5" />
             </div>
-            <h3 className="text-xl font-bold text-white mb-2 font-['Outfit']">
+            <h3 className="text-xl font-bold text-slate-950 mb-2 font-['Outfit']">
               Clé en main
             </h3>
-            <p className="text-slate-200 text-sm leading-relaxed">
-              Installation complète, matériel professionnel, semences, animaux vaccinés, formation pratique et suivi agronomique pendant 3 mois — <strong className="text-white font-bold">tout est inclus</strong>.
+            <p className="text-slate-600 text-sm leading-relaxed">
+              Installation complète, matériel professionnel, semences, animaux vaccinés, formation pratique et suivi agronomique pendant 3 mois — <strong className="text-slate-950 font-bold">tout est inclus</strong>.
             </p>
           </div>
 
-          <div className="bg-[#0f172a] rounded-3xl p-6 border border-slate-700/80 shadow-xl shadow-black/40 hover:border-amber-400/60 hover:-translate-y-1 transition-all">
-            <div className="w-10 h-10 rounded-2xl bg-amber-500/20 text-amber-400 border border-amber-500/30 flex items-center justify-center font-bold mb-4">
+          <div className="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm hover:shadow-xl hover:border-amber-400 hover:-translate-y-1 transition-all">
+            <div className="w-10 h-10 rounded-2xl bg-amber-50 text-amber-600 border border-amber-200 flex items-center justify-center font-bold mb-4">
               <RefreshCw className="w-5 h-5" />
             </div>
-            <h3 className="text-xl font-bold text-white mb-2 font-['Outfit']">
+            <h3 className="text-xl font-bold text-slate-950 mb-2 font-['Outfit']">
               Boucle circulaire
             </h3>
-            <p className="text-slate-200 text-sm leading-relaxed">
+            <p className="text-slate-600 text-sm leading-relaxed">
               Légumes &rarr; animaux &rarr; compost &rarr; légumes. Un écosystème productif et autonome où chaque sous-produit devient la nourriture du suivant.
             </p>
           </div>
 
-          <div className="bg-[#0f172a] rounded-3xl p-6 border border-slate-700/80 shadow-xl shadow-black/40 hover:border-teal-400/60 hover:-translate-y-1 transition-all">
-            <div className="w-10 h-10 rounded-2xl bg-teal-500/20 text-teal-400 border border-teal-500/30 flex items-center justify-center font-bold mb-4">
+          <div className="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm hover:shadow-xl hover:border-teal-500 hover:-translate-y-1 transition-all">
+            <div className="w-10 h-10 rounded-2xl bg-teal-50 text-teal-600 border border-teal-200 flex items-center justify-center font-bold mb-4">
               <Shield className="w-5 h-5" />
             </div>
-            <h3 className="text-xl font-bold text-white mb-2 font-['Outfit']">
+            <h3 className="text-xl font-bold text-slate-950 mb-2 font-['Outfit']">
               100% Organique
             </h3>
-            <p className="text-slate-200 text-sm leading-relaxed">
+            <p className="text-slate-600 text-sm leading-relaxed">
               Zéro engrais chimique de synthèse. Une production saine, naturelle et durable respectueuse de la santé de votre famille et de vos clients.
             </p>
           </div>
@@ -92,24 +92,24 @@ export const CircularSolution: React.FC = () => {
         </div>
 
         {/* Circular Interactive Showcase Block */}
-        <div className="bg-[#0f172a] rounded-3xl p-8 lg:p-12 text-white border border-slate-700/80 shadow-2xl shadow-black/50">
+        <div className="bg-white rounded-3xl p-8 lg:p-12 text-slate-900 border border-slate-200 shadow-xl">
           <div className="grid lg:grid-cols-12 gap-10 items-center">
             
             {/* Left: Interactive Loop Explanation */}
             <div className="lg:col-span-6 space-y-6">
               
-              <div className="inline-flex items-center gap-2 bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 px-3 py-1 rounded-full text-xs font-semibold backdrop-blur-md">
-                <Zap className="w-3.5 h-3.5 text-amber-400" />
+              <div className="inline-flex items-center gap-2 bg-lime-50 text-[#65a30d] border border-lime-200 px-3 py-1 rounded-full text-xs font-bold">
+                <Zap className="w-3.5 h-3.5 text-amber-600" />
                 <span>Le Moteur de Rentabilité 242Agro</span>
               </div>
 
-              <h3 className="text-2xl sm:text-3xl font-extrabold font-['Outfit'] text-white">
+              <h3 className="text-2xl sm:text-3xl font-extrabold font-['Outfit'] text-slate-950">
                 La Boucle Circulaire Zéro Coût
               </h3>
 
-              <div className="p-4 rounded-2xl bg-emerald-950/80 border border-emerald-400/50 text-emerald-200 text-sm flex items-center justify-between shadow-inner">
-                <span className="font-semibold text-slate-100">Coût d'intrants artificiels :</span>
-                <span className="text-xl font-black text-slate-950 font-['Outfit'] bg-emerald-400 px-3.5 py-1 rounded-xl shadow-md">
+              <div className="p-4 rounded-2xl bg-lime-50 border border-lime-200 text-slate-800 text-sm flex items-center justify-between shadow-xs">
+                <span className="font-semibold text-slate-800">Coût d'intrants artificiels :</span>
+                <span className="text-xl font-black text-slate-950 font-['Outfit'] bg-[#84cc16] px-3.5 py-1 rounded-xl shadow-xs">
                   = 0 FCFA
                 </span>
               </div>
@@ -125,23 +125,23 @@ export const CircularSolution: React.FC = () => {
                       onClick={() => setActiveStep(idx)}
                       className={`w-full text-left p-4 rounded-2xl transition-all border flex items-start gap-4 cursor-pointer ${
                         isActive
-                          ? "bg-[#1e293b] border-2 border-emerald-400 shadow-lg shadow-emerald-950/40"
-                          : "bg-[#131b2e] border border-slate-700 hover:bg-[#1a233a] hover:border-slate-600"
+                          ? "bg-slate-50 border-2 border-[#65a30d] shadow-sm"
+                          : "bg-white border-slate-200 hover:bg-slate-50"
                       }`}
                     >
                       <div className={`p-2.5 rounded-xl shrink-0 ${
-                        isActive ? "bg-emerald-500 text-slate-950 shadow-md font-bold" : "bg-slate-800 text-emerald-400"
+                        isActive ? "bg-[#84cc16] text-slate-950 shadow-xs font-bold" : "bg-slate-100 text-[#65a30d]"
                       }`}>
                         <Icon className="w-5 h-5" />
                       </div>
                       <div className="flex-1">
                         <div className="flex items-center justify-between gap-2">
-                          <h4 className="font-bold text-sm text-white">{step.title}</h4>
-                          <span className="text-[10px] font-bold uppercase bg-slate-800 text-emerald-300 px-2.5 py-0.5 rounded-full border border-slate-600">
+                          <h4 className="font-bold text-sm text-slate-950">{step.title}</h4>
+                          <span className="text-[10px] font-bold uppercase bg-lime-100 text-[#65a30d] px-2.5 py-0.5 rounded-full border border-lime-200">
                             {step.badge}
                           </span>
                         </div>
-                        <p className="text-xs text-slate-300 mt-1.5 leading-relaxed">
+                        <p className="text-xs text-slate-600 mt-1.5 leading-relaxed">
                           {step.desc}
                         </p>
                       </div>
@@ -154,22 +154,22 @@ export const CircularSolution: React.FC = () => {
 
             {/* Right: Circular Visual Graphic */}
             <div className="lg:col-span-6">
-              <div className="relative rounded-3xl overflow-hidden bg-white/5 border border-white/15 p-3 shadow-2xl backdrop-blur-xl">
-                <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-slate-950">
+              <div className="relative rounded-3xl overflow-hidden bg-slate-50 border border-slate-200 p-3 shadow-lg">
+                <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-slate-100">
                   <img
                     src={IMAGES.circular}
                     alt="Boucle Circulaire 242Agro"
                     className="w-full h-full object-cover"
                     referrerPolicy="no-referrer"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-transparent to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />
                   
-                  <div className="absolute bottom-4 left-4 right-4 p-4 rounded-2xl bg-[#0a0f1d]/85 backdrop-blur-xl border border-white/10 shadow-xl">
-                    <div className="flex items-center justify-between text-xs text-slate-300">
-                      <span className="font-bold text-white">Écosystème auto-alimenté</span>
-                      <span className="text-emerald-400 font-semibold bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/20">100% Autonome</span>
+                  <div className="absolute bottom-4 left-4 right-4 p-4 rounded-2xl bg-white/95 backdrop-blur-md border border-slate-200 shadow-lg">
+                    <div className="flex items-center justify-between text-xs text-slate-700">
+                      <span className="font-black text-slate-950">Écosystème auto-alimenté</span>
+                      <span className="text-[#65a30d] font-bold bg-lime-100 px-2 py-0.5 rounded-full border border-lime-200">100% Autonome</span>
                     </div>
-                    <p className="text-xs text-slate-300 mt-1.5">
+                    <p className="text-xs text-slate-600 mt-1.5">
                       Les résidus de récolte nourrissent l'élevage &rarr; Les fientes sont transformées en compost &rarr; Le compost fertilise le potager.
                     </p>
                   </div>

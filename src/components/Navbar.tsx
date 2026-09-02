@@ -12,99 +12,134 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenSimulator, onOpenAdvisor }
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 bg-[#0b1120]/75 backdrop-blur-2xl border-b border-white/10 text-slate-100 transition-all shadow-lg shadow-black/30">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
-          
-          {/* Logo & Brand */}
-          <a href="#" className="flex items-center gap-3 group">
-            <Logo242Agro size="md" showText={true} />
-          </a>
-
-          {/* Desktop Navigation Links */}
-          <nav className="hidden lg:flex items-center gap-6 text-sm font-medium text-slate-300">
-            <a href="#solution" className="hover:text-emerald-400 transition-colors py-1">Notre Solution</a>
-            <a href="#production" className="hover:text-emerald-400 transition-colors py-1">Rendements & ROI</a>
-            <a href="#packs" className="hover:text-emerald-400 transition-colors py-1">Nos Packs</a>
-            <a href="#paiement" className="hover:text-emerald-400 transition-colors py-1">Paiement 3X</a>
-            <button 
-              onClick={onOpenAdvisor}
-              className="flex items-center gap-1.5 text-amber-300 hover:text-amber-200 transition-all cursor-pointer bg-white/5 hover:bg-white/10 px-3.5 py-1.5 rounded-full border border-amber-400/30 backdrop-blur-md shadow-sm"
-            >
-              <Sparkles className="w-3.5 h-3.5 text-amber-400 animate-pulse" />
-              <span>Agronome IA</span>
-            </button>
-          </nav>
-
-          {/* Action CTAs */}
-          <div className="hidden md:flex items-center gap-3">
-            <a
-              href={`tel:${CONTACT_INFO.phoneClean}`}
-              className="flex items-center gap-2 text-xs font-semibold text-slate-300 hover:text-white px-3.5 py-2 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 backdrop-blur-md transition-all"
-            >
-              <Phone className="w-3.5 h-3.5 text-emerald-400" />
-              <span>{CONTACT_INFO.phone}</span>
-            </a>
-
-            <button
-              id="nav-simulate-quote-btn"
-              onClick={onOpenSimulator}
-              className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white px-4 py-2.5 rounded-xl shadow-lg shadow-emerald-950/40 hover:shadow-emerald-500/20 border border-emerald-400/30 transition-all cursor-pointer"
-            >
-              <Calculator className="w-4 h-4" />
-              <span>Simulateur Devis</span>
-            </button>
+    <header className="sticky top-0 z-50 transition-all shadow-sm">
+      {/* Top Utility Bar - sleek dark charcoal with lime green accent (as seen in template) */}
+      <div className="bg-[#0f172a] text-slate-300 text-xs py-2 px-4 sm:px-6 lg:px-8 border-b border-slate-800">
+        <div className="max-w-7xl mx-auto flex items-center justify-between">
+          <div className="flex items-center gap-4 text-[11px] sm:text-xs">
+            <span className="flex items-center gap-1.5 font-medium text-slate-200">
+              <span className="w-2 h-2 rounded-full bg-lime-400 animate-pulse"></span>
+              Pointe-Noire, République du Congo
+            </span>
+            <span className="hidden md:inline text-slate-500">|</span>
+            <span className="hidden md:inline text-slate-300">
+              Agri-tech urbaine circulaire & élevage hors-sol
+            </span>
           </div>
 
-          {/* Mobile Menu Toggle */}
-          <div className="flex lg:hidden items-center gap-2">
-            <button
-              onClick={onOpenSimulator}
-              className="text-xs bg-emerald-600 hover:bg-emerald-500 text-white p-2 rounded-xl border border-white/10"
-              title="Simulateur"
+          <div className="flex items-center gap-4 text-xs font-semibold">
+            <span className="hidden sm:inline-block px-2.5 py-0.5 rounded-full text-[10px] uppercase tracking-wider font-extrabold bg-rose-500 text-white shadow-xs">
+              Offre Pilote -25%
+            </span>
+            <a
+              href={`tel:${CONTACT_INFO.phoneClean}`}
+              className="text-lime-400 hover:text-lime-300 flex items-center gap-1.5 transition-colors"
             >
-              <Calculator className="w-4 h-4" />
-            </button>
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="text-slate-300 hover:text-white p-2 rounded-xl bg-white/5 border border-white/10 backdrop-blur-md"
-              aria-label="Menu"
-            >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </button>
+              <Phone className="w-3.5 h-3.5" />
+              <span>{CONTACT_INFO.phone}</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      {/* Main Navbar - crisp white with high contrast typography */}
+      <div className="bg-white/95 backdrop-blur-md border-b border-slate-200 text-slate-900 shadow-sm">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-20">
+            
+            {/* Logo & Brand */}
+            <a href="#" className="flex items-center gap-3 group">
+              <Logo242Agro size="md" showText={true} darkText={true} />
+            </a>
+
+            {/* Desktop Navigation Links */}
+            <nav className="hidden lg:flex items-center gap-7 text-sm font-semibold text-slate-700">
+              <a href="#solution" className="hover:text-[#65a30d] transition-colors py-1">Notre Solution</a>
+              <a href="#production" className="hover:text-[#65a30d] transition-colors py-1">Rendements & ROI</a>
+              <a href="#packs" className="hover:text-[#65a30d] transition-colors py-1">Nos 4 Packs</a>
+              <a href="#paiement" className="hover:text-[#65a30d] transition-colors py-1">Paiement 3X</a>
+              <button 
+                onClick={onOpenAdvisor}
+                className="flex items-center gap-1.5 text-slate-800 hover:text-[#65a30d] transition-all cursor-pointer bg-lime-50 hover:bg-lime-100/80 px-3.5 py-1.5 rounded-full border border-lime-300 font-bold shadow-xs"
+              >
+                <Sparkles className="w-3.5 h-3.5 text-[#65a30d] animate-pulse" />
+                <span>Agronome IA</span>
+                <span className="text-[9px] bg-rose-500 text-white font-black px-1.5 py-0.5 rounded-full uppercase">IA</span>
+              </button>
+            </nav>
+
+            {/* Action CTAs */}
+            <div className="hidden md:flex items-center gap-3">
+              <a
+                href={CONTACT_INFO.whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-xs font-bold text-slate-700 hover:text-slate-950 px-3.5 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 transition-all"
+              >
+                <MessageSquare className="w-3.5 h-3.5 text-emerald-600" />
+                <span>WhatsApp</span>
+              </a>
+
+              <button
+                id="nav-simulate-quote-btn"
+                onClick={onOpenSimulator}
+                className="flex items-center gap-2 text-xs font-black uppercase tracking-wider bg-[#84cc16] hover:bg-[#65a30d] text-slate-950 hover:text-white px-5 py-3 rounded-xl shadow-md hover:shadow-lg transition-all cursor-pointer active:scale-95"
+              >
+                <Calculator className="w-4 h-4" />
+                <span>Simuler mon Devis</span>
+              </button>
+            </div>
+
+            {/* Mobile Menu Toggle */}
+            <div className="flex lg:hidden items-center gap-2">
+              <button
+                onClick={onOpenSimulator}
+                className="text-xs bg-[#84cc16] hover:bg-[#65a30d] text-slate-950 p-2.5 rounded-xl font-bold"
+                title="Simulateur"
+              >
+                <Calculator className="w-4 h-4" />
+              </button>
+              <button
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                className="text-slate-700 hover:text-slate-950 p-2 rounded-xl bg-slate-100 border border-slate-200"
+                aria-label="Menu"
+              >
+                {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              </button>
+            </div>
           </div>
         </div>
       </div>
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-[#0b1120]/95 backdrop-blur-2xl border-b border-white/10 px-4 pt-3 pb-6 space-y-4">
-          <div className="flex flex-col space-y-2 text-sm font-medium text-slate-200">
+        <div className="lg:hidden bg-white border-b border-slate-200 px-4 pt-3 pb-6 space-y-4 shadow-xl">
+          <div className="flex flex-col space-y-2 text-sm font-semibold text-slate-800">
             <a 
               href="#solution" 
               onClick={() => setMobileMenuOpen(false)}
-              className="px-3 py-2 rounded-xl hover:bg-white/5 hover:text-emerald-400"
+              className="px-3 py-2 rounded-xl hover:bg-lime-50 hover:text-[#65a30d]"
             >
               Notre Solution Circulaire
             </a>
             <a 
               href="#production" 
               onClick={() => setMobileMenuOpen(false)}
-              className="px-3 py-2 rounded-xl hover:bg-white/5 hover:text-emerald-400"
+              className="px-3 py-2 rounded-xl hover:bg-lime-50 hover:text-[#65a30d]"
             >
               Rendements & Graphiques ROI
             </a>
             <a 
               href="#packs" 
               onClick={() => setMobileMenuOpen(false)}
-              className="px-3 py-2 rounded-xl hover:bg-white/5 hover:text-emerald-400"
+              className="px-3 py-2 rounded-xl hover:bg-lime-50 hover:text-[#65a30d]"
             >
               Nos 4 Packs & Tarifs
             </a>
             <a 
               href="#paiement" 
               onClick={() => setMobileMenuOpen(false)}
-              className="px-3 py-2 rounded-xl hover:bg-white/5 hover:text-emerald-400"
+              className="px-3 py-2 rounded-xl hover:bg-lime-50 hover:text-[#65a30d]"
             >
               Paiement Échelonné en 3 Fois
             </a>
@@ -113,20 +148,23 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenSimulator, onOpenAdvisor }
                 setMobileMenuOpen(false);
                 onOpenAdvisor();
               }}
-              className="flex items-center gap-2 text-left px-3 py-2 rounded-xl bg-amber-500/10 text-amber-300 border border-amber-500/30"
+              className="flex items-center justify-between px-3 py-2.5 rounded-xl bg-lime-50 text-slate-900 border border-lime-300 font-bold"
             >
-              <Sparkles className="w-4 h-4 text-amber-400" />
-              <span>Diagnostic Agronome IA</span>
+              <div className="flex items-center gap-2">
+                <Sparkles className="w-4 h-4 text-[#65a30d]" />
+                <span>Diagnostic Agronome IA</span>
+              </div>
+              <span className="text-[10px] bg-rose-500 text-white font-black px-2 py-0.5 rounded-full">NOUVEAU</span>
             </button>
           </div>
 
-          <div className="pt-3 border-t border-white/10 flex flex-col gap-2">
+          <div className="pt-3 border-t border-slate-200 flex flex-col gap-2">
             <button
               onClick={() => {
                 setMobileMenuOpen(false);
                 onOpenSimulator();
               }}
-              className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-bold text-sm py-3 rounded-xl shadow-lg border border-emerald-400/30"
+              className="w-full flex items-center justify-center gap-2 bg-[#84cc16] hover:bg-[#65a30d] text-slate-950 hover:text-white font-black text-sm py-3 rounded-xl shadow-md"
             >
               <Calculator className="w-4 h-4" />
               <span>Lancer le Simulateur de Devis</span>
@@ -136,9 +174,9 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenSimulator, onOpenAdvisor }
               href={CONTACT_INFO.whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full flex items-center justify-center gap-2 bg-white/5 hover:bg-white/10 text-emerald-300 font-semibold text-sm py-2.5 rounded-xl border border-emerald-500/30 backdrop-blur-md"
+              className="w-full flex items-center justify-center gap-2 bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-sm py-2.5 rounded-xl border border-slate-300"
             >
-              <MessageSquare className="w-4 h-4 text-emerald-400" />
+              <MessageSquare className="w-4 h-4 text-emerald-600" />
               <span>WhatsApp Direct (+242 06 874 22 77)</span>
             </a>
           </div>

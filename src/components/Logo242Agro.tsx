@@ -5,6 +5,7 @@ interface Logo242AgroProps {
   className?: string;
   showText?: boolean;
   withGlow?: boolean;
+  darkText?: boolean;
 }
 
 export const Logo242Agro: React.FC<Logo242AgroProps> = ({
@@ -12,6 +13,7 @@ export const Logo242Agro: React.FC<Logo242AgroProps> = ({
   className = "",
   showText = true,
   withGlow = true,
+  darkText = false,
 }) => {
   const sizeMap = {
     sm: "w-8 h-8",
@@ -278,11 +280,11 @@ export const Logo242Agro: React.FC<Logo242AgroProps> = ({
       {showText && (
         <div className="flex flex-col justify-center">
           <div className="flex items-center gap-1.5 leading-none">
-            <span className="font-black text-2xl tracking-tight font-['Outfit'] text-white">
-              242<span className="text-[#66B928]">Agro</span>
+            <span className={`font-black text-2xl tracking-tight font-['Outfit'] ${darkText ? "text-slate-900" : "text-white"}`}>
+              242<span className="text-[#65a30d]">Agro</span>
             </span>
           </div>
-          <span className="text-[11px] font-medium text-slate-300 tracking-wide mt-0.5">
+          <span className={`text-[11px] font-medium tracking-wide mt-0.5 ${darkText ? "text-slate-600" : "text-slate-300"}`}>
             Pointe-Noire &bull; Hors-Sol & Élevage
           </span>
         </div>

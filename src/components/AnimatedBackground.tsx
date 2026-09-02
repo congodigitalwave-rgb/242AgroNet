@@ -268,23 +268,23 @@ export const AnimatedBackground: React.FC = () => {
 
   return (
     <div className="fixed inset-0 pointer-events-none overflow-hidden -z-10 select-none">
-      {/* 1. Base Dark Canvas with Deep Radial Depth */}
-      <div className="absolute inset-0 bg-[#070b14]" />
+      {/* 1. Base Luminous Canvas */}
+      <div className="absolute inset-0 bg-[#f8fafc]" />
 
-      {/* 2. Slow Animated Ambient Radial Orbs */}
-      <div className="absolute top-[-10%] left-[-10%] w-[650px] h-[650px] bg-emerald-600/20 rounded-full blur-[140px] animate-pulse" style={{ animationDuration: "9s" }} />
-      <div className="absolute top-[25%] right-[-15%] w-[700px] h-[700px] bg-teal-600/18 rounded-full blur-[160px] animate-pulse" style={{ animationDuration: "12s" }} />
-      <div className="absolute top-[55%] left-[-12%] w-[600px] h-[600px] bg-amber-600/12 rounded-full blur-[150px] animate-pulse" style={{ animationDuration: "14s" }} />
-      <div className="absolute bottom-[-10%] right-[-10%] w-[650px] h-[650px] bg-emerald-500/18 rounded-full blur-[140px] animate-pulse" style={{ animationDuration: "10s" }} />
+      {/* 2. Slow Animated Ambient Radial Orbs in Fresh Lime, Emerald & Soft Amber */}
+      <div className="absolute top-[-10%] left-[-10%] w-[650px] h-[650px] bg-lime-400/10 rounded-full blur-[140px] animate-pulse" style={{ animationDuration: "9s" }} />
+      <div className="absolute top-[25%] right-[-15%] w-[700px] h-[700px] bg-emerald-400/10 rounded-full blur-[160px] animate-pulse" style={{ animationDuration: "12s" }} />
+      <div className="absolute top-[55%] left-[-12%] w-[600px] h-[600px] bg-amber-300/10 rounded-full blur-[150px] animate-pulse" style={{ animationDuration: "14s" }} />
+      <div className="absolute bottom-[-10%] right-[-10%] w-[650px] h-[650px] bg-lime-500/10 rounded-full blur-[140px] animate-pulse" style={{ animationDuration: "10s" }} />
 
       {/* 3. Subtle Animated Agricultural Grid / Topographic Waves */}
       <div 
-        className="absolute inset-0 opacity-[0.035] mix-blend-screen"
+        className="absolute inset-0 opacity-[0.04]"
         style={{
           backgroundImage: `
-            radial-gradient(circle at 50% 50%, rgba(52, 211, 153, 0.8) 1px, transparent 1px),
-            linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-            linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px)
+            radial-gradient(circle at 50% 50%, rgba(101, 163, 13, 0.6) 1px, transparent 1px),
+            linear-gradient(to right, rgba(15, 23, 42, 0.08) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(15, 23, 42, 0.08) 1px, transparent 1px)
           `,
           backgroundSize: "40px 40px, 80px 80px, 80px 80px",
         }}
@@ -292,7 +292,7 @@ export const AnimatedBackground: React.FC = () => {
 
       {/* 4. Large Floating Botanical Outline Drawings in Background with CSS animation */}
       <svg
-        className="absolute top-[12%] right-[5%] w-[380px] h-[380px] text-emerald-400/[0.04] animate-spin"
+        className="absolute top-[12%] right-[5%] w-[380px] h-[380px] text-emerald-600/[0.04] animate-spin"
         style={{ animationDuration: "120s" }}
         viewBox="0 0 200 200"
         fill="none"
@@ -307,7 +307,7 @@ export const AnimatedBackground: React.FC = () => {
       </svg>
 
       <svg
-        className="absolute top-[48%] left-[2%] w-[420px] h-[420px] text-teal-400/[0.035] animate-pulse"
+        className="absolute top-[48%] left-[2%] w-[420px] h-[420px] text-teal-600/[0.035] animate-pulse"
         style={{ animationDuration: "16s" }}
         viewBox="0 0 200 200"
         fill="none"
@@ -321,7 +321,7 @@ export const AnimatedBackground: React.FC = () => {
       </svg>
 
       <svg
-        className="absolute bottom-[8%] left-[25%] w-[480px] h-[480px] text-amber-400/[0.03] animate-spin"
+        className="absolute bottom-[8%] left-[25%] w-[480px] h-[480px] text-lime-600/[0.03] animate-spin"
         style={{ animationDuration: "180s", animationDirection: "reverse" }}
         viewBox="0 0 200 200"
         fill="none"

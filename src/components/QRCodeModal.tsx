@@ -200,32 +200,29 @@ export const QRCodeModal: React.FC<QRCodeModalProps> = ({ isOpen, onClose }) => 
   const themeConfig = getThemeProps();
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto bg-black/75 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 animate-in fade-in">
-      <div className="bg-slate-900/95 backdrop-blur-2xl border border-white/20 text-white rounded-3xl max-w-lg w-full shadow-2xl shadow-black/80 flex flex-col relative ring-1 ring-white/10 overflow-hidden">
+    <div className="fixed inset-0 z-50 overflow-y-auto bg-slate-900/60 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 animate-in fade-in">
+      <div className="bg-white text-slate-900 rounded-3xl max-w-lg w-full shadow-2xl flex flex-col relative border border-slate-200 overflow-hidden">
         
-        {/* Decorative Top Glow */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-72 h-20 bg-emerald-500/20 blur-3xl -z-10 pointer-events-none" />
-
         {/* Modal Header */}
-        <div className="p-6 border-b border-white/10 flex items-center justify-between sticky top-0 bg-slate-900/90 backdrop-blur-xl z-10">
+        <div className="p-6 border-b border-slate-100 flex items-center justify-between sticky top-0 bg-white/95 backdrop-blur-xl z-10">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-emerald-500 to-teal-400 text-slate-950 flex items-center justify-center font-bold shadow-md shadow-emerald-950/40 border border-emerald-300/40">
+            <div className="w-10 h-10 rounded-2xl bg-lime-100 text-[#65a30d] border border-lime-200 flex items-center justify-center font-bold shadow-xs">
               <QrCode className="w-5 h-5" />
             </div>
             <div>
-              <h3 className="text-lg font-bold font-['Outfit'] text-white flex items-center gap-2">
+              <h3 className="text-lg font-black font-['Outfit'] text-slate-950 flex items-center gap-2">
                 <span>Code QR 242Agro</span>
-                <span className="text-[10px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 px-2 py-0.5 rounded-full">
+                <span className="text-[10px] font-bold bg-lime-100 text-[#65a30d] border border-lime-300 px-2 py-0.5 rounded-full">
                   Netlify Live
                 </span>
               </h3>
-              <p className="text-xs text-slate-300">Scannez pour accéder au site depuis un smartphone</p>
+              <p className="text-xs text-slate-600">Scannez pour accéder au site depuis un smartphone</p>
             </div>
           </div>
           
           <button
             onClick={onClose}
-            className="p-2.5 rounded-2xl bg-white/5 border border-white/10 text-slate-300 hover:text-white hover:bg-white/10 transition-all cursor-pointer"
+            className="p-2.5 rounded-2xl bg-slate-100 border border-slate-200 text-slate-500 hover:text-slate-950 hover:bg-slate-200 transition-all cursor-pointer"
             aria-label="Fermer"
           >
             <X className="w-5 h-5" />
@@ -236,33 +233,33 @@ export const QRCodeModal: React.FC<QRCodeModalProps> = ({ isOpen, onClose }) => 
         <div className="p-6 sm:p-8 space-y-6 text-center flex flex-col items-center">
           
           {/* Style Selector Tabs */}
-          <div className="flex items-center gap-1.5 p-1 bg-white/5 border border-white/10 rounded-2xl">
+          <div className="flex items-center gap-1.5 p-1 bg-slate-100 border border-slate-200 rounded-2xl">
             <button
               onClick={() => setQrTheme("light")}
-              className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all cursor-pointer ${
+              className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
                 qrTheme === "light"
-                  ? "bg-white text-slate-900 shadow-md"
-                  : "text-slate-300 hover:text-white"
+                  ? "bg-white text-slate-950 shadow-xs border border-slate-200"
+                  : "text-slate-600 hover:text-slate-950"
               }`}
             >
               Imprimable (Blanc)
             </button>
             <button
               onClick={() => setQrTheme("dark")}
-              className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all cursor-pointer ${
+              className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
                 qrTheme === "dark"
-                  ? "bg-emerald-500 text-slate-950 shadow-md font-bold"
-                  : "text-slate-300 hover:text-white"
+                  ? "bg-[#84cc16] text-slate-950 shadow-xs"
+                  : "text-slate-600 hover:text-slate-950"
               }`}
             >
               Mode Sombre
             </button>
             <button
               onClick={() => setQrTheme("emerald")}
-              className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all cursor-pointer ${
+              className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
                 qrTheme === "emerald"
-                  ? "bg-emerald-600 text-white shadow-md font-bold"
-                  : "text-slate-300 hover:text-white"
+                  ? "bg-emerald-600 text-white shadow-xs"
+                  : "text-slate-600 hover:text-slate-950"
               }`}
             >
               Vert Émeraude
@@ -272,7 +269,7 @@ export const QRCodeModal: React.FC<QRCodeModalProps> = ({ isOpen, onClose }) => 
           {/* QR Code Container */}
           <div
             ref={canvasContainerRef}
-            className={`p-6 rounded-3xl border ${themeConfig.wrapperBorder} ${themeConfig.wrapperBg} transition-all relative group flex items-center justify-center`}
+            className={`p-6 rounded-3xl border ${themeConfig.wrapperBorder} ${themeConfig.wrapperBg} transition-all relative group flex items-center justify-center shadow-md`}
           >
             {/* The Canvas rendered for export */}
             <QRCodeCanvas
@@ -293,17 +290,17 @@ export const QRCodeModal: React.FC<QRCodeModalProps> = ({ isOpen, onClose }) => 
 
           {/* URL Pill & Copy Action */}
           <div className="w-full space-y-2">
-            <div className="flex items-center justify-between gap-2 p-2.5 rounded-2xl bg-white/5 border border-white/10 text-xs">
-              <span className="font-mono text-emerald-300 truncate pl-2 select-all">
+            <div className="flex items-center justify-between gap-2 p-2.5 rounded-2xl bg-slate-50 border border-slate-200 text-xs">
+              <span className="font-mono text-[#65a30d] font-bold truncate pl-2 select-all">
                 {url}
               </span>
               <button
                 onClick={handleCopy}
-                className="px-3 py-1.5 rounded-xl bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-300 border border-emerald-500/30 font-semibold flex items-center gap-1.5 transition-all cursor-pointer shrink-0"
+                className="px-3 py-1.5 rounded-xl bg-lime-100 hover:bg-lime-200 text-[#65a30d] border border-lime-300 font-bold flex items-center gap-1.5 transition-all cursor-pointer shrink-0"
               >
                 {copied ? (
                   <>
-                    <Check className="w-3.5 h-3.5 text-emerald-400" />
+                    <Check className="w-3.5 h-3.5 text-[#65a30d]" />
                     <span>Copié !</span>
                   </>
                 ) : (
@@ -315,8 +312,8 @@ export const QRCodeModal: React.FC<QRCodeModalProps> = ({ isOpen, onClose }) => 
               </button>
             </div>
             
-            <p className="text-[11px] text-slate-400 flex items-center justify-center gap-1.5">
-              <Smartphone className="w-3.5 h-3.5 text-emerald-400" />
+            <p className="text-[11px] text-slate-500 flex items-center justify-center gap-1.5">
+              <Smartphone className="w-3.5 h-3.5 text-[#65a30d]" />
               <span>Compatible avec l'appareil photo de tous les smartphones iPhone et Android</span>
             </p>
           </div>
@@ -326,7 +323,7 @@ export const QRCodeModal: React.FC<QRCodeModalProps> = ({ isOpen, onClose }) => 
             <button
               onClick={handleDownload}
               disabled={downloading}
-              className="w-full py-3 px-4 rounded-2xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 cursor-pointer shadow-xl shadow-emerald-950/40 border border-emerald-400/30 transition-all disabled:opacity-50"
+              className="w-full py-3.5 px-4 rounded-2xl bg-[#84cc16] hover:bg-lime-500 text-slate-950 font-black text-xs uppercase tracking-wider flex items-center justify-center gap-2 cursor-pointer shadow-md shadow-lime-500/20 border-2 border-lime-400 transition-all disabled:opacity-50 active:scale-95"
             >
               <Download className="w-4 h-4" />
               <span>Télécharger l'Affiche HD (PNG)</span>
@@ -334,7 +331,7 @@ export const QRCodeModal: React.FC<QRCodeModalProps> = ({ isOpen, onClose }) => 
 
             <button
               onClick={handleShare}
-              className="w-full py-3 px-4 rounded-2xl bg-white/10 hover:bg-white/15 text-slate-200 hover:text-white font-semibold text-xs flex items-center justify-center gap-2 cursor-pointer border border-white/10 transition-all"
+              className="w-full py-3.5 px-4 rounded-2xl bg-slate-100 hover:bg-slate-200 text-slate-900 font-bold text-xs flex items-center justify-center gap-2 cursor-pointer border border-slate-200 transition-all"
             >
               <Share2 className="w-4 h-4" />
               <span>Partager le lien</span>
@@ -342,10 +339,10 @@ export const QRCodeModal: React.FC<QRCodeModalProps> = ({ isOpen, onClose }) => 
           </div>
 
           {/* Print Notice for Flyers */}
-          <div className="p-3.5 rounded-2xl bg-emerald-950/30 border border-emerald-500/20 text-slate-300 text-[11px] flex items-center gap-2.5 text-left w-full">
-            <Printer className="w-4 h-4 text-emerald-400 shrink-0" />
+          <div className="p-3.5 rounded-2xl bg-lime-50 border border-lime-200 text-slate-700 text-[11px] flex items-center gap-2.5 text-left w-full">
+            <Printer className="w-4 h-4 text-[#65a30d] shrink-0" />
             <span>
-              <strong>Pour vos supports imprimés :</strong> Téléchargez l'affiche haute définition pour vos kakémonos, flyers ou cartes de visite à Pointe-Noire.
+              <strong className="text-slate-900">Pour vos supports imprimés :</strong> Téléchargez l'affiche haute définition pour vos kakémonos, flyers ou cartes de visite à Pointe-Noire.
             </span>
           </div>
 
