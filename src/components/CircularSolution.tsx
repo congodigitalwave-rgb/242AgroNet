@@ -53,38 +53,38 @@ export const CircularSolution: React.FC = () => {
         {/* The 3 Core Pillars (from Slide 3) */}
         <div className="grid md:grid-cols-3 gap-6 mb-16">
           
-          <div className="bg-white/5 backdrop-blur-2xl rounded-3xl p-6 border border-white/10 shadow-xl shadow-black/20 hover:border-emerald-500/50 hover:-translate-y-1 transition-all">
+          <div className="bg-[#0f172a] rounded-3xl p-6 border border-slate-700/80 shadow-xl shadow-black/40 hover:border-emerald-400/60 hover:-translate-y-1 transition-all">
             <div className="w-10 h-10 rounded-2xl bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 flex items-center justify-center font-bold mb-4">
               <CheckCircle2 className="w-5 h-5" />
             </div>
             <h3 className="text-xl font-bold text-white mb-2 font-['Outfit']">
               Clé en main
             </h3>
-            <p className="text-slate-300 text-sm leading-relaxed">
-              Installation complète, matériel professionnel, semences, animaux vaccinés, formation pratique et suivi agronomique pendant 3 mois — <strong className="text-white">tout est inclus</strong>.
+            <p className="text-slate-200 text-sm leading-relaxed">
+              Installation complète, matériel professionnel, semences, animaux vaccinés, formation pratique et suivi agronomique pendant 3 mois — <strong className="text-white font-bold">tout est inclus</strong>.
             </p>
           </div>
 
-          <div className="bg-white/5 backdrop-blur-2xl rounded-3xl p-6 border border-white/10 shadow-xl shadow-black/20 hover:border-amber-500/50 hover:-translate-y-1 transition-all">
+          <div className="bg-[#0f172a] rounded-3xl p-6 border border-slate-700/80 shadow-xl shadow-black/40 hover:border-amber-400/60 hover:-translate-y-1 transition-all">
             <div className="w-10 h-10 rounded-2xl bg-amber-500/20 text-amber-400 border border-amber-500/30 flex items-center justify-center font-bold mb-4">
               <RefreshCw className="w-5 h-5" />
             </div>
             <h3 className="text-xl font-bold text-white mb-2 font-['Outfit']">
               Boucle circulaire
             </h3>
-            <p className="text-slate-300 text-sm leading-relaxed">
+            <p className="text-slate-200 text-sm leading-relaxed">
               Légumes &rarr; animaux &rarr; compost &rarr; légumes. Un écosystème productif et autonome où chaque sous-produit devient la nourriture du suivant.
             </p>
           </div>
 
-          <div className="bg-white/5 backdrop-blur-2xl rounded-3xl p-6 border border-white/10 shadow-xl shadow-black/20 hover:border-teal-500/50 hover:-translate-y-1 transition-all">
+          <div className="bg-[#0f172a] rounded-3xl p-6 border border-slate-700/80 shadow-xl shadow-black/40 hover:border-teal-400/60 hover:-translate-y-1 transition-all">
             <div className="w-10 h-10 rounded-2xl bg-teal-500/20 text-teal-400 border border-teal-500/30 flex items-center justify-center font-bold mb-4">
               <Shield className="w-5 h-5" />
             </div>
             <h3 className="text-xl font-bold text-white mb-2 font-['Outfit']">
               100% Organique
             </h3>
-            <p className="text-slate-300 text-sm leading-relaxed">
+            <p className="text-slate-200 text-sm leading-relaxed">
               Zéro engrais chimique de synthèse. Une production saine, naturelle et durable respectueuse de la santé de votre famille et de vos clients.
             </p>
           </div>
@@ -92,7 +92,7 @@ export const CircularSolution: React.FC = () => {
         </div>
 
         {/* Circular Interactive Showcase Block */}
-        <div className="bg-white/5 backdrop-blur-2xl rounded-3xl p-8 lg:p-12 text-white border border-white/15 shadow-2xl shadow-black/30">
+        <div className="bg-[#0f172a] rounded-3xl p-8 lg:p-12 text-white border border-slate-700/80 shadow-2xl shadow-black/50">
           <div className="grid lg:grid-cols-12 gap-10 items-center">
             
             {/* Left: Interactive Loop Explanation */}
@@ -103,13 +103,13 @@ export const CircularSolution: React.FC = () => {
                 <span>Le Moteur de Rentabilité 242Agro</span>
               </div>
 
-              <h3 className="text-2xl sm:text-3xl font-extrabold font-['Outfit']">
+              <h3 className="text-2xl sm:text-3xl font-extrabold font-['Outfit'] text-white">
                 La Boucle Circulaire Zéro Coût
               </h3>
 
-              <div className="p-4 rounded-2xl bg-emerald-950/40 backdrop-blur-xl border border-emerald-500/40 text-emerald-200 text-sm flex items-center justify-between shadow-inner">
-                <span className="font-medium">Coût d'intrants artificiels :</span>
-                <span className="text-xl font-black text-white font-['Outfit'] bg-emerald-600/80 px-3.5 py-1 rounded-xl shadow-md border border-emerald-400/30">
+              <div className="p-4 rounded-2xl bg-emerald-950/80 border border-emerald-400/50 text-emerald-200 text-sm flex items-center justify-between shadow-inner">
+                <span className="font-semibold text-slate-100">Coût d'intrants artificiels :</span>
+                <span className="text-xl font-black text-slate-950 font-['Outfit'] bg-emerald-400 px-3.5 py-1 rounded-xl shadow-md">
                   = 0 FCFA
                 </span>
               </div>
@@ -123,21 +123,21 @@ export const CircularSolution: React.FC = () => {
                     <button
                       key={idx}
                       onClick={() => setActiveStep(idx)}
-                      className={`w-full text-left p-4 rounded-2xl transition-all border flex items-start gap-4 cursor-pointer backdrop-blur-xl ${
+                      className={`w-full text-left p-4 rounded-2xl transition-all border flex items-start gap-4 cursor-pointer ${
                         isActive
-                          ? "bg-white/10 border-emerald-400/80 shadow-lg shadow-emerald-950/30"
-                          : "bg-white/5 border-white/10 hover:bg-white/10 hover:border-white/20"
+                          ? "bg-[#1e293b] border-2 border-emerald-400 shadow-lg shadow-emerald-950/40"
+                          : "bg-[#131b2e] border border-slate-700 hover:bg-[#1a233a] hover:border-slate-600"
                       }`}
                     >
                       <div className={`p-2.5 rounded-xl shrink-0 ${
-                        isActive ? "bg-emerald-500 text-white shadow-md" : "bg-white/10 text-slate-400"
+                        isActive ? "bg-emerald-500 text-slate-950 shadow-md font-bold" : "bg-slate-800 text-emerald-400"
                       }`}>
                         <Icon className="w-5 h-5" />
                       </div>
                       <div className="flex-1">
                         <div className="flex items-center justify-between gap-2">
                           <h4 className="font-bold text-sm text-white">{step.title}</h4>
-                          <span className="text-[10px] font-semibold uppercase bg-white/10 text-emerald-300 px-2.5 py-0.5 rounded-full border border-white/10">
+                          <span className="text-[10px] font-bold uppercase bg-slate-800 text-emerald-300 px-2.5 py-0.5 rounded-full border border-slate-600">
                             {step.badge}
                           </span>
                         </div>

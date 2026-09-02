@@ -53,61 +53,69 @@ export const Hero: React.FC<HeroProps> = ({ onOpenSimulator, onOpenAdvisor }) =>
             
             {/* Location & Certification Badge */}
             <div className="flex flex-wrap items-center gap-3">
-              <div className="inline-flex items-center gap-2 bg-white/5 backdrop-blur-xl border border-emerald-400/30 rounded-full px-4 py-1.5 text-xs text-emerald-300 shadow-lg shadow-emerald-950/20">
+              <div className="inline-flex items-center gap-2 bg-[#0f172a] border border-emerald-400/40 rounded-full px-4 py-1.5 text-xs text-emerald-300 shadow-md">
                 <MapPin className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-                <span>Conçu spécialement pour <strong className="text-white">Pointe-Noire & Littoral Congolais</strong></span>
+                <span>Conçu spécialement pour <strong className="text-white font-bold">Pointe-Noire & Littoral Congolais</strong></span>
               </div>
-              <div className="inline-flex items-center gap-1.5 bg-emerald-500/10 text-emerald-300 border border-emerald-500/20 px-3 py-1 rounded-full text-xs font-semibold backdrop-blur-md">
+              <div className="inline-flex items-center gap-1.5 bg-emerald-950/90 text-emerald-300 border border-emerald-500/50 px-3.5 py-1 rounded-full text-xs font-bold shadow-md">
                 <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
                 <span>Écosystème Circulaire Breveté</span>
               </div>
             </div>
 
-            {/* Main Headline */}
+            {/* Main Headline - High-contrast solid colors ensuring 100% visibility on all screens and tablets */}
             <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-extrabold font-['Outfit'] tracking-tight text-white leading-[1.15]">
-              Transformez votre espace en moteur de <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-emerald-200">sécurité alimentaire</span> et de <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-amber-200">rentabilité</span>.
+              Transformez votre espace en moteur de <span className="text-emerald-400 font-black">sécurité alimentaire</span> et de <span className="text-amber-400 font-black">rentabilité</span>.
             </h1>
 
             {/* Pitch Subtitle */}
-            <p className="text-base sm:text-lg lg:text-xl text-slate-300 max-w-2xl leading-relaxed">
-              L'agriculture urbaine hors-sol, clé en main, conçue pour générer un <strong className="text-white">retour sur investissement mesurable dès 6 mois</strong> à Pointe-Noire.
+            <p className="text-base sm:text-lg lg:text-xl text-slate-200 max-w-2xl leading-relaxed font-normal">
+              L'agriculture urbaine hors-sol, clé en main, conçue pour générer un <strong className="text-emerald-300 font-bold">retour sur investissement mesurable dès 6 mois</strong> à Pointe-Noire.
             </p>
 
             {/* Key Bullet Highlights */}
             <div className="grid sm:grid-cols-2 gap-3 pt-2">
-              <div className="flex items-center gap-2.5 text-sm text-slate-200 bg-white/5 backdrop-blur-xl p-3 rounded-2xl border border-white/10 shadow-sm hover:border-emerald-500/40 transition-all">
-                <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                <span><strong className="text-emerald-300">0 FCFA</strong> d'engrais (Boucle circulaire 100% bio)</span>
+              <div className="flex items-center gap-3 text-sm text-slate-100 bg-[#0f172a] p-3.5 rounded-2xl border border-slate-700/80 shadow-md hover:border-emerald-400/60 transition-all">
+                <div className="w-8 h-8 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0 border border-emerald-500/40">
+                  <CheckCircle2 className="w-5 h-5" />
+                </div>
+                <span><strong className="text-emerald-300 font-bold">0 FCFA</strong> d'engrais (Boucle bio)</span>
               </div>
-              <div className="flex items-center gap-2.5 text-sm text-slate-200 bg-white/5 backdrop-blur-xl p-3 rounded-2xl border border-white/10 shadow-sm hover:border-emerald-500/40 transition-all">
-                <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                <span><strong className="text-amber-300">Remboursé en 6 mois</strong> par les récoltes</span>
+              <div className="flex items-center gap-3 text-sm text-slate-100 bg-[#0f172a] p-3.5 rounded-2xl border border-slate-700/80 shadow-md hover:border-amber-400/60 transition-all">
+                <div className="w-8 h-8 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center shrink-0 border border-amber-500/40">
+                  <CheckCircle2 className="w-5 h-5" />
+                </div>
+                <span><strong className="text-amber-300 font-bold">Remboursé en 6 mois</strong> par récoltes</span>
               </div>
-              <div className="flex items-center gap-2.5 text-sm text-slate-200 bg-white/5 backdrop-blur-xl p-3 rounded-2xl border border-white/10 shadow-sm hover:border-emerald-500/40 transition-all">
-                <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                <span><strong className="text-white">Clé en main :</strong> Pose + Formation + 3 mois suivi</span>
+              <div className="flex items-center gap-3 text-sm text-slate-100 bg-[#0f172a] p-3.5 rounded-2xl border border-slate-700/80 shadow-md hover:border-emerald-400/60 transition-all">
+                <div className="w-8 h-8 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0 border border-emerald-500/40">
+                  <CheckCircle2 className="w-5 h-5" />
+                </div>
+                <span><strong className="text-white font-bold">Clé en main :</strong> Pose + 3 mois suivi</span>
               </div>
-              <div className="flex items-center gap-2.5 text-sm text-slate-200 bg-white/5 backdrop-blur-xl p-3 rounded-2xl border border-white/10 shadow-sm hover:border-emerald-500/40 transition-all">
-                <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                <span><strong className="text-teal-300">Paiement 3X :</strong> 30% / 40% / 30% après récolte</span>
+              <div className="flex items-center gap-3 text-sm text-slate-100 bg-[#0f172a] p-3.5 rounded-2xl border border-slate-700/80 shadow-md hover:border-teal-400/60 transition-all">
+                <div className="w-8 h-8 rounded-xl bg-teal-500/20 text-teal-400 flex items-center justify-center shrink-0 border border-teal-500/40">
+                  <CheckCircle2 className="w-5 h-5" />
+                </div>
+                <span><strong className="text-teal-300 font-bold">Paiement 3X :</strong> 30% / 40% / 30%</span>
               </div>
             </div>
 
-            {/* Action Buttons */}
+            {/* Action Buttons - Radiant and High-contrast */}
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 pt-4">
               <button
                 id="hero-simulator-cta"
                 onClick={onOpenSimulator}
-                className="inline-flex items-center justify-center gap-3 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-bold px-6 py-4 rounded-2xl shadow-xl shadow-emerald-950/50 hover:shadow-emerald-500/30 border border-emerald-400/30 transition-all text-base group cursor-pointer"
+                className="inline-flex items-center justify-center gap-3 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black px-6 py-4 rounded-2xl shadow-xl shadow-emerald-500/30 border-2 border-emerald-300 transition-all text-base group cursor-pointer active:scale-95"
               >
-                <Calculator className="w-5 h-5 group-hover:scale-110 transition-transform" />
+                <Calculator className="w-5 h-5 group-hover:scale-110 transition-transform text-slate-950" />
                 <span>Simuler mon Devis & ROI</span>
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform text-slate-950" />
               </button>
 
               <a
                 href="#packs"
-                className="inline-flex items-center justify-center gap-2 bg-white/5 hover:bg-white/10 text-slate-200 hover:text-white font-semibold px-5 py-4 rounded-2xl border border-white/10 backdrop-blur-xl transition-all text-base shadow-sm"
+                className="inline-flex items-center justify-center gap-2 bg-[#1e293b] hover:bg-[#334155] text-white font-bold px-5 py-4 rounded-2xl border border-slate-600 shadow-md transition-all text-base active:scale-95"
               >
                 <Sprout className="w-5 h-5 text-emerald-400" />
                 <span>Voir les 4 Packs 242Agro</span>
@@ -115,27 +123,27 @@ export const Hero: React.FC<HeroProps> = ({ onOpenSimulator, onOpenAdvisor }) =>
 
               <button
                 onClick={onOpenAdvisor}
-                className="inline-flex items-center justify-center gap-2 bg-amber-500/10 hover:bg-amber-500/20 text-amber-300 font-semibold px-4 py-4 rounded-2xl border border-amber-500/30 backdrop-blur-xl transition-all text-sm cursor-pointer shadow-sm"
+                className="inline-flex items-center justify-center gap-2 bg-amber-500/20 hover:bg-amber-500/30 text-amber-200 font-bold px-4 py-4 rounded-2xl border-2 border-amber-400/50 shadow-md transition-all text-sm cursor-pointer active:scale-95"
                 title="Conseiller IA"
               >
-                <Sparkles className="w-4 h-4 text-amber-400" />
+                <Sparkles className="w-4 h-4 text-amber-300" />
                 <span>Conseiller IA</span>
               </button>
             </div>
 
             {/* Reassurance Footer in Hero */}
-            <div className="flex flex-wrap items-center gap-6 pt-4 text-xs text-slate-400 border-t border-white/10">
-              <div className="flex items-center gap-1.5">
+            <div className="flex flex-wrap items-center gap-6 pt-4 text-xs text-slate-300 border-t border-slate-800">
+              <div className="flex items-center gap-2">
                 <ShieldCheck className="w-4 h-4 text-emerald-400" />
-                <span>{CONTACT_INFO.quoteDelay}</span>
+                <span className="font-medium text-slate-200">{CONTACT_INFO.quoteDelay}</span>
               </div>
-              <div className="flex items-center gap-1.5">
+              <div className="flex items-center gap-2">
                 <TrendingUp className="w-4 h-4 text-amber-400" />
-                <span>Production dès 3 semaines</span>
+                <span className="font-medium text-slate-200">Production dès 3 semaines</span>
               </div>
-              <div className="flex items-center gap-1.5">
-                <span className="font-bold text-slate-200">+140 espaces</span>
-                <span>aménagés et productifs</span>
+              <div className="flex items-center gap-2">
+                <span className="font-extrabold text-white bg-emerald-500/20 px-2 py-0.5 rounded-md border border-emerald-500/30 text-emerald-300">+140 espaces</span>
+                <span className="font-medium text-slate-300">aménagés et productifs</span>
               </div>
             </div>
 
@@ -146,7 +154,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenSimulator, onOpenAdvisor }) =>
             <div 
               onMouseEnter={() => setIsAutoPlaying(false)}
               onMouseLeave={() => setIsAutoPlaying(true)}
-              className="relative rounded-3xl overflow-hidden bg-white/5 backdrop-blur-2xl p-3 border border-white/15 shadow-2xl shadow-black/50 group transition-all"
+              className="relative rounded-3xl overflow-hidden bg-[#0f172a] p-3 border border-slate-700/80 shadow-2xl shadow-black/60 group transition-all"
             >
               
               {/* Main Visual Image Viewport */}

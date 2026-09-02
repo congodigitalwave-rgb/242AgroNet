@@ -414,10 +414,10 @@ export const QuoteSimulator: React.FC<QuoteSimulatorProps> = ({ initialPack }) =
           <div className="lg:col-span-7 space-y-6">
             
             {/* Box 1: Profil & Surface */}
-            <div className="bg-white/5 backdrop-blur-2xl rounded-3xl p-6 sm:p-7 border border-white/10 shadow-2xl shadow-black/20 space-y-6">
+            <div className="bg-[#0f172a] rounded-3xl p-6 sm:p-7 border border-slate-700/80 shadow-2xl shadow-black/40 space-y-6">
               
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-3">
+                <label className="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-3">
                   1. Votre Profil d'Installation
                 </label>
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
@@ -431,10 +431,10 @@ export const QuoteSimulator: React.FC<QuoteSimulatorProps> = ({ initialPack }) =
                       key={p.id}
                       type="button"
                       onClick={() => setClientType(p.id as any)}
-                      className={`p-3 rounded-2xl border text-center transition-all cursor-pointer backdrop-blur-xl ${
+                      className={`p-3 rounded-2xl border text-center transition-all cursor-pointer ${
                         clientType === p.id
-                          ? "border-emerald-400 bg-emerald-500/20 text-white font-bold shadow-lg shadow-emerald-950/30"
-                          : "border-white/10 bg-white/5 text-slate-300 hover:bg-white/10 hover:border-white/20"
+                          ? "border-2 border-emerald-400 bg-[#0b281d] text-white font-bold shadow-lg shadow-emerald-950/40"
+                          : "border-slate-700 bg-[#1e293b] text-slate-200 hover:bg-[#334155] hover:border-slate-500"
                       }`}
                     >
                       <div className="text-xl mb-1">{p.icon}</div>
@@ -445,12 +445,12 @@ export const QuoteSimulator: React.FC<QuoteSimulatorProps> = ({ initialPack }) =
               </div>
 
               {/* Surface Slider */}
-              <div className="pt-4 border-t border-white/10">
+              <div className="pt-4 border-t border-slate-750 border-slate-800">
                 <div className="flex items-center justify-between mb-2">
-                  <label className="text-xs font-bold uppercase tracking-wider text-slate-200">
+                  <label className="text-xs font-bold uppercase tracking-wider text-slate-100">
                     Superficie disponible : <span className="text-emerald-400 font-extrabold text-base">{surfaceArea} m²</span>
                   </label>
-                  <span className="text-xs text-slate-400">
+                  <span className="text-xs text-slate-300">
                     {surfaceArea <= 5 ? "Espace compact (cour / balcon)" : surfaceArea <= 15 ? "Cour familiale moyenne" : "Grand espace / Micro-ferme"}
                   </span>
                 </div>
@@ -462,10 +462,10 @@ export const QuoteSimulator: React.FC<QuoteSimulatorProps> = ({ initialPack }) =
                   step="1"
                   value={surfaceArea}
                   onChange={(e) => setSurfaceArea(Number(e.target.value))}
-                  className="w-full h-2 bg-white/10 rounded-lg appearance-none cursor-pointer accent-emerald-500"
+                  className="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-emerald-400"
                 />
                 
-                <div className="flex justify-between text-[11px] text-slate-400 mt-1">
+                <div className="flex justify-between text-[11px] text-slate-300 mt-1 font-medium">
                   <span>2 m² (Starter)</span>
                   <span>10 m² (Familial+)</span>
                   <span>20 m² (Productif)</span>
@@ -476,20 +476,20 @@ export const QuoteSimulator: React.FC<QuoteSimulatorProps> = ({ initialPack }) =
             </div>
 
             {/* Box 2: Modules Selection */}
-            <div className="bg-white/5 backdrop-blur-2xl rounded-3xl p-6 sm:p-7 border border-white/10 shadow-2xl shadow-black/20 space-y-5">
-              <label className="block text-xs font-bold uppercase tracking-wider text-slate-400">
+            <div className="bg-[#0f172a] rounded-3xl p-6 sm:p-7 border border-slate-700/80 shadow-2xl shadow-black/40 space-y-5">
+              <label className="block text-xs font-bold uppercase tracking-wider text-slate-300">
                 2. Composition des Modules 242Agro
               </label>
 
               {/* Module: Potager Hors-Sol */}
-              <div className="p-4 rounded-2xl border border-white/10 bg-white/5 flex items-center justify-between backdrop-blur-xl">
+              <div className="p-4 rounded-2xl border border-slate-700 bg-[#1e293b] flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-2xl bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 flex items-center justify-center font-bold">
                     <Leaf className="w-5 h-5" />
                   </div>
                   <div>
                     <div className="font-bold text-sm text-white">Bacs Potagers Hors-Sol</div>
-                    <div className="text-xs text-slate-400">{surfaceArea} m² de culture · Amarante, tomates, ciboule, piments</div>
+                    <div className="text-xs text-slate-300">{surfaceArea} m² de culture · Amarante, tomates, ciboule, piments</div>
                   </div>
                 </div>
                 <input
@@ -501,7 +501,7 @@ export const QuoteSimulator: React.FC<QuoteSimulatorProps> = ({ initialPack }) =
               </div>
 
               {/* Module: Poules Pondeuses */}
-              <div className="p-4 rounded-2xl border border-white/10 bg-white/5 space-y-3 backdrop-blur-xl">
+              <div className="p-4 rounded-2xl border border-slate-700 bg-[#1e293b] space-y-3">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-2xl bg-amber-500/20 text-amber-400 border border-amber-500/30 flex items-center justify-center font-bold">
@@ -509,7 +509,7 @@ export const QuoteSimulator: React.FC<QuoteSimulatorProps> = ({ initialPack }) =
                     </div>
                     <div>
                       <div className="font-bold text-sm text-white">Module Poules Pondeuses</div>
-                      <div className="text-xs text-slate-400">Poulailler urbain anti-odeur + lot de poules vaccinées</div>
+                      <div className="text-xs text-slate-300">Poulailler urbain anti-odeur + lot de poules vaccinées</div>
                     </div>
                   </div>
                   <input
@@ -522,16 +522,16 @@ export const QuoteSimulator: React.FC<QuoteSimulatorProps> = ({ initialPack }) =
 
                 {includePoules && (
                   <div className="pl-13 flex items-center gap-3 pt-2">
-                    <span className="text-xs font-semibold text-slate-300">Nombre de poules :</span>
+                    <span className="text-xs font-semibold text-slate-200">Nombre de poules :</span>
                     {[10, 20, 30].map((num) => (
                       <button
                         key={num}
                         type="button"
                         onClick={() => setPoulesCount(num)}
-                        className={`px-3 py-1 rounded-xl text-xs font-bold transition-all cursor-pointer backdrop-blur-md ${
+                        className={`px-3 py-1 rounded-xl text-xs font-bold transition-all cursor-pointer ${
                           poulesCount === num
-                            ? "bg-amber-500 text-stone-950 shadow-md font-extrabold"
-                            : "bg-white/10 border border-white/10 text-slate-300 hover:bg-white/15"
+                            ? "bg-amber-500 text-slate-950 shadow-md font-black"
+                            : "bg-slate-800 border border-slate-600 text-slate-200 hover:bg-slate-700"
                         }`}
                       >
                         {num} poules
@@ -542,7 +542,7 @@ export const QuoteSimulator: React.FC<QuoteSimulatorProps> = ({ initialPack }) =
               </div>
 
               {/* Module: Lapins */}
-              <div className="p-4 rounded-2xl border border-white/10 bg-white/5 space-y-3 backdrop-blur-xl">
+              <div className="p-4 rounded-2xl border border-slate-700 bg-[#1e293b] space-y-3">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-2xl bg-purple-500/20 text-purple-300 border border-purple-500/30 flex items-center justify-center font-bold">
@@ -550,7 +550,7 @@ export const QuoteSimulator: React.FC<QuoteSimulatorProps> = ({ initialPack }) =
                     </div>
                     <div>
                       <div className="font-bold text-sm text-white">Module Lapines Reproductrices</div>
-                      <div className="text-xs text-slate-400">Clapiers surélevés + lapines pour viande blanche et compost</div>
+                      <div className="text-xs text-slate-300">Clapiers surélevés + lapines pour viande blanche et compost</div>
                     </div>
                   </div>
                   <input
@@ -563,16 +563,16 @@ export const QuoteSimulator: React.FC<QuoteSimulatorProps> = ({ initialPack }) =
 
                 {includeLapins && (
                   <div className="pl-13 flex items-center gap-3 pt-2">
-                    <span className="text-xs font-semibold text-slate-300">Nombre de reproductrices :</span>
+                    <span className="text-xs font-semibold text-slate-200">Nombre de reproductrices :</span>
                     {[4, 8, 12].map((num) => (
                       <button
                         key={num}
                         type="button"
                         onClick={() => setLapinesCount(num)}
-                        className={`px-3 py-1 rounded-xl text-xs font-bold transition-all cursor-pointer backdrop-blur-md ${
+                        className={`px-3 py-1 rounded-xl text-xs font-bold transition-all cursor-pointer ${
                           lapinesCount === num
-                            ? "bg-purple-600 text-white shadow-md font-extrabold"
-                            : "bg-white/10 border border-white/10 text-slate-300 hover:bg-white/15"
+                            ? "bg-purple-600 text-white shadow-md font-bold"
+                            : "bg-slate-800 border border-slate-600 text-slate-200 hover:bg-slate-700"
                         }`}
                       >
                         {num} lapines
@@ -584,7 +584,7 @@ export const QuoteSimulator: React.FC<QuoteSimulatorProps> = ({ initialPack }) =
 
               {/* Options: Irrigation & Compost */}
               <div className="grid sm:grid-cols-2 gap-3 pt-1">
-                <div className="p-3 rounded-2xl border border-white/10 bg-white/5 flex items-center justify-between backdrop-blur-xl">
+                <div className="p-3 rounded-2xl border border-slate-700 bg-[#1e293b] flex items-center justify-between">
                   <div className="flex items-center gap-2">
                     <Droplet className="w-4 h-4 text-sky-400" />
                     <span className="text-xs font-bold text-white">Irrigation goutte-à-goutte</span>
@@ -597,7 +597,7 @@ export const QuoteSimulator: React.FC<QuoteSimulatorProps> = ({ initialPack }) =
                   />
                 </div>
 
-                <div className="p-3 rounded-2xl border border-white/10 bg-white/5 flex items-center justify-between backdrop-blur-xl">
+                <div className="p-3 rounded-2xl border border-slate-700 bg-[#1e293b] flex items-center justify-between">
                   <div className="flex items-center gap-2">
                     <RefreshCw className="w-4 h-4 text-emerald-400" />
                     <span className="text-xs font-bold text-white">Composteur 242Agro</span>
@@ -614,7 +614,7 @@ export const QuoteSimulator: React.FC<QuoteSimulatorProps> = ({ initialPack }) =
             </div>
 
             {/* Box 3: Demande de Visite Technique */}
-            <div className="bg-white/5 backdrop-blur-2xl rounded-3xl p-6 sm:p-7 border border-white/10 shadow-2xl shadow-black/20 space-y-4">
+            <div className="bg-[#0f172a] rounded-3xl p-6 sm:p-7 border border-slate-700/80 shadow-2xl shadow-black/40 space-y-4">
               <div className="flex items-center justify-between">
                 <h3 className="text-base font-bold text-white font-['Outfit']">
                   Réserver une Visite Technique Gratuite à Pointe-Noire (48h)
@@ -623,24 +623,24 @@ export const QuoteSimulator: React.FC<QuoteSimulatorProps> = ({ initialPack }) =
                   Sans engagement
                 </span>
               </div>
-              <p className="text-xs text-slate-400">
+              <p className="text-xs text-slate-300">
                 Un technicien agronome 242Agro vient mesurer votre espace et valider l'exposition solaire.
               </p>
 
               {submittedQuoteRef ? (
-                <div className="p-4 rounded-2xl bg-emerald-950/50 border border-emerald-400/40 text-emerald-200 text-sm space-y-2 backdrop-blur-xl">
+                <div className="p-4 rounded-2xl bg-[#0b281d] border border-emerald-400/50 text-emerald-200 text-sm space-y-2">
                   <div className="flex items-center gap-2 font-bold text-emerald-300">
                     <CheckCircle2 className="w-5 h-5 text-emerald-400" />
                     <span>Demande enregistrée avec succès ! (Réf: {submittedQuoteRef})</span>
                   </div>
-                  <p className="text-xs text-slate-300">
+                  <p className="text-xs text-slate-200">
                     Notre équipe de Pointe-Noire vous appellera au <strong className="text-white">{clientPhone}</strong> sous 48h.
                   </p>
                   <a
                     href={`https://wa.me/242068742277?text=Bonjour,%20j'ai%20validé%20mon%20devis%20Réf:%20${submittedQuoteRef}%20pour%20une%20visite%20à%20${clientQuartier}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-xs font-bold bg-emerald-600 hover:bg-emerald-500 text-white px-4 py-2.5 rounded-xl mt-2 shadow-lg border border-emerald-400/30"
+                    className="inline-flex items-center gap-2 text-xs font-black bg-emerald-500 hover:bg-emerald-400 text-slate-950 px-4 py-2.5 rounded-xl mt-2 shadow-lg border border-emerald-300"
                   >
                     <span>Confirmer directement sur WhatsApp</span>
                     <ChevronRight className="w-3.5 h-3.5" />
@@ -650,50 +650,50 @@ export const QuoteSimulator: React.FC<QuoteSimulatorProps> = ({ initialPack }) =
                 <form onSubmit={handleSubmitQuote} className="space-y-3">
                   <div className="grid sm:grid-cols-2 gap-3">
                     <div>
-                      <label className="block text-[11px] font-bold text-slate-300 mb-1">Votre Nom & Prénom *</label>
+                      <label className="block text-[11px] font-bold text-slate-200 mb-1">Votre Nom & Prénom *</label>
                       <input
                         type="text"
                         required
                         placeholder="Ex: Jean-Paul M."
                         value={clientName}
                         onChange={(e) => setClientName(e.target.value)}
-                        className="w-full px-3.5 py-2.5 rounded-xl border border-white/15 bg-white/5 text-white text-xs focus:outline-emerald-500 placeholder:text-slate-500 backdrop-blur-md"
+                        className="w-full px-3.5 py-2.5 rounded-xl border border-slate-700 bg-[#1e293b] text-white text-xs focus:outline-emerald-500 placeholder:text-slate-400"
                       />
                     </div>
                     <div>
-                      <label className="block text-[11px] font-bold text-slate-300 mb-1">Téléphone (Pointe-Noire) *</label>
+                      <label className="block text-[11px] font-bold text-slate-200 mb-1">Téléphone (Pointe-Noire) *</label>
                       <input
                         type="tel"
                         required
                         placeholder="Ex: 06 874 22 77"
                         value={clientPhone}
                         onChange={(e) => setClientPhone(e.target.value)}
-                        className="w-full px-3.5 py-2.5 rounded-xl border border-white/15 bg-white/5 text-white text-xs focus:outline-emerald-500 placeholder:text-slate-500 backdrop-blur-md"
+                        className="w-full px-3.5 py-2.5 rounded-xl border border-slate-700 bg-[#1e293b] text-white text-xs focus:outline-emerald-500 placeholder:text-slate-400"
                       />
                     </div>
                   </div>
 
                   <div className="grid sm:grid-cols-2 gap-3">
                     <div>
-                      <label className="block text-[11px] font-bold text-slate-300 mb-1">Quartier à Pointe-Noire *</label>
+                      <label className="block text-[11px] font-bold text-slate-200 mb-1">Quartier à Pointe-Noire *</label>
                       <select
                         value={clientQuartier}
                         onChange={(e) => setClientQuartier(e.target.value)}
-                        className="w-full px-3.5 py-2.5 rounded-xl border border-white/15 bg-[#0b1120] text-white text-xs focus:outline-emerald-500"
+                        className="w-full px-3.5 py-2.5 rounded-xl border border-slate-700 bg-[#1e293b] text-white text-xs focus:outline-emerald-500"
                       >
                         {QUARTIERS_POINTE_NOIRE.map((q) => (
-                          <option key={q} value={q} className="bg-[#0b1120] text-white">{q}</option>
+                          <option key={q} value={q} className="bg-[#1e293b] text-white">{q}</option>
                         ))}
                       </select>
                     </div>
                     <div>
-                      <label className="block text-[11px] font-bold text-slate-300 mb-1">Email (optionnel)</label>
+                      <label className="block text-[11px] font-bold text-slate-200 mb-1">Email (optionnel)</label>
                       <input
                         type="email"
                         placeholder="contact@exemple.cg"
                         value={clientEmail}
                         onChange={(e) => setClientEmail(e.target.value)}
-                        className="w-full px-3.5 py-2.5 rounded-xl border border-white/15 bg-white/5 text-white text-xs focus:outline-emerald-500 placeholder:text-slate-500 backdrop-blur-md"
+                        className="w-full px-3.5 py-2.5 rounded-xl border border-slate-700 bg-[#1e293b] text-white text-xs focus:outline-emerald-500 placeholder:text-slate-400"
                       />
                     </div>
                   </div>
@@ -702,7 +702,7 @@ export const QuoteSimulator: React.FC<QuoteSimulatorProps> = ({ initialPack }) =
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="flex-1 py-3.5 px-4 rounded-2xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 cursor-pointer shadow-xl shadow-emerald-950/40 border border-emerald-400/30 transition-all disabled:opacity-50"
+                      className="flex-1 py-3.5 px-4 rounded-2xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-xs uppercase tracking-wider flex items-center justify-center gap-2 cursor-pointer shadow-xl shadow-emerald-500/20 border-2 border-emerald-300 transition-all disabled:opacity-50 active:scale-95"
                     >
                       <Send className="w-4 h-4" />
                       <span>{isSubmitting ? "Envoi en cours..." : "Réserver ma Visite Technique Gratuite"}</span>
@@ -711,7 +711,7 @@ export const QuoteSimulator: React.FC<QuoteSimulatorProps> = ({ initialPack }) =
                     <button
                       type="button"
                       onClick={handleDownloadPDF}
-                      className="py-3.5 px-4 rounded-2xl bg-white/5 hover:bg-white/10 text-white font-semibold text-xs flex items-center justify-center gap-2 cursor-pointer transition-all border border-white/10 backdrop-blur-xl"
+                      className="py-3.5 px-4 rounded-2xl bg-[#1e293b] hover:bg-[#334155] text-white font-bold text-xs flex items-center justify-center gap-2 cursor-pointer transition-all border border-slate-600 shadow-md"
                     >
                       <Download className="w-4 h-4 text-emerald-400" />
                       <span>Télécharger Devis PDF</span>
@@ -728,101 +728,101 @@ export const QuoteSimulator: React.FC<QuoteSimulatorProps> = ({ initialPack }) =
           <div className="lg:col-span-5 space-y-6 sticky top-28">
             
             {/* Price & Installments Card */}
-            <div className="bg-white/5 backdrop-blur-2xl rounded-3xl p-6 sm:p-7 text-white border border-white/15 shadow-2xl shadow-black/40 space-y-6">
+            <div className="bg-[#0f172a] rounded-3xl p-6 sm:p-7 text-white border border-slate-700/80 shadow-2xl shadow-black/50 space-y-6">
               
               <div className="flex items-center justify-between">
-                <span className="text-xs font-bold uppercase tracking-wider text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/20">
+                <span className="text-xs font-bold uppercase tracking-wider text-emerald-300 bg-emerald-500/20 px-3 py-1 rounded-full border border-emerald-400/30">
                   Devis Estimatif Clé en Main
                 </span>
-                <span className="text-[11px] bg-white/10 text-slate-300 px-3 py-1 rounded-full border border-white/10 backdrop-blur-md">
+                <span className="text-[11px] bg-slate-800 text-slate-200 px-3 py-1 rounded-full border border-slate-700 font-semibold">
                   3 Mois Suivi Inclus
                 </span>
               </div>
 
               {/* Total Price Display */}
               <div>
-                <div className="text-xs text-slate-400">Montant Total de l'Installation :</div>
+                <div className="text-xs text-slate-300 font-medium">Montant Total de l'Installation :</div>
                 <div className="text-3xl sm:text-4xl font-black text-white font-['Outfit'] mt-1">
                   {simulation.totalPrice.toLocaleString()} <span className="text-emerald-400 text-xl">FCFA</span>
                 </div>
               </div>
 
               {/* 3-Time Installment Breakdown (Slide 7) */}
-              <div className="space-y-3 pt-3 border-t border-white/10">
+              <div className="space-y-3 pt-3 border-t border-slate-800">
                 <div className="text-xs font-bold text-amber-300 uppercase tracking-wider">
                   Paiement Échelonné en 3 Fois Sans Frais :
                 </div>
 
                 <div className="grid grid-cols-3 gap-2 text-center">
-                  <div className="bg-white/5 p-3 rounded-2xl border border-white/10 backdrop-blur-xl">
-                    <div className="text-[10px] text-slate-400 uppercase">1. Commande</div>
+                  <div className="bg-[#1e293b] p-3 rounded-2xl border border-slate-700">
+                    <div className="text-[10px] text-slate-300 uppercase font-semibold">1. Commande</div>
                     <div className="text-sm font-extrabold text-white mt-1">
                       {simulation.downPayment30.toLocaleString()} F
                     </div>
-                    <div className="text-[9px] text-emerald-400 font-semibold">30% (Lancement)</div>
+                    <div className="text-[9px] text-emerald-400 font-bold">30% (Lancement)</div>
                   </div>
 
-                  <div className="bg-white/5 p-3 rounded-2xl border border-white/10 backdrop-blur-xl">
-                    <div className="text-[10px] text-slate-400 uppercase">2. Livraison</div>
+                  <div className="bg-[#1e293b] p-3 rounded-2xl border border-slate-700">
+                    <div className="text-[10px] text-slate-300 uppercase font-semibold">2. Livraison</div>
                     <div className="text-sm font-extrabold text-white mt-1">
                       {simulation.deliveryPayment40.toLocaleString()} F
                     </div>
-                    <div className="text-[9px] text-amber-400 font-semibold">40% (Pose)</div>
+                    <div className="text-[9px] text-amber-300 font-bold">40% (Pose)</div>
                   </div>
 
-                  <div className="bg-emerald-950/60 p-3 rounded-2xl border border-emerald-400/40 backdrop-blur-xl">
-                    <div className="text-[10px] text-emerald-200 uppercase">3. Mois 3</div>
+                  <div className="bg-[#0b281d] p-3 rounded-2xl border border-emerald-400/50">
+                    <div className="text-[10px] text-emerald-200 uppercase font-bold">3. Mois 3</div>
                     <div className="text-sm font-extrabold text-white mt-1">
                       {simulation.harvestPayment30.toLocaleString()} F
                     </div>
-                    <div className="text-[9px] text-emerald-300 font-bold">30% (Récolte)</div>
+                    <div className="text-[9px] text-emerald-300 font-extrabold">30% (Récolte)</div>
                   </div>
                 </div>
               </div>
 
               {/* Production Forecast in 6 Months */}
-              <div className="space-y-3 pt-3 border-t border-white/10">
+              <div className="space-y-3 pt-3 border-t border-slate-800">
                 <div className="flex items-center justify-between text-xs">
-                  <span className="font-bold text-slate-200">Production Estimée en 6 Mois :</span>
-                  <span className="text-emerald-400 font-semibold">Valeur: ~{simulation.estimated6MonthValue.totalValue.toLocaleString()} FCFA</span>
+                  <span className="font-bold text-slate-100">Production Estimée en 6 Mois :</span>
+                  <span className="text-emerald-400 font-bold">Valeur: ~{simulation.estimated6MonthValue.totalValue.toLocaleString()} FCFA</span>
                 </div>
 
                 <div className="grid grid-cols-2 gap-2 text-xs">
                   {includePotager && (
-                    <div className="bg-white/5 p-2.5 rounded-xl border border-white/10 backdrop-blur-md flex items-center justify-between">
-                      <span className="text-slate-300">🥬 Légumes :</span>
-                      <strong className="text-emerald-400">{simulation.estimated6MonthProduction.vegetablesKg} kg</strong>
+                    <div className="bg-[#1e293b] p-2.5 rounded-xl border border-slate-700 flex items-center justify-between">
+                      <span className="text-slate-200">🥬 Légumes :</span>
+                      <strong className="text-emerald-400 font-bold">{simulation.estimated6MonthProduction.vegetablesKg} kg</strong>
                     </div>
                   )}
                   {includePoules && poulesCount > 0 && (
-                    <div className="bg-white/5 p-2.5 rounded-xl border border-white/10 backdrop-blur-md flex items-center justify-between">
-                      <span className="text-slate-300">🥚 Œufs frais :</span>
-                      <strong className="text-amber-400">{simulation.estimated6MonthProduction.eggsCount}</strong>
+                    <div className="bg-[#1e293b] p-2.5 rounded-xl border border-slate-700 flex items-center justify-between">
+                      <span className="text-slate-200">🥚 Œufs frais :</span>
+                      <strong className="text-amber-400 font-bold">{simulation.estimated6MonthProduction.eggsCount}</strong>
                     </div>
                   )}
                   {includeLapins && lapinesCount > 0 && (
-                    <div className="bg-white/5 p-2.5 rounded-xl border border-white/10 backdrop-blur-md flex items-center justify-between">
-                      <span className="text-slate-300">🐰 Viande :</span>
-                      <strong className="text-purple-300">{simulation.estimated6MonthProduction.meatKg} kg</strong>
+                    <div className="bg-[#1e293b] p-2.5 rounded-xl border border-slate-700 flex items-center justify-between">
+                      <span className="text-slate-200">🐰 Viande :</span>
+                      <strong className="text-purple-300 font-bold">{simulation.estimated6MonthProduction.meatKg} kg</strong>
                     </div>
                   )}
                   {includeCompost && (
-                    <div className="bg-white/5 p-2.5 rounded-xl border border-white/10 backdrop-blur-md flex items-center justify-between">
-                      <span className="text-slate-300">🌱 Compost :</span>
-                      <strong className="text-teal-400">{simulation.estimated6MonthProduction.compostBags} sacs</strong>
+                    <div className="bg-[#1e293b] p-2.5 rounded-xl border border-slate-700 flex items-center justify-between">
+                      <span className="text-slate-200">🌱 Compost :</span>
+                      <strong className="text-teal-300 font-bold">{simulation.estimated6MonthProduction.compostBags} sacs</strong>
                     </div>
                   )}
                 </div>
               </div>
 
               {/* ROI & Break-even Alert */}
-              <div className="p-4 rounded-2xl bg-gradient-to-r from-emerald-950/60 to-teal-950/60 border border-emerald-400/30 space-y-1.5 backdrop-blur-xl">
+              <div className="p-4 rounded-2xl bg-[#0b281d] border border-emerald-400/40 space-y-1.5">
                 <div className="flex items-center justify-between text-xs">
                   <span className="font-bold text-emerald-300">Remboursement Intégral Estimé :</span>
                   <span className="text-sm font-black text-white font-['Outfit']">Dès le Mois {simulation.roiMonth}</span>
                 </div>
-                <div className="text-[11px] text-slate-300">
-                  Bénéfice net estimé après 6 mois : <strong className="text-emerald-400">+{Math.max(0, simulation.netProfit6Months).toLocaleString()} FCFA</strong>
+                <div className="text-[11px] text-slate-200">
+                  Bénéfice net estimé après 6 mois : <strong className="text-emerald-400 font-bold">+{Math.max(0, simulation.netProfit6Months).toLocaleString()} FCFA</strong>
                 </div>
               </div>
 
@@ -830,7 +830,7 @@ export const QuoteSimulator: React.FC<QuoteSimulatorProps> = ({ initialPack }) =
               <button
                 type="button"
                 onClick={handleDownloadPDF}
-                className="w-full py-3.5 px-4 rounded-2xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 cursor-pointer shadow-xl shadow-emerald-950/40 border border-emerald-400/30 transition-all"
+                className="w-full py-3.5 px-4 rounded-2xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-xs uppercase tracking-wider flex items-center justify-center gap-2 cursor-pointer shadow-xl shadow-emerald-500/20 border-2 border-emerald-300 transition-all active:scale-95"
               >
                 <Download className="w-4 h-4" />
                 <span>Télécharger ce Devis en PDF</span>
@@ -839,19 +839,19 @@ export const QuoteSimulator: React.FC<QuoteSimulatorProps> = ({ initialPack }) =
             </div>
 
             {/* Quick Phone Call Pill */}
-            <div className="p-4 rounded-3xl bg-white/5 backdrop-blur-2xl border border-white/10 shadow-xl flex items-center justify-between">
+            <div className="p-4 rounded-3xl bg-[#0f172a] border border-slate-700/80 shadow-xl flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <div className="w-9 h-9 rounded-2xl bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 flex items-center justify-center">
                   <Phone className="w-4 h-4" />
                 </div>
                 <div className="text-xs">
                   <div className="font-bold text-white">Une question technique ?</div>
-                  <div className="text-slate-400">Parlez directement à un agronome</div>
+                  <div className="text-slate-300">Parlez directement à un agronome</div>
                 </div>
               </div>
               <a
                 href={`tel:${CONTACT_INFO.phoneClean}`}
-                className="text-xs font-bold bg-white/10 hover:bg-white/20 text-white px-3.5 py-2 rounded-xl border border-white/10 backdrop-blur-md transition-all"
+                className="text-xs font-bold bg-[#1e293b] hover:bg-[#334155] text-white px-3.5 py-2 rounded-xl border border-slate-600 transition-all"
               >
                 Appeler
               </a>
