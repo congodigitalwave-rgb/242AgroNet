@@ -18,11 +18,14 @@ import {
   Feather,
   RefreshCw,
   Droplet,
-  ChevronRight
+  ChevronRight,
+  Eye
 } from "lucide-react";
 import confetti from "canvas-confetti";
 import { QUARTIERS_POINTE_NOIRE, CONTACT_INFO, PACKS_DATA } from "../data";
 import { QuoteConfig, SimulationResult, AgroPack } from "../types";
+import { generateOfficialQuotePdf, QuotePdfData } from "../utils/quotePdfGenerator";
+import { QuotePreviewModal } from "./QuotePreviewModal";
 
 interface QuoteSimulatorProps {
   initialPack?: AgroPack | null;
@@ -62,6 +65,8 @@ export const QuoteSimulator: React.FC<QuoteSimulatorProps> = ({ initialPack }) =
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submittedQuoteRef, setSubmittedQuoteRef] = useState<string | null>(null);
+  const [showPreviewModal, setShowPreviewModal] = useState(false);
+  const [isGeneratingPdf, setIsGeneratingPdf] = useState(false);
 
   // Synchronize if initialPack changes
   React.useEffect(() => {
@@ -196,139 +201,46 @@ export const QuoteSimulator: React.FC<QuoteSimulatorProps> = ({ initialPack }) =
     includeExtendedMaintenance
   ]);
 
-  // Handle PDF Generation
+  // Prepare current quote data for PDF & Preview Modal
+  const currentQuotePdfData: QuotePdfData = useMemo(() => ({
+    clientName,
+    clientPhone,
+    clientEmail,
+    clientQuartier,
+    clientType,
+    surfaceArea,
+    includePotager,
+    includePoules,
+    poulesCount,
+    includeLapins,
+    lapinesCount,
+    includeCompost,
+    irrigationType,
+    simulation,
+    notes,
+  }), [
+    clientName,
+    clientPhone,
+    clientEmail,
+    clientQuartier,
+    clientType,
+    surfaceArea,
+    includePotager,
+    includePoules,
+    poulesCount,
+    includeLapins,
+    lapinesCount,
+    includeCompost,
+    irrigationType,
+    simulation,
+    notes,
+  ]);
+
+  // Handle Official PDF Generation with 242Agro Logo & Invoice styling
   const handleDownloadPDF = async () => {
+    setIsGeneratingPdf(true);
     try {
-      const { jsPDF } = await import("jspdf");
-      const doc = new jsPDF();
-      const ref = `242AGRO-${Date.now().toString().slice(-6)}`;
-
-      // Brand Header
-      doc.setFillColor(16, 185, 129); // emerald-500
-      doc.rect(0, 0, 210, 35, "F");
-
-      doc.setTextColor(255, 255, 255);
-      doc.setFontSize(22);
-      doc.setFont("helvetica", "bold");
-      doc.text("242Agro - DEVIS TECHNIQUE ESTIMATIF", 15, 20);
-
-      doc.setFontSize(10);
-      doc.setFont("helvetica", "normal");
-      doc.text("Agriculture Urbaine Hors-Sol & Élevage Intégré à Pointe-Noire", 15, 28);
-      doc.text(`Réf : ${ref} | Date : ${new Date().toLocaleDateString("fr-FR")}`, 130, 28);
-
-      // Client & Project Info Box
-      doc.setTextColor(30, 41, 59);
-      doc.setFontSize(12);
-      doc.setFont("helvetica", "bold");
-      doc.text("INFORMATIONS DU PROJET", 15, 48);
-
-      doc.setFontSize(10);
-      doc.setFont("helvetica", "normal");
-      doc.text(`Client : ${clientName || "Client Particulier / Institution"}`, 15, 56);
-      doc.text(`Téléphone : ${clientPhone || "Non renseigné"}`, 15, 62);
-      doc.text(`Quartier : ${clientQuartier} (Pointe-Noire, Congo)`, 15, 68);
-      doc.text(`Profil : ${clientType.toUpperCase()} | Surface : ${surfaceArea} m²`, 15, 74);
-
-      // Configuration Details Table Header
-      doc.setFillColor(241, 245, 249);
-      doc.rect(15, 82, 180, 8, "F");
-      doc.setFont("helvetica", "bold");
-      doc.text("DÉSIGNATION DES MODULES 242AGRO", 20, 88);
-      doc.text("ESTIMATION (FCFA)", 150, 88);
-
-      // Items
-      let y = 98;
-      doc.setFont("helvetica", "normal");
-
-      if (includePotager) {
-        doc.text(`• Bacs maraîchers hors-sol (${surfaceArea} m²) + Substrat bio enrichi + Semences`, 20, y);
-        doc.text(`${(surfaceArea * 42000).toLocaleString()} FCFA`, 150, y);
-        y += 8;
-      }
-
-      if (includePoules && poulesCount > 0) {
-        doc.text(`• Module Avicole urbain (${poulesCount} poules pondeuses vaccinées + abri anti-odeur)`, 20, y);
-        doc.text(`${(120000 + poulesCount * 7000).toLocaleString()} FCFA`, 150, y);
-        y += 8;
-      }
-
-      if (includeLapins && lapinesCount > 0) {
-        doc.text(`• Module Cunicole (${lapinesCount} lapines reproductrices + clapiers surélevés)`, 20, y);
-        doc.text(`${(95000 + lapinesCount * 8500).toLocaleString()} FCFA`, 150, y);
-        y += 8;
-      }
-
-      doc.text(`• Système d'arrosage (${irrigationType === "goutte_a_goutte" ? "Goutte-à-goutte économique" : "Manuel optimisé"})`, 20, y);
-      doc.text(`${(irrigationType === "goutte_a_goutte" ? 45000 : 0).toLocaleString()} FCFA`, 150, y);
-      y += 8;
-
-      if (includeCompost) {
-        doc.text(`• Unité de compostage accéléré 242Agro (Boucle circulaire zéro coût)`, 20, y);
-        doc.text("35 000 FCFA", 150, y);
-        y += 8;
-      }
-
-      doc.text(`• Pose complète + Formation pratique + Suivi agronomique 3 mois`, 20, y);
-      doc.text("INCLUS", 150, y);
-      y += 12;
-
-      // Total Box
-      doc.setFillColor(236, 253, 245);
-      doc.rect(15, y, 180, 14, "F");
-      doc.setFont("helvetica", "bold");
-      doc.setTextColor(4, 120, 87);
-      doc.setFontSize(13);
-      doc.text("TOTAL INVESTISSEMENT CLÉ EN MAIN :", 20, y + 9);
-      doc.text(`${simulation.totalPrice.toLocaleString()} FCFA`, 140, y + 9);
-
-      y += 24;
-
-      // Payment Schedule (Slide 7)
-      doc.setTextColor(30, 41, 59);
-      doc.setFontSize(11);
-      doc.setFont("helvetica", "bold");
-      doc.text("ÉCHÉANCIER DE PAIEMENT EN 3 FOIS SANS FRAIS :", 15, y);
-
-      y += 8;
-      doc.setFontSize(9);
-      doc.setFont("helvetica", "normal");
-      doc.text(`1. À la commande (30%) : ${simulation.downPayment30.toLocaleString()} FCFA (lancement fabrication)`, 20, y);
-      y += 6;
-      doc.text(`2. À la livraison & pose (40%) : ${simulation.deliveryPayment40.toLocaleString()} FCFA (début production & formation)`, 20, y);
-      y += 6;
-      doc.text(`3. Au Mois 3 après 1ère récolte (30%) : ${simulation.harvestPayment30.toLocaleString()} FCFA (autofinancé)`, 20, y);
-
-      y += 14;
-
-      // Production & ROI Projections (Slide 4 & 5)
-      doc.setFillColor(254, 243, 199);
-      doc.rect(15, y, 180, 32, "F");
-      doc.setTextColor(146, 64, 14);
-      doc.setFont("helvetica", "bold");
-      doc.setFontSize(10);
-      doc.text("RENDEMENTS ET GAINS ESTIMÉS SUR 6 MOIS :", 20, y + 7);
-
-      doc.setFont("helvetica", "normal");
-      doc.setTextColor(30, 41, 59);
-      doc.setFontSize(9);
-      doc.text(`• Légumes frais récoltés : ${simulation.estimated6MonthProduction.vegetablesKg} kg (~${simulation.estimated6MonthValue.vegetablesValue.toLocaleString()} FCFA)`, 20, y + 14);
-      doc.text(`• Œufs frais de ferme : ${simulation.estimated6MonthProduction.eggsCount} unités (~${simulation.estimated6MonthValue.eggsValue.toLocaleString()} FCFA)`, 20, y + 20);
-      doc.text(`• Viande blanche saine : ${simulation.estimated6MonthProduction.meatKg} kg (~${simulation.estimated6MonthValue.meatValue.toLocaleString()} FCFA)`, 20, y + 26);
-      doc.text(`• Valeur totale produite : ${simulation.estimated6MonthValue.totalValue.toLocaleString()} FCFA | Remboursement estimé : Mois ${simulation.roiMonth}`, 105, y + 14);
-      doc.text(`• Bénéfice Net après 6 mois : +${Math.max(0, simulation.netProfit6Months).toLocaleString()} FCFA`, 105, y + 20);
-
-      // Contact & Validation Footer
-      y += 44;
-      doc.setFontSize(8);
-      doc.setTextColor(100, 116, 139);
-      doc.text(`Contact 242Agro Pointe-Noire : ${CONTACT_INFO.phone} | ${CONTACT_INFO.email}`, 15, y);
-      doc.text("Ce devis est une estimation préliminaire. Une visite technique sur site sous 48h confirme les métrés exacts.", 15, y + 5);
-
-      // Save PDF
-      doc.save(`Devis_242Agro_${ref}.pdf`);
-
-      // Trigger Confetti
+      await generateOfficialQuotePdf(currentQuotePdfData);
       confetti({
         particleCount: 80,
         spread: 70,
@@ -336,6 +248,8 @@ export const QuoteSimulator: React.FC<QuoteSimulatorProps> = ({ initialPack }) =
       });
     } catch (err) {
       console.error("PDF generation failed:", err);
+    } finally {
+      setIsGeneratingPdf(false);
     }
   };
 
@@ -698,7 +612,7 @@ export const QuoteSimulator: React.FC<QuoteSimulatorProps> = ({ initialPack }) =
                     </div>
                   </div>
 
-                  <div className="flex flex-col sm:flex-row gap-3 pt-2">
+                  <div className="flex flex-col sm:flex-row gap-2.5 pt-2">
                     <button
                       type="submit"
                       disabled={isSubmitting}
@@ -710,11 +624,21 @@ export const QuoteSimulator: React.FC<QuoteSimulatorProps> = ({ initialPack }) =
 
                     <button
                       type="button"
+                      onClick={() => setShowPreviewModal(true)}
+                      className="py-3.5 px-4 rounded-2xl bg-white hover:bg-slate-50 text-slate-900 font-bold text-xs flex items-center justify-center gap-2 cursor-pointer transition-all border border-slate-300 shadow-sm"
+                    >
+                      <Eye className="w-4 h-4 text-emerald-700" />
+                      <span>Aperçu Devis</span>
+                    </button>
+
+                    <button
+                      type="button"
                       onClick={handleDownloadPDF}
-                      className="py-3.5 px-4 rounded-2xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs flex items-center justify-center gap-2 cursor-pointer transition-all border border-slate-800 shadow-sm"
+                      disabled={isGeneratingPdf}
+                      className="py-3.5 px-4 rounded-2xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs flex items-center justify-center gap-2 cursor-pointer transition-all border border-slate-800 shadow-sm disabled:opacity-50"
                     >
                       <Download className="w-4 h-4 text-[#84cc16]" />
-                      <span>Télécharger Devis PDF</span>
+                      <span>{isGeneratingPdf ? "Génération..." : "Devis PDF"}</span>
                     </button>
                   </div>
                 </form>
@@ -827,14 +751,26 @@ export const QuoteSimulator: React.FC<QuoteSimulatorProps> = ({ initialPack }) =
               </div>
 
               {/* Action Buttons */}
-              <button
-                type="button"
-                onClick={handleDownloadPDF}
-                className="w-full py-3.5 px-4 rounded-2xl bg-[#84cc16] hover:bg-lime-500 text-slate-950 font-black text-xs uppercase tracking-wider flex items-center justify-center gap-2 cursor-pointer shadow-lg shadow-lime-500/20 border-2 border-lime-400 transition-all active:scale-95"
-              >
-                <Download className="w-4 h-4" />
-                <span>Télécharger ce Devis en PDF</span>
-              </button>
+              <div className="space-y-2">
+                <button
+                  type="button"
+                  onClick={() => setShowPreviewModal(true)}
+                  className="w-full py-3 px-4 rounded-2xl bg-white hover:bg-slate-50 text-slate-900 font-black text-xs uppercase tracking-wider flex items-center justify-center gap-2 cursor-pointer shadow-sm border border-slate-300 transition-all active:scale-95"
+                >
+                  <Eye className="w-4 h-4 text-emerald-700" />
+                  <span>Aperçu du Devis Officiel</span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={handleDownloadPDF}
+                  disabled={isGeneratingPdf}
+                  className="w-full py-3.5 px-4 rounded-2xl bg-[#84cc16] hover:bg-lime-500 text-slate-950 font-black text-xs uppercase tracking-wider flex items-center justify-center gap-2 cursor-pointer shadow-lg shadow-lime-500/20 border-2 border-lime-400 transition-all active:scale-95 disabled:opacity-50"
+                >
+                  <Download className="w-4 h-4" />
+                  <span>{isGeneratingPdf ? "Génération du PDF..." : "Télécharger ce Devis en PDF"}</span>
+                </button>
+              </div>
 
             </div>
 
@@ -862,6 +798,13 @@ export const QuoteSimulator: React.FC<QuoteSimulatorProps> = ({ initialPack }) =
         </div>
 
       </div>
+
+      {/* Official Invoice-style Quote Preview Modal */}
+      <QuotePreviewModal
+        isOpen={showPreviewModal}
+        onClose={() => setShowPreviewModal(false)}
+        data={currentQuotePdfData}
+      />
     </section>
   );
 };
