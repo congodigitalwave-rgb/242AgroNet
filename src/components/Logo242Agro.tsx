@@ -251,26 +251,16 @@ export const Logo242Agro: React.FC<Logo242AgroProps> = ({
           {/* 9. Bottom Curved Brand Text: 242Agro inside the circle badge */}
           <g id="badgeText">
             <text
-              x="138"
+              x="200"
               y="336"
-              fill="#144626"
+              textAnchor="middle"
               fontSize="48"
               fontWeight="900"
-              fontFamily="Outfit, Plus Jakarta Sans, system-ui, sans-serif"
-              letterSpacing="-1.5"
+              fontFamily="Outfit, Plus Jakarta Sans, system-ui, -apple-system, sans-serif"
+              letterSpacing="-1"
             >
-              242
-            </text>
-            <text
-              x="218"
-              y="336"
-              fill="#66B928"
-              fontSize="48"
-              fontWeight="900"
-              fontFamily="Outfit, Plus Jakarta Sans, system-ui, sans-serif"
-              letterSpacing="-1.5"
-            >
-              Agro
+              <tspan fill="#144626">242</tspan>
+              <tspan fill="#66B928">Agro</tspan>
             </text>
           </g>
         </svg>

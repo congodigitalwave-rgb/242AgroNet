@@ -109,7 +109,7 @@ export const QuotePreviewModal: React.FC<QuotePreviewModalProps> = ({
                 
                 {/* Logo & Brand Title */}
                 <div className="flex items-center gap-4">
-                  <div className="bg-white rounded-2xl p-2.5 shadow-md border border-slate-100 shrink-0">
+                  <div className="bg-white rounded-2xl p-2 shadow-md border border-slate-100 shrink-0 w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center aspect-square">
                     <Logo242Agro size="md" showText={false} withGlow={false} />
                   </div>
                   <div>
@@ -186,82 +186,110 @@ export const QuotePreviewModal: React.FC<QuotePreviewModalProps> = ({
                 </div>
               </div>
 
-              {/* Modules & Services Breakdown Table */}
-              <div className="border border-slate-200 rounded-2xl overflow-hidden">
-                <div className="bg-slate-100 px-4 py-2.5 text-xs font-black text-slate-800 uppercase tracking-wider flex justify-between border-b border-slate-200">
-                  <span>Désignation des Modules & Travaux 242Agro</span>
-                  <span>Estimation (FCFA)</span>
+              {/* Modules & Services Breakdown Table (Corporate Quotation Grid) */}
+              <div className="border border-slate-200 rounded-2xl overflow-hidden shadow-xs">
+                <div className="bg-slate-800 text-white px-5 py-3 text-xs font-bold uppercase tracking-wider flex items-center justify-between">
+                  <div className="flex-1 font-black">Désignation des Modules & Équipements 242Agro</div>
+                  <div className="text-right font-black w-36 sm:w-48">Montant Estimé (FCFA)</div>
                 </div>
 
-                <div className="divide-y divide-slate-100 text-xs sm:text-sm">
+                <div className="divide-y divide-slate-200 text-xs sm:text-sm bg-white">
                   {data.includePotager && (
-                    <div className="p-4 flex items-start justify-between gap-4">
-                      <div>
-                        <div className="font-bold text-slate-950">Potager Maraîcher Hors-Sol ({data.surfaceArea} m²)</div>
-                        <div className="text-xs text-slate-500 mt-0.5">Bacs surélevés traités + Substrat bio enrichi + Semences maraîchères certifiées</div>
+                    <div className="p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-3 hover:bg-slate-50/80 transition-colors">
+                      <div className="space-y-1">
+                        <div className="font-bold text-slate-950 text-sm sm:text-base flex items-center gap-2">
+                          <span className="w-2 h-2 rounded-full bg-emerald-600"></span>
+                          Potager Maraîcher Hors-Sol ({data.surfaceArea} m²)
+                        </div>
+                        <div className="text-xs text-slate-600">
+                          Bacs de culture surélevés traités • Substrat bio enrichi • Semences maraîchères sélectionnées
+                        </div>
                       </div>
-                      <div className="font-black text-slate-950 whitespace-nowrap">
+                      <div className="font-black text-slate-950 sm:text-right text-base whitespace-nowrap">
                         {(data.surfaceArea * 42000).toLocaleString()} FCFA
                       </div>
                     </div>
                   )}
 
                   {data.includePoules && data.poulesCount > 0 && (
-                    <div className="p-4 flex items-start justify-between gap-4">
-                      <div>
-                        <div className="font-bold text-slate-950">Module Avicole Urbain ({data.poulesCount} Poules Pondeuses)</div>
-                        <div className="text-xs text-slate-500 mt-0.5">Poules vaccinées prêtes à pondre + Poulailler aéré surélevé anti-odeur + Équipements</div>
+                    <div className="p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-3 hover:bg-slate-50/80 transition-colors">
+                      <div className="space-y-1">
+                        <div className="font-bold text-slate-950 text-sm sm:text-base flex items-center gap-2">
+                          <span className="w-2 h-2 rounded-full bg-amber-500"></span>
+                          Module Avicole Urbain ({data.poulesCount} Poules Pondeuses)
+                        </div>
+                        <div className="text-xs text-slate-600">
+                          Poules vaccinées prêtes à pondre • Poulailler surélevé aéré anti-odeur • Mangeoires & abreuvoirs
+                        </div>
                       </div>
-                      <div className="font-black text-slate-950 whitespace-nowrap">
+                      <div className="font-black text-slate-950 sm:text-right text-base whitespace-nowrap">
                         {(120000 + data.poulesCount * 7000).toLocaleString()} FCFA
                       </div>
                     </div>
                   )}
 
                   {data.includeLapins && data.lapinesCount > 0 && (
-                    <div className="p-4 flex items-start justify-between gap-4">
-                      <div>
-                        <div className="font-bold text-slate-950">Module Cunicole ({data.lapinesCount} Lapines Reproductrices)</div>
-                        <div className="text-xs text-slate-500 mt-0.5">Clapiers hygiéniques surélevés + Abreuvoirs automatiques à pipette + Mâle reproducteur</div>
+                    <div className="p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-3 hover:bg-slate-50/80 transition-colors">
+                      <div className="space-y-1">
+                        <div className="font-bold text-slate-950 text-sm sm:text-base flex items-center gap-2">
+                          <span className="w-2 h-2 rounded-full bg-purple-500"></span>
+                          Module Cunicole Hors-Sol ({data.lapinesCount} Lapines Reproductrices)
+                        </div>
+                        <div className="text-xs text-slate-600">
+                          Clapiers métalliques grillagés hygiéniques • Abreuvoirs automatiques à pipette • Mâle reproducteur
+                        </div>
                       </div>
-                      <div className="font-black text-slate-950 whitespace-nowrap">
+                      <div className="font-black text-slate-950 sm:text-right text-base whitespace-nowrap">
                         {(95000 + data.lapinesCount * 8500).toLocaleString()} FCFA
                       </div>
                     </div>
                   )}
 
-                  <div className="p-4 flex items-start justify-between gap-4">
-                    <div>
-                      <div className="font-bold text-slate-950">
-                        Système d'Arrosage Économe ({data.irrigationType === "goutte_a_goutte" ? "Goutte-à-Goutte" : "Manuel Optimisé"})
+                  <div className="p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-3 hover:bg-slate-50/80 transition-colors">
+                    <div className="space-y-1">
+                      <div className="font-bold text-slate-950 text-sm sm:text-base flex items-center gap-2">
+                        <span className="w-2 h-2 rounded-full bg-blue-500"></span>
+                        Système d'Arrosage Économe ({data.irrigationType === "goutte_a_goutte" ? "Goutte-à-Goutte Sectorisé" : "Manuel Optimisé"})
                       </div>
-                      <div className="text-xs text-slate-500 mt-0.5">
-                        {data.irrigationType === "goutte_a_goutte" ? "Ligne goutte-à-goutte avec régulateur (économie d'eau de 70%)" : "Tuyau renforcé avec pistolet micro-pluie"}
+                      <div className="text-xs text-slate-600">
+                        {data.irrigationType === "goutte_a_goutte"
+                          ? "Ligne goutte-à-goutte avec régulateur et vannes sectorisées (économie d'eau de 70%)"
+                          : "Tuyauterie renforcée + Raccords rapides et pomme d'arrosage micro-pluie"}
                       </div>
                     </div>
-                    <div className="font-black text-slate-950 whitespace-nowrap">
+                    <div className={`font-black sm:text-right text-base whitespace-nowrap ${data.irrigationType === "goutte_a_goutte" ? "text-slate-950" : "text-emerald-700"}`}>
                       {data.irrigationType === "goutte_a_goutte" ? "45 000 FCFA" : "INCLUS"}
                     </div>
                   </div>
 
                   {data.includeCompost && (
-                    <div className="p-4 flex items-start justify-between gap-4">
-                      <div>
-                        <div className="font-bold text-slate-950">Unité de Compostage Accéléré 242Agro</div>
-                        <div className="text-xs text-slate-500 mt-0.5">Composteur rotatif aéré pour recycler fanes et litières en fertilisant gratuit</div>
+                    <div className="p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-3 hover:bg-slate-50/80 transition-colors">
+                      <div className="space-y-1">
+                        <div className="font-bold text-slate-950 text-sm sm:text-base flex items-center gap-2">
+                          <span className="w-2 h-2 rounded-full bg-teal-500"></span>
+                          Unité de Compostage Accéléré 242Agro
+                        </div>
+                        <div className="text-xs text-slate-600">
+                          Composteur rotatif hermétique anti-odeur pour valoriser litières et fanes maraîchères
+                        </div>
                       </div>
-                      <div className="font-black text-slate-950 whitespace-nowrap">
+                      <div className="font-black text-slate-950 sm:text-right text-base whitespace-nowrap">
                         35 000 FCFA
                       </div>
                     </div>
                   )}
 
-                  <div className="p-4 flex items-start justify-between gap-4 bg-lime-50/50">
-                    <div>
-                      <div className="font-bold text-emerald-900">Pack Sérénité : Pose Clé en Main & Formation Pratique</div>
-                      <div className="text-xs text-slate-600 mt-0.5">Assemblage sous 3 semaines + Formation de 2 jours + 3 mois de visites techniques de suivi agronomique</div>
+                  <div className="p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-emerald-50/60 border-t border-emerald-200">
+                    <div className="space-y-1">
+                      <div className="font-black text-emerald-950 text-sm sm:text-base flex items-center gap-2">
+                        <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                        Pack Sérénité : Montage Clé en Main, Formation & Suivi Agronomique
+                      </div>
+                      <div className="text-xs text-emerald-800">
+                        Livraison & pose complète sous 3 semaines • Formation pratique de 2 jours • 3 mois de visites agronomiques
+                      </div>
                     </div>
-                    <div className="font-bold text-emerald-700 whitespace-nowrap">
+                    <div className="font-black text-emerald-700 sm:text-right text-base whitespace-nowrap">
                       OFFERT (INCLUS)
                     </div>
                   </div>
@@ -311,16 +339,106 @@ export const QuotePreviewModal: React.FC<QuotePreviewModalProps> = ({
                 </div>
               </div>
 
-              {/* 6-Month Returns Box */}
-              <div className="p-4 rounded-2xl bg-amber-50 border border-amber-200 text-xs sm:text-sm text-slate-800 space-y-1.5">
-                <div className="font-bold text-amber-900">
-                  Rendements et Gains Estimés sur 6 Mois :
+              {/* Highly Attractive ROI, Gains & Profitability Simulation Box */}
+              <div className="rounded-2xl bg-gradient-to-br from-amber-50/90 via-emerald-50/50 to-teal-50/60 border-2 border-amber-300/80 p-5 sm:p-6 space-y-4 shadow-sm">
+                <div className="flex flex-wrap items-center justify-between gap-2 border-b border-amber-200/80 pb-3">
+                  <div className="flex items-center gap-2">
+                    <div className="w-7 h-7 rounded-xl bg-amber-500 text-slate-950 flex items-center justify-center font-bold shadow-sm">
+                      <Sparkles className="w-4 h-4 text-white" />
+                    </div>
+                    <div>
+                      <div className="text-xs sm:text-sm font-black text-slate-900 uppercase tracking-wider">
+                        SIMULATION DE RENTABILITÉ & RETOUR SUR INVESTISSEMENT (ROI)
+                      </div>
+                      <div className="text-[11px] text-slate-600">
+                        Projections économiques basées sur les cours réels des denrées fraîches à Pointe-Noire
+                      </div>
+                    </div>
+                  </div>
+
+                  <span className="px-3 py-1 rounded-full bg-emerald-600 text-white font-black text-xs uppercase tracking-wider shadow-sm">
+                    Rentabilité : +{data.simulation.roiPercentage}% / an
+                  </span>
                 </div>
-                <div className="text-xs text-slate-700">
-                  • Production prévisionnelle : {data.simulation.estimated6MonthProduction.vegetablesKg} kg légumes • {data.simulation.estimated6MonthProduction.eggsCount} œufs • {data.simulation.estimated6MonthProduction.meatKg} kg viande • {data.simulation.estimated6MonthProduction.compostBags} sacs compost.
+
+                {/* 3 High-Impact KPI Cards */}
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-center">
+                  <div className="p-3.5 rounded-xl bg-white border border-emerald-200 shadow-sm">
+                    <div className="text-[10px] font-bold uppercase text-emerald-800 tracking-wider">
+                      Économie / Revenu Mensuel
+                    </div>
+                    <div className="text-xl sm:text-2xl font-black text-emerald-950 font-['Outfit'] mt-1">
+                      ~{data.simulation.monthlySavings.toLocaleString()} <span className="text-xs font-bold text-emerald-700">FCFA</span>
+                    </div>
+                    <div className="text-[10px] text-slate-500 mt-1">Économisé sur vos dépenses ou en revente</div>
+                  </div>
+
+                  <div className="p-3.5 rounded-xl bg-white border border-amber-200 shadow-sm">
+                    <div className="text-[10px] font-bold uppercase text-amber-800 tracking-wider">
+                      Amortissement Intégral
+                    </div>
+                    <div className="text-xl sm:text-2xl font-black text-amber-950 font-['Outfit'] mt-1">
+                      Dès Mois {data.simulation.roiMonth}
+                    </div>
+                    <div className="text-[10px] text-slate-500 mt-1">Remboursement complet du matériel</div>
+                  </div>
+
+                  <div className="p-3.5 rounded-xl bg-white border border-teal-200 shadow-sm">
+                    <div className="text-[10px] font-bold uppercase text-teal-800 tracking-wider">
+                      Bénéfice Net Estimé (12 mois)
+                    </div>
+                    <div className="text-xl sm:text-2xl font-black text-teal-950 font-['Outfit'] mt-1">
+                      +{data.simulation.annualNetProfit.toLocaleString()} <span className="text-xs font-bold text-teal-700">FCFA</span>
+                    </div>
+                    <div className="text-[10px] text-slate-500 mt-1">Valeur brute An 1 : ~{data.simulation.annualValue.toLocaleString()} FCFA</div>
+                  </div>
                 </div>
-                <div className="text-xs font-bold text-emerald-800 pt-1">
-                  • Valeur totale produite : ~{data.simulation.estimated6MonthValue.totalValue.toLocaleString()} FCFA | Remboursement intégral estimé dès le <span className="underline">Mois {data.simulation.roiMonth}</span>.
+
+                {/* Breakdown of Valued Harvests */}
+                <div className="space-y-1.5 pt-1">
+                  <div className="text-xs font-bold text-slate-800 flex items-center justify-between">
+                    <span>Détail des Récoltes & Valorisation Marchande (sur 6 mois) :</span>
+                    <span className="text-emerald-800 font-black">Total Produit : ~{data.simulation.estimated6MonthValue.totalValue.toLocaleString()} FCFA</span>
+                  </div>
+
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
+                    {data.includePotager && (
+                      <div className="p-2.5 rounded-xl bg-white/90 border border-slate-200">
+                        <div className="text-slate-500 text-[10px] font-medium">🥬 Légumes frais bio</div>
+                        <div className="font-bold text-slate-900 mt-0.5">{data.simulation.estimated6MonthProduction.vegetablesKg} kg</div>
+                        <div className="text-[10px] text-emerald-700 font-bold">~{data.simulation.estimated6MonthValue.vegetablesValue.toLocaleString()} FCFA</div>
+                      </div>
+                    )}
+                    {data.includePoules && data.poulesCount > 0 && (
+                      <div className="p-2.5 rounded-xl bg-white/90 border border-slate-200">
+                        <div className="text-slate-500 text-[10px] font-medium">🥚 Œufs frais de ferme</div>
+                        <div className="font-bold text-slate-900 mt-0.5">{data.simulation.estimated6MonthProduction.eggsCount} unités</div>
+                        <div className="text-[10px] text-amber-700 font-bold">~{data.simulation.estimated6MonthValue.eggsValue.toLocaleString()} FCFA</div>
+                      </div>
+                    )}
+                    {data.includeLapins && data.lapinesCount > 0 && (
+                      <div className="p-2.5 rounded-xl bg-white/90 border border-slate-200">
+                        <div className="text-slate-500 text-[10px] font-medium">🐰 Viande blanche saine</div>
+                        <div className="font-bold text-slate-900 mt-0.5">{data.simulation.estimated6MonthProduction.meatKg} kg</div>
+                        <div className="text-[10px] text-purple-700 font-bold">~{data.simulation.estimated6MonthValue.meatValue.toLocaleString()} FCFA</div>
+                      </div>
+                    )}
+                    {data.includeCompost && (
+                      <div className="p-2.5 rounded-xl bg-white/90 border border-slate-200">
+                        <div className="text-slate-500 text-[10px] font-medium">🌱 Fertilisant organique</div>
+                        <div className="font-bold text-slate-900 mt-0.5">{data.simulation.estimated6MonthProduction.compostBags} sacs</div>
+                        <div className="text-[10px] text-teal-700 font-bold">~{data.simulation.estimated6MonthValue.compostValue.toLocaleString()} FCFA</div>
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+                {/* Decisive Financing Guarantee */}
+                <div className="p-3 rounded-xl bg-[#1b5e20]/10 border border-[#1b5e20]/30 flex items-start gap-2.5 text-xs text-emerald-950">
+                  <CheckCircle2 className="w-4 h-4 text-[#1b5e20] shrink-0 mt-0.5" />
+                  <div className="leading-relaxed">
+                    <strong className="text-[#1b5e20]">Argument Décisif & Autofinancement :</strong> Votre 3ᵉ tranche de règlement (<strong>{data.simulation.harvestPayment30.toLocaleString()} FCFA</strong> due au 3ᵉ mois) est <strong>100% autofinancée</strong> par vos récoltes et pontes déjà produites. Votre investissement initial est sécurisé et devient immédiatement rentable.
+                  </div>
                 </div>
               </div>
 
@@ -328,7 +446,7 @@ export const QuotePreviewModal: React.FC<QuotePreviewModalProps> = ({
               <div className="pt-6 border-t border-slate-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                 
                 <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-xl bg-white border border-slate-200 p-1 flex items-center justify-center shrink-0 shadow-xs">
+                  <div className="w-12 h-12 rounded-xl bg-white border border-slate-200 p-1 flex items-center justify-center shrink-0 aspect-square shadow-xs">
                     <Logo242Agro size="sm" showText={false} withGlow={false} />
                   </div>
                   <div className="space-y-0.5">

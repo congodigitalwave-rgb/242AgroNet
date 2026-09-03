@@ -42,6 +42,11 @@ export interface SimulationResult {
   downPayment30: number;
   deliveryPayment40: number;
   harvestPayment30: number;
+  monthlySavings: number; // Économie / revenu mensuel moyen estimé
+  annualValue: number; // Valeur brute générée sur 1 an
+  annualNetProfit: number; // Bénéfice net cumulé sur 12 mois
+  roiPercentage: number; // Taux de retour sur investissement annuel (%)
+  harvestCoversTranche3: boolean; // La récolte autofinance la 3ème tranche (30%)
   estimated6MonthProduction: {
     vegetablesKg: number;
     eggsCount: number;
