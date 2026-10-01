@@ -51,40 +51,40 @@ export const CircularSolution: React.FC = () => {
         </div>
 
         {/* The 3 Core Pillars */}
-        <div className="grid md:grid-cols-3 gap-6 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 lg:gap-6 mb-12 sm:mb-16">
           
-          <div className="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm hover:shadow-xl hover:border-lime-500 hover:-translate-y-1 transition-all">
+          <div className="bg-white rounded-3xl p-6 sm:p-7 border border-slate-200 shadow-sm hover:shadow-xl hover:border-lime-500 hover:-translate-y-1 transition-all">
             <div className="w-10 h-10 rounded-2xl bg-lime-50 text-[#65a30d] border border-lime-200 flex items-center justify-center font-bold mb-4">
               <CheckCircle2 className="w-5 h-5" />
             </div>
             <h3 className="text-xl font-bold text-slate-950 mb-2 font-['Outfit']">
               Clé en main
             </h3>
-            <p className="text-slate-600 text-sm leading-relaxed">
+            <p className="text-slate-700 text-sm leading-relaxed">
               Installation complète, matériel professionnel, semences, animaux vaccinés, formation pratique et suivi agronomique pendant 3 mois — <strong className="text-slate-950 font-bold">tout est inclus</strong>.
             </p>
           </div>
 
-          <div className="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm hover:shadow-xl hover:border-amber-400 hover:-translate-y-1 transition-all">
+          <div className="bg-white rounded-3xl p-6 sm:p-7 border border-slate-200 shadow-sm hover:shadow-xl hover:border-amber-400 hover:-translate-y-1 transition-all">
             <div className="w-10 h-10 rounded-2xl bg-amber-50 text-amber-600 border border-amber-200 flex items-center justify-center font-bold mb-4">
               <RefreshCw className="w-5 h-5" />
             </div>
             <h3 className="text-xl font-bold text-slate-950 mb-2 font-['Outfit']">
               Boucle circulaire
             </h3>
-            <p className="text-slate-600 text-sm leading-relaxed">
+            <p className="text-slate-700 text-sm leading-relaxed">
               Légumes &rarr; animaux &rarr; compost &rarr; légumes. Un écosystème productif et autonome où chaque sous-produit devient la nourriture du suivant.
             </p>
           </div>
 
-          <div className="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm hover:shadow-xl hover:border-teal-500 hover:-translate-y-1 transition-all">
+          <div className="bg-white rounded-3xl p-6 sm:p-7 border border-slate-200 shadow-sm hover:shadow-xl hover:border-teal-500 hover:-translate-y-1 transition-all">
             <div className="w-10 h-10 rounded-2xl bg-teal-50 text-teal-600 border border-teal-200 flex items-center justify-center font-bold mb-4">
               <Shield className="w-5 h-5" />
             </div>
             <h3 className="text-xl font-bold text-slate-950 mb-2 font-['Outfit']">
               100% Organique
             </h3>
-            <p className="text-slate-600 text-sm leading-relaxed">
+            <p className="text-slate-700 text-sm leading-relaxed">
               Zéro engrais chimique de synthèse. Une production saine, naturelle et durable respectueuse de la santé de votre famille et de vos clients.
             </p>
           </div>
@@ -169,7 +169,7 @@ export const CircularSolution: React.FC = () => {
                       <span className="font-black text-slate-950">Écosystème auto-alimenté</span>
                       <span className="text-[#65a30d] font-bold bg-lime-100 px-2 py-0.5 rounded-full border border-lime-200">100% Autonome</span>
                     </div>
-                    <p className="text-xs text-slate-600 mt-1.5">
+                    <p className="text-xs text-slate-700 font-medium mt-1.5 leading-relaxed">
                       Les résidus de récolte nourrissent l'élevage &rarr; Les fientes sont transformées en compost &rarr; Le compost fertilise le potager.
                     </p>
                   </div>

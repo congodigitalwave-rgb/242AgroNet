@@ -94,7 +94,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenSimulator, onOpenAdvisor }
             <div className="flex lg:hidden items-center gap-2">
               <button
                 onClick={onOpenSimulator}
-                className="text-xs bg-[#84cc16] hover:bg-[#65a30d] text-slate-950 p-2.5 rounded-xl font-bold"
+                className="md:hidden text-xs bg-[#84cc16] hover:bg-[#65a30d] text-slate-950 p-2.5 rounded-xl font-bold"
                 title="Simulateur"
               >
                 <Calculator className="w-4 h-4" />

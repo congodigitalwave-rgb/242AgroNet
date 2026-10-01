@@ -191,22 +191,22 @@ export const Hero: React.FC<HeroProps> = ({ onOpenSimulator, onOpenAdvisor }) =>
                 ))}
                 
                 {/* Floating Top Badge */}
-                <div className="absolute top-3.5 left-3.5 z-20 bg-white/95 backdrop-blur-md border border-slate-200 rounded-2xl p-2 sm:p-2.5 shadow-lg flex items-center gap-2.5">
-                  <div className="w-8 h-8 rounded-xl bg-lime-100 text-[#65a30d] flex items-center justify-center font-bold text-xs border border-lime-300">
+                <div className="absolute top-3.5 left-3.5 z-20 bg-white/95 backdrop-blur-md border border-slate-200 rounded-2xl p-2 sm:p-2.5 shadow-lg flex items-center gap-2 sm:gap-2.5">
+                  <div className="w-8 h-8 rounded-xl bg-lime-100 text-[#65a30d] flex items-center justify-center font-bold text-xs border border-lime-300 shrink-0">
                     <Sprout className="w-4 h-4" />
                   </div>
                   <div>
                     <div className="text-[10px] uppercase tracking-wider text-[#65a30d] font-black">
                       {activeSlide.badge}
                     </div>
-                    <div className="text-xs font-black text-slate-900 max-w-[170px] truncate">
+                    <div className="text-xs font-black text-slate-950 max-w-[130px] sm:max-w-[190px] truncate">
                       {activeSlide.title}
                     </div>
                   </div>
                 </div>
 
                 {/* Floating Stat Metric Badge */}
-                <div className="absolute top-3.5 right-3.5 z-20 bg-white/95 backdrop-blur-md border border-amber-200 rounded-2xl px-3 py-2 shadow-lg text-right">
+                <div className="absolute top-3.5 right-3.5 z-20 bg-white/95 backdrop-blur-md border border-amber-200 rounded-2xl px-2.5 sm:px-3 py-1.5 sm:py-2 shadow-lg text-right">
                   <div className="text-[9px] uppercase tracking-wider text-amber-700 font-bold">
                     {activeSlide.statLabel}
                   </div>
@@ -236,10 +236,10 @@ export const Hero: React.FC<HeroProps> = ({ onOpenSimulator, onOpenAdvisor }) =>
                 {/* Slide Title & Subtitle at Bottom of Image */}
                 <div className="absolute bottom-3 inset-x-3 z-20 bg-white/95 backdrop-blur-md p-2.5 rounded-xl border border-slate-200 flex items-center justify-between shadow-md">
                   <div className="pr-2 truncate">
-                    <div className="text-xs font-black text-slate-900 truncate">
+                    <div className="text-xs font-black text-slate-950 truncate">
                       {activeSlide.title}
                     </div>
-                    <div className="text-[11px] text-slate-600 truncate">
+                    <div className="text-[11px] text-slate-700 font-medium truncate">
                       {activeSlide.subtitle}
                     </div>
                   </div>
