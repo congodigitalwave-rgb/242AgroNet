@@ -51,8 +51,8 @@ export const ProductionAnalytics: React.FC = () => {
             <div className="text-sm font-bold text-[#65a30d] mb-3">
               de légumes frais
             </div>
-            <p className="text-xs text-slate-600 leading-relaxed">
-              Amarante, oseille de Guinée, ciboule, tomates & piments récoltés en continu.
+            <p className="text-xs text-slate-700 leading-relaxed font-medium">
+              Épinards, poivrons, concombres, matabélé, amarante, oseille de Guinée, tomates, ciboule & piments récoltés en continu.
             </p>
             <div className="mt-4 pt-3 border-t border-slate-100 text-[11px] text-slate-600 flex justify-between">
               <span>Valeur estimée :</span>

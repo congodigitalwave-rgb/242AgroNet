@@ -1,6 +1,6 @@
 import { jsPDF } from "jspdf";
 import { SimulationResult } from "../types";
-import { CONTACT_INFO } from "../data";
+import { CONTACT_INFO, formatSurfaceDisplay, calculatePotagerCost } from "../data";
 
 // High-fidelity vector SVG matching the official 242Agro circular medallion logo
 const SVG_LOGO_242AGRO = `<svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -360,7 +360,7 @@ export async function generateOfficialQuotePdf(data: QuotePdfData): Promise<stri
   doc.text("Surface allouée :", cRightX, rowY3);
   doc.setFont("helvetica", "bold");
   doc.setTextColor(21, 128, 61);
-  doc.text(`${data.surfaceArea} m² (Installation Hors-Sol Clé en Main)`, cRightX + 26, rowY3);
+  doc.text(`${formatSurfaceDisplay(data.surfaceArea)} (Installation Clé en Main)`, cRightX + 26, rowY3);
 
   // ==========================================
   // 4. DETAILED QUOTATION TABLE (Professional Grid)
@@ -385,9 +385,9 @@ export async function generateOfficialQuotePdf(data: QuotePdfData): Promise<stri
 
   if (data.includePotager) {
     modules.push({
-      name: `Potager Maraîcher Hors-Sol (${data.surfaceArea} m²)`,
-      specs: "Bacs surélevés traités + Substrat bio enrichi + Semences maraîchères sélectionnées",
-      amount: `${(data.surfaceArea * 42000).toLocaleString()} FCFA`,
+      name: `Potager Maraîcher Hors-Sol (${formatSurfaceDisplay(data.surfaceArea)})`,
+      specs: "Bacs surélevés traités + Substrat bio enrichi + Semences (épinards, poivrons, concombres, matabélé, tomates...)",
+      amount: `${calculatePotagerCost(data.surfaceArea).toLocaleString()} FCFA`,
     });
   }
 

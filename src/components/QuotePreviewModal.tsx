@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { X, Download, Printer, CheckCircle2, ShieldCheck, Share2, Sparkles } from "lucide-react";
 import { QuotePdfData, generateOfficialQuotePdf } from "../utils/quotePdfGenerator";
 import { Logo242Agro } from "./Logo242Agro";
-import { CONTACT_INFO } from "../data";
+import { CONTACT_INFO, formatSurfaceDisplay, calculatePotagerCost } from "../data";
 import confetti from "canvas-confetti";
 
 interface QuotePreviewModalProps {
@@ -174,7 +174,7 @@ export const QuotePreviewModal: React.FC<QuotePreviewModalProps> = ({
                 <div className="grid grid-cols-1 sm:grid-cols-12 gap-1 sm:gap-2">
                   <div className="sm:col-span-4 text-slate-500 font-medium">Type d'espace & Surface :</div>
                   <div className="sm:col-span-8 font-bold text-slate-900">
-                    {data.clientType === "famille" ? "Cour / Toiture Familiale" : data.clientType === "restaurant" ? "Restaurant / Hôtel" : data.clientType === "ecole_eglise" ? "École / Église" : "Site Productif Investisseur"} • <span className="text-emerald-700">{data.surfaceArea} m² alloués</span>
+                    {data.clientType === "famille" ? "Cour / Toiture Familiale" : data.clientType === "restaurant" ? "Restaurant / Hôtel" : data.clientType === "ecole_eglise" ? "École / Église" : "Site Productif Investisseur"} • <span className="text-emerald-700">{formatSurfaceDisplay(data.surfaceArea)} alloués</span>
                   </div>
                 </div>
 
@@ -199,14 +199,14 @@ export const QuotePreviewModal: React.FC<QuotePreviewModalProps> = ({
                       <div className="space-y-1">
                         <div className="font-bold text-slate-950 text-sm sm:text-base flex items-center gap-2">
                           <span className="w-2 h-2 rounded-full bg-emerald-600"></span>
-                          Potager Maraîcher Hors-Sol ({data.surfaceArea} m²)
+                          Potager Maraîcher Hors-Sol ({formatSurfaceDisplay(data.surfaceArea)})
                         </div>
                         <div className="text-xs text-slate-600">
-                          Bacs de culture surélevés traités • Substrat bio enrichi • Semences maraîchères sélectionnées
+                          Bacs de culture surélevés traités • Substrat bio enrichi • Semences sélectionnées (épinards, poivrons, concombres, matabélé, tomates...)
                         </div>
                       </div>
                       <div className="font-black text-slate-950 sm:text-right text-base whitespace-nowrap">
-                        {(data.surfaceArea * 42000).toLocaleString()} FCFA
+                        {calculatePotagerCost(data.surfaceArea).toLocaleString()} FCFA
                       </div>
                     </div>
                   )}

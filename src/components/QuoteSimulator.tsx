@@ -22,7 +22,7 @@ import {
   Eye
 } from "lucide-react";
 import confetti from "canvas-confetti";
-import { QUARTIERS_POINTE_NOIRE, CONTACT_INFO, PACKS_DATA } from "../data";
+import { QUARTIERS_POINTE_NOIRE, CONTACT_INFO, PACKS_DATA, SURFACE_TIERS, formatSurfaceDisplay, calculatePotagerCost } from "../data";
 import { QuoteConfig, SimulationResult, AgroPack } from "../types";
 import { generateOfficialQuotePdf, QuotePdfData } from "../utils/quotePdfGenerator";
 import { QuotePreviewModal } from "./QuotePreviewModal";
@@ -97,13 +97,33 @@ export const QuoteSimulator: React.FC<QuoteSimulatorProps> = ({ initialPack }) =
     }
   }, [initialPack]);
 
+  const currentTierIndex = useMemo(() => {
+    const idx = SURFACE_TIERS.indexOf(surfaceArea);
+    if (idx !== -1) return idx;
+    let closest = 0;
+    let minDiff = Infinity;
+    SURFACE_TIERS.forEach((t, i) => {
+      const diff = Math.abs(t - surfaceArea);
+      if (diff < minDiff) {
+        minDiff = diff;
+        closest = i;
+      }
+    });
+    return closest;
+  }, [surfaceArea]);
+
+  const handleSliderChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const index = Number(e.target.value);
+    setSurfaceArea(SURFACE_TIERS[index]);
+  };
+
   // Dynamic calculations based on 242Agro benchmarks
   const simulation: SimulationResult = useMemo(() => {
     let baseCost = 0;
 
-    // 1. Potager hors-sol cost (bacs + substrat + semences + pose)
+    // 1. Potager hors-sol cost (bacs + substrat + semences + pose) - barème dégressif jusqu'à 1 hectare
     if (includePotager) {
-      baseCost += surfaceArea * 42000; // 42k FCFA per m2 all-inclusive
+      baseCost += calculatePotagerCost(surfaceArea);
     }
 
     // 2. Poules pondeuses + Poulailler anti-odeurs
@@ -118,7 +138,7 @@ export const QuoteSimulator: React.FC<QuoteSimulatorProps> = ({ initialPack }) =
 
     // 4. Irrigation goutte-à-goutte
     if (irrigationType === "goutte_a_goutte") {
-      baseCost += 45000;
+      baseCost += surfaceArea <= 25 ? 45000 : 45000 + Math.round((surfaceArea - 25) * 650);
     }
 
     // 5. Composteur rapide 242Agro
@@ -379,32 +399,84 @@ export const QuoteSimulator: React.FC<QuoteSimulatorProps> = ({ initialPack }) =
                 </div>
               </div>
 
-              {/* Surface Slider */}
-              <div className="pt-4 border-t border-slate-100">
-                <div className="flex items-center justify-between mb-2">
-                  <label className="text-xs font-bold uppercase tracking-wider text-slate-900">
-                    Superficie disponible : <span className="text-[#65a30d] font-black text-base">{surfaceArea} m²</span>
+              {/* Surface Slider (De 2 m² jusqu'à 1 Hectare / 10 000 m²) */}
+              <div className="pt-4 border-t border-slate-100 space-y-3">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5">
+                  <label className="text-xs font-bold uppercase tracking-wider text-slate-900 flex items-center gap-2 flex-wrap">
+                    <span>Superficie disponible :</span>
+                    <span className="text-[#65a30d] font-black text-sm sm:text-base bg-lime-50 px-2.5 py-0.5 rounded-lg border border-lime-200">
+                      {formatSurfaceDisplay(surfaceArea)}
+                    </span>
+                    {surfaceArea >= 10000 && (
+                      <span className="bg-amber-500 text-slate-950 font-black text-[10px] px-2 py-0.5 rounded-full uppercase shadow-xs">
+                        1 Hectare
+                      </span>
+                    )}
                   </label>
-                  <span className="text-xs text-slate-600">
-                    {surfaceArea <= 5 ? "Espace compact (cour / balcon)" : surfaceArea <= 15 ? "Cour familiale moyenne" : "Grand espace / Micro-ferme"}
+                  <span className="text-xs text-slate-600 font-medium">
+                    {surfaceArea <= 5
+                      ? "Cour compacte / Balcon"
+                      : surfaceArea <= 15
+                      ? "Cour familiale moyenne"
+                      : surfaceArea <= 50
+                      ? "Grande concession résidentielle"
+                      : surfaceArea <= 500
+                      ? "Micro-ferme urbaine / Restaurant"
+                      : surfaceArea <= 2500
+                      ? "Exploitation maraîchère (1/4 ha)"
+                      : surfaceArea <= 5000
+                      ? "Domaine agricole semi-intensif (1/2 ha)"
+                      : "Grande exploitation agricole (1 Hectare)"}
                   </span>
                 </div>
                 
+                {/* Smooth Range Slider up to 1 Hectare */}
                 <input
                   type="range"
-                  min="2"
-                  max="40"
-                  step="1"
-                  value={surfaceArea}
-                  onChange={(e) => setSurfaceArea(Number(e.target.value))}
-                  className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-[#84cc16]"
+                  min={0}
+                  max={SURFACE_TIERS.length - 1}
+                  step={1}
+                  value={currentTierIndex}
+                  onChange={handleSliderChange}
+                  className="w-full h-2.5 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-[#84cc16]"
+                  aria-label="Superficie de 2 m² à 1 hectare"
                 />
                 
-                <div className="flex justify-between text-[11px] text-slate-500 mt-1 font-medium">
+                {/* Scale tick markers */}
+                <div className="flex justify-between text-[10px] sm:text-[11px] text-slate-500 font-medium px-0.5">
                   <span>2 m² (Starter)</span>
-                  <span>10 m² (Familial+)</span>
                   <span>20 m² (Productif)</span>
-                  <span>40+ m²</span>
+                  <span>500 m²</span>
+                  <span>2 500 m² (1/4 ha)</span>
+                  <span className="text-[#65a30d] font-black">10 000 m² (1 ha)</span>
+                </div>
+
+                {/* Quick Selection Shortcut Chips */}
+                <div className="flex flex-wrap items-center gap-1.5 pt-1">
+                  <span className="text-[10px] text-slate-500 uppercase font-bold mr-1">Raccourcis :</span>
+                  {[
+                    { label: "4 m²", val: 4 },
+                    { label: "10 m²", val: 10 },
+                    { label: "20 m²", val: 20 },
+                    { label: "100 m²", val: 100 },
+                    { label: "500 m²", val: 500 },
+                    { label: "2 500 m² (1/4 ha)", val: 2500 },
+                    { label: "5 000 m² (1/2 ha)", val: 5000 },
+                    { label: "10 000 m² (1 ha)", val: 10000 },
+                  ].map((chip) => (
+                    <button
+                      key={chip.val}
+                      type="button"
+                      onClick={() => setSurfaceArea(chip.val)}
+                      className={`px-2.5 py-1 rounded-lg text-[11px] font-bold transition-all cursor-pointer border ${
+                        surfaceArea === chip.val
+                          ? "bg-[#84cc16] text-slate-950 border-lime-400 shadow-xs font-black"
+                          : "bg-slate-50 hover:bg-slate-100 text-slate-700 border-slate-200"
+                      }`}
+                    >
+                      {chip.label}
+                    </button>
+                  ))}
                 </div>
               </div>
 
@@ -424,7 +496,7 @@ export const QuoteSimulator: React.FC<QuoteSimulatorProps> = ({ initialPack }) =
                   </div>
                   <div>
                     <div className="font-black text-sm text-slate-950">Bacs Potagers Hors-Sol</div>
-                    <div className="text-xs text-slate-600">{surfaceArea} m² de culture · Amarante, tomates, ciboule, piments</div>
+                    <div className="text-xs text-slate-600">{surfaceArea} m² de culture · Épinards, poivrons, concombres, matabélé, tomates, ciboule, piments</div>
                   </div>
                 </div>
                 <input

@@ -122,7 +122,7 @@ export const PACKS_DATA: AgroPack[] = [
     features: [
       "Bacs potagers hors-sol écologiques surélevés (2 à 5 m²)",
       "Substrat enrichi 100% organique pré-activé",
-      "Semences sélectionnées (amarante, folon, ciboule, tomates, piments)",
+      "Semences sélectionnées (épinards, poivrons, concombres, matabélé, amarante, tomates, piments)",
       "Kit d'arrosage économe en eau adapté au climat côtier",
       "Installation complète clé en main sous 3 semaines",
       "Formation pratique aux techniques maraîchères hors-sol",
@@ -256,3 +256,34 @@ export const FAQ_ITEMS = [
     answer: "Après validation de votre devis et visite technique sous 48h, votre installation complète est livrée, posée et prête à produire en moins de 3 semaines."
   }
 ];
+
+export const SURFACE_TIERS = [
+  2, 3, 4, 5, 6, 8, 10, 12, 15, 20, 25, 30, 40, 50, 75, 100, 
+  150, 200, 300, 500, 750, 1000, 1500, 2000, 2500, 3500, 5000, 7500, 10000
+];
+
+export const formatSurfaceDisplay = (m2: number): string => {
+  if (m2 >= 10000) {
+    const ha = m2 / 10000;
+    return `${m2.toLocaleString()} m² (${ha === 1 ? "1 Hectare" : `${ha} ha`})`;
+  } else if (m2 >= 1000) {
+    const ha = (m2 / 10000).toFixed(m2 % 1000 === 0 ? 1 : 2);
+    return `${m2.toLocaleString()} m² (${ha} ha)`;
+  }
+  return `${m2.toLocaleString()} m²`;
+};
+
+export const calculatePotagerCost = (surface: number): number => {
+  if (surface <= 25) {
+    return surface * 42000;
+  } else if (surface <= 100) {
+    return Math.round(25 * 42000 + (surface - 25) * 38000);
+  } else if (surface <= 500) {
+    return Math.round(25 * 42000 + 75 * 38000 + (surface - 100) * 32000);
+  } else if (surface <= 2000) {
+    return Math.round(25 * 42000 + 75 * 38000 + 400 * 32000 + (surface - 500) * 26000);
+  } else {
+    // 2 000 to 10 000 m² (1 hectare)
+    return Math.round(25 * 42000 + 75 * 38000 + 400 * 32000 + 1500 * 26000 + (surface - 2000) * 20000);
+  }
+};

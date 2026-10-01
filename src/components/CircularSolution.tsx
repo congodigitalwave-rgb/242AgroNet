@@ -9,7 +9,7 @@ export const CircularSolution: React.FC = () => {
     {
       title: "1. Potagers Hors-Sol Haut Rendement",
       subtitle: "Légumes frais & résidus végétaux",
-      desc: "Bacs maraîchers surélevés adaptés aux cours bétonnées et toitures. Production rapide d'amarantes, piments, tomates et épinards. Les feuilles non consommées nourrissent directement l'élevage.",
+      desc: "Bacs maraîchers surélevés adaptés aux cours bétonnées et toitures. Production rapide d'épinards, poivrons, concombres, matabélé, tomates et piments. Les feuilles non consommées nourrissent directement l'élevage.",
       icon: Leaf,
       color: "emerald",
       badge: "Production continue"
