@@ -306,33 +306,33 @@ export const QuotePreviewModal: React.FC<QuotePreviewModalProps> = ({
                 </div>
               </div>
 
-              {/* 3-Time Payment Schedule (Exact 30% / 40% / 30%) */}
+              {/* 3-Time Payment Schedule (Exact 40% / 35% / 25%) */}
               <div className="space-y-3 pt-2">
                 <div className="text-xs font-black text-slate-900 uppercase tracking-wider">
-                  Modalités de Règlement Échelonné (Paiement 3X Sans Frais) :
+                  Modalités de Règlement Échelonné (Paiement 3X Sans Frais : 40% / 35% / 25%) :
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-center">
                   <div className="p-3.5 rounded-2xl bg-slate-50 border border-slate-200">
-                    <div className="text-[11px] text-slate-500 font-semibold uppercase">1. À la commande (30%)</div>
+                    <div className="text-[11px] text-slate-500 font-semibold uppercase">1. À la commande (40%)</div>
                     <div className="text-base font-black text-slate-950 mt-1">
-                      {data.simulation.downPayment30.toLocaleString()} FCFA
+                      {data.simulation.downPayment40.toLocaleString()} FCFA
                     </div>
                     <div className="text-[10px] text-slate-500 mt-1">Lancement fabrication atelier</div>
                   </div>
 
                   <div className="p-3.5 rounded-2xl bg-slate-50 border border-slate-200">
-                    <div className="text-[11px] text-slate-500 font-semibold uppercase">2. À la livraison (40%)</div>
+                    <div className="text-[11px] text-slate-500 font-semibold uppercase">2. À la livraison (35%)</div>
                     <div className="text-base font-black text-slate-950 mt-1">
-                      {data.simulation.deliveryPayment40.toLocaleString()} FCFA
+                      {data.simulation.deliveryPayment35.toLocaleString()} FCFA
                     </div>
                     <div className="text-[10px] text-slate-500 mt-1">Pose & début formation</div>
                   </div>
 
                   <div className="p-3.5 rounded-2xl bg-lime-50 border border-lime-300">
-                    <div className="text-[11px] text-emerald-800 font-bold uppercase">3. Mois 3 Récolte (30%)</div>
+                    <div className="text-[11px] text-emerald-800 font-bold uppercase">3. Mois 3 Récolte (25%)</div>
                     <div className="text-base font-black text-emerald-950 mt-1">
-                      {data.simulation.harvestPayment30.toLocaleString()} FCFA
+                      {data.simulation.harvestPayment25.toLocaleString()} FCFA
                     </div>
                     <div className="text-[10px] text-emerald-700 font-bold mt-1">Autofinancé par récoltes</div>
                   </div>
@@ -437,7 +437,7 @@ export const QuotePreviewModal: React.FC<QuotePreviewModalProps> = ({
                 <div className="p-3 rounded-xl bg-[#1b5e20]/10 border border-[#1b5e20]/30 flex items-start gap-2.5 text-xs text-emerald-950">
                   <CheckCircle2 className="w-4 h-4 text-[#1b5e20] shrink-0 mt-0.5" />
                   <div className="leading-relaxed">
-                    <strong className="text-[#1b5e20]">Argument Décisif & Autofinancement :</strong> Votre 3ᵉ tranche de règlement (<strong>{data.simulation.harvestPayment30.toLocaleString()} FCFA</strong> due au 3ᵉ mois) est <strong>100% autofinancée</strong> par vos récoltes et pontes déjà produites. Votre investissement initial est sécurisé et devient immédiatement rentable.
+                    <strong className="text-[#1b5e20]">Argument Décisif & Autofinancement :</strong> Votre 3ᵉ tranche de règlement (<strong>{data.simulation.harvestPayment25.toLocaleString()} FCFA</strong> due au 3ᵉ mois, soit 25%) est <strong>100% autofinancée</strong> par vos récoltes et pontes déjà produites. Votre investissement initial est sécurisé et devient immédiatement rentable.
                   </div>
                 </div>
               </div>

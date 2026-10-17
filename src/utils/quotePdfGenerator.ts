@@ -500,22 +500,22 @@ export async function generateOfficialQuotePdf(data: QuotePdfData): Promise<stri
 
   const installments = [
     {
-      title: "1. Acompte Commande (30%)",
-      amount: `${data.simulation.downPayment30.toLocaleString()} FCFA`,
+      title: "1. Acompte Commande (40%)",
+      amount: `${data.simulation.downPayment40.toLocaleString()} FCFA`,
       desc: "Validation & fabrication atelier",
       bg: [248, 250, 252],
       border: [203, 213, 225],
     },
     {
-      title: "2. À la Livraison & Pose (40%)",
-      amount: `${data.simulation.deliveryPayment40.toLocaleString()} FCFA`,
+      title: "2. À la Livraison & Pose (35%)",
+      amount: `${data.simulation.deliveryPayment35.toLocaleString()} FCFA`,
       desc: "Installation & formation pratique",
       bg: [248, 250, 252],
       border: [203, 213, 225],
     },
     {
-      title: "3. Au 3ᵉ Mois Post-Pose (30%)",
-      amount: `${data.simulation.harvestPayment30.toLocaleString()} FCFA`,
+      title: "3. Au 3ᵉ Mois Post-Pose (25%)",
+      amount: `${data.simulation.harvestPayment25.toLocaleString()} FCFA`,
       desc: "100% autofinancé par récoltes",
       bg: [240, 253, 244],
       border: [134, 239, 172],
@@ -625,7 +625,7 @@ export async function generateOfficialQuotePdf(data: QuotePdfData): Promise<stri
   doc.setFontSize(6.5);
   doc.setTextColor(21, 128, 61);
   doc.text(
-    `• Autofinancement Garanti : Votre 3ᵉ tranche (${data.simulation.harvestPayment30.toLocaleString()} FCFA au Mois 3) est 100% couverte par vos récoltes sans apport supplémentaire.`,
+    `• Autofinancement Garanti : Votre 3ᵉ tranche (${data.simulation.harvestPayment25.toLocaleString()} FCFA au Mois 3, soit 25%) est 100% couverte par vos récoltes sans apport supplémentaire.`,
     leftX + 3.5,
     y + 26
   );

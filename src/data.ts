@@ -239,7 +239,7 @@ export const MONTHLY_BREAKEVEN_DATA = [
 export const FAQ_ITEMS = [
   {
     question: "Comment fonctionne le paiement flexible en 3 fois sans frais ?",
-    answer: "Vous versez 30% à la commande pour lancer l'assemblage de vos bacs et abris, 40% à la livraison et installation chez vous, et les derniers 30% seulement au 3ème mois, c'est-à-dire après votre première récolte lorsque votre système commence déjà à s'autofinancer !"
+    answer: "Vous versez 40% à la commande pour lancer la fabrication artisanale de vos bacs et abris, 35% à la livraison et installation complète chez vous, et les derniers 25% seulement au 3ème mois, c'est-à-dire après votre première récolte lorsque votre système est déjà en pleine production !"
   },
   {
     question: "Est-ce adapté pour une cour bétonnée ou une toiture à Pointe-Noire ?",

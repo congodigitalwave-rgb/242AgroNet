@@ -39,6 +39,10 @@ export interface QuoteConfig {
 
 export interface SimulationResult {
   totalPrice: number;
+  downPayment40: number; // 40% à la commande
+  deliveryPayment35: number; // 35% à la livraison
+  harvestPayment25: number; // 25% au mois 3 (après récolte)
+  // Backward compatibility aliases
   downPayment30: number;
   deliveryPayment40: number;
   harvestPayment30: number;
@@ -46,7 +50,7 @@ export interface SimulationResult {
   annualValue: number; // Valeur brute générée sur 1 an
   annualNetProfit: number; // Bénéfice net cumulé sur 12 mois
   roiPercentage: number; // Taux de retour sur investissement annuel (%)
-  harvestCoversTranche3: boolean; // La récolte autofinance la 3ème tranche (30%)
+  harvestCoversTranche3: boolean; // La récolte autofinance la 3ème tranche (25%)
   estimated6MonthProduction: {
     vegetablesKg: number;
     eggsCount: number;

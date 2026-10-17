@@ -108,7 +108,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenSimulator }) => {
                 <div className="w-9 h-9 rounded-xl bg-teal-100 text-teal-700 flex items-center justify-center shrink-0 font-black">
                   <CheckCircle2 className="w-5 h-5" />
                 </div>
-                <span><strong className="text-teal-700 font-bold">Paiement 3X :</strong> 30% / 40% / 30%</span>
+                <span><strong className="text-teal-700 font-bold">Paiement 3X :</strong> 40% / 35% / 25%</span>
               </div>
             </div>
 

@@ -84,7 +84,7 @@ export const PacksSection: React.FC<PacksSectionProps> = ({ onSelectPack }) => {
                     )}
 
                     <div className="text-xs text-slate-600 mt-2 font-medium">
-                      Paiement en 3x : <strong className="text-slate-950 font-bold">{(pack.price * 0.3).toLocaleString()} FCFA</strong> à la commande
+                      Paiement en 3x : <strong className="text-slate-950 font-bold">{Math.round(pack.price * 0.4).toLocaleString()} FCFA</strong> (40%) à la commande
                     </div>
                   </div>
 

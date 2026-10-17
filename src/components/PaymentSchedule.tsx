@@ -36,15 +36,15 @@ export const PaymentSchedule: React.FC<PaymentScheduleProps> = ({ onOpenSimulato
                   1
                 </div>
                 <span className="text-2xl font-black text-[#65a30d] font-['Outfit'] bg-lime-50 px-3.5 py-1 rounded-xl border border-lime-200">
-                  30%
+                  40%
                 </span>
               </div>
 
               <h3 className="text-xl font-black text-slate-950 mb-2 font-['Outfit']">
-                À la Commande
+                À la Commande (40%)
               </h3>
               <p className="text-slate-600 text-sm leading-relaxed">
-                Engagement initial permettant de lancer la fabrication artisanale des bacs surélevés, l'assemblage des poulaillers/clapiers et la sélection des semences bio.
+                Engagement initial permettant de lancer la fabrication artisanale des bacs surélevés, l'assemblage des poulaillers/clapiers et la sélection des semences bio pré-activées.
               </p>
             </div>
 
@@ -62,21 +62,21 @@ export const PaymentSchedule: React.FC<PaymentScheduleProps> = ({ onOpenSimulato
                   2
                 </div>
                 <span className="text-2xl font-black text-amber-700 font-['Outfit'] bg-amber-50 px-3.5 py-1 rounded-xl border border-amber-200">
-                  40%
+                  35%
                 </span>
               </div>
 
               <h3 className="text-xl font-black text-slate-950 mb-2 font-['Outfit']">
-                À la Livraison
+                À la Livraison (35%)
               </h3>
               <p className="text-slate-600 text-sm leading-relaxed">
-                À la pose complète du matériel chez vous à Pointe-Noire, installation du système d'irrigation, mise en place des animaux et début de la formation pratique.
+                À la pose complète du matériel chez vous à Pointe-Noire, installation du système d'irrigation, mise en place des animaux vaccinés et démarrage de la formation pratique.
               </p>
             </div>
 
             <div className="mt-6 pt-4 border-t border-slate-100 text-xs font-semibold text-slate-700 flex items-center gap-2">
               <CheckCircle2 className="w-4 h-4 text-amber-500" />
-              <span>Votre ferme urbaine est 100% active</span>
+              <span>Votre micro-ferme est 100% active</span>
             </div>
           </div>
 
@@ -88,21 +88,21 @@ export const PaymentSchedule: React.FC<PaymentScheduleProps> = ({ onOpenSimulato
                   3
                 </div>
                 <span className="text-2xl font-black text-[#65a30d] font-['Outfit'] bg-lime-50 px-3.5 py-1 rounded-xl border border-lime-200">
-                  30%
+                  25%
                 </span>
               </div>
 
               <h3 className="text-xl font-black text-slate-950 mb-2 font-['Outfit']">
-                Au Mois 3 (Après Récolte)
+                Au Mois 3 (Après Récolte - 25%)
               </h3>
               <p className="text-slate-600 text-sm leading-relaxed">
-                Après vos premières récoltes de légumes et d'œufs frais. Vous réglez le solde final en toute sérénité grâce aux économies et surplus générés !
+                Après vos premières récoltes de légumes et d'œufs frais. Vous réglez un solde allégé de seulement 25% en toute sérénité grâce aux économies et surplus déjà générés !
               </p>
             </div>
 
             <div className="mt-6 pt-4 border-t border-lime-200 text-xs font-bold text-[#65a30d] flex items-center gap-2">
               <HeartHandshake className="w-4 h-4 text-[#65a30d]" />
-              <span>Autofinancé par ce que vous produisez</span>
+              <span>Autofinancé par vos récoltes (solde réduit à 25%)</span>
             </div>
           </div>
 

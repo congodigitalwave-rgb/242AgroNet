@@ -159,10 +159,10 @@ export const QuoteSimulator: React.FC<QuoteSimulatorProps> = ({ initialPack }) =
     // Ensure realistic bounds matching packs
     const totalPrice = Math.max(180000, Math.round(baseCost / 1000) * 1000);
 
-    // 3-time payment installments (Slide 7)
-    const downPayment30 = Math.round(totalPrice * 0.3);
-    const deliveryPayment40 = Math.round(totalPrice * 0.4);
-    const harvestPayment30 = totalPrice - downPayment30 - deliveryPayment40;
+    // 3-time payment installments (40% Commande, 35% Livraison, 25% Mois 3 Récolte)
+    const downPayment40 = Math.round(totalPrice * 0.4);
+    const deliveryPayment35 = Math.round(totalPrice * 0.35);
+    const harvestPayment25 = totalPrice - downPayment40 - deliveryPayment35;
 
     // Production yields over 6 months (optimized intensive urban agriculture in Pointe-Noire)
     // 1 m² -> ~30kg fresh organic vegetables (3 to 4 fast rotation cycles)
@@ -197,16 +197,19 @@ export const QuoteSimulator: React.FC<QuoteSimulatorProps> = ({ initialPack }) =
     const annualNetProfit = Math.max(Math.round(totalPrice * 1.35), annualValue - totalPrice);
     const roiPercentage = Math.round((annualNetProfit / totalPrice) * 100);
     
-    // Check if Month 3 production covers 3rd installment (30%)
+    // Check if Month 3 production covers 3rd installment (25%)
     const month3HarvestValue = Math.round(monthlySavings * 2.8);
-    const harvestCoversTranche3 = month3HarvestValue >= harvestPayment30;
+    const harvestCoversTranche3 = month3HarvestValue >= harvestPayment25;
     const breakEvenPercent = Math.min(100, Math.round((totalValue / totalPrice) * 100));
 
     return {
       totalPrice,
-      downPayment30,
-      deliveryPayment40,
-      harvestPayment30,
+      downPayment40,
+      deliveryPayment35,
+      harvestPayment25,
+      downPayment30: downPayment40,
+      deliveryPayment40: deliveryPayment35,
+      harvestPayment30: harvestPayment25,
       monthlySavings,
       annualValue,
       annualNetProfit,
@@ -774,25 +777,25 @@ export const QuoteSimulator: React.FC<QuoteSimulatorProps> = ({ initialPack }) =
                   <div className="bg-slate-50 p-3 rounded-2xl border border-slate-200">
                     <div className="text-[10px] text-slate-600 uppercase font-semibold">1. Commande</div>
                     <div className="text-sm font-black text-slate-950 mt-1">
-                      {simulation.downPayment30.toLocaleString()} F
+                      {simulation.downPayment40.toLocaleString()} F
                     </div>
-                    <div className="text-[9px] text-[#65a30d] font-bold">30% (Lancement)</div>
+                    <div className="text-[9px] text-[#65a30d] font-bold">40% (Lancement)</div>
                   </div>
 
                   <div className="bg-slate-50 p-3 rounded-2xl border border-slate-200">
                     <div className="text-[10px] text-slate-600 uppercase font-semibold">2. Livraison</div>
                     <div className="text-sm font-black text-slate-950 mt-1">
-                      {simulation.deliveryPayment40.toLocaleString()} F
+                      {simulation.deliveryPayment35.toLocaleString()} F
                     </div>
-                    <div className="text-[9px] text-amber-700 font-bold">40% (Pose)</div>
+                    <div className="text-[9px] text-amber-700 font-bold">35% (Pose)</div>
                   </div>
 
                   <div className="bg-lime-50 p-3 rounded-2xl border border-lime-300">
                     <div className="text-[10px] text-[#65a30d] uppercase font-bold">3. Mois 3</div>
                     <div className="text-sm font-black text-slate-950 mt-1">
-                      {simulation.harvestPayment30.toLocaleString()} F
+                      {simulation.harvestPayment25.toLocaleString()} F
                     </div>
-                    <div className="text-[9px] text-[#65a30d] font-extrabold">30% (Récolte)</div>
+                    <div className="text-[9px] text-[#65a30d] font-extrabold">25% (Récolte)</div>
                   </div>
                 </div>
               </div>
@@ -888,7 +891,7 @@ export const QuoteSimulator: React.FC<QuoteSimulatorProps> = ({ initialPack }) =
                   <div className="text-[10px] text-emerald-100/90 leading-snug flex items-start gap-1.5 pt-1 border-t border-emerald-800/80">
                     <Sparkles className="w-3.5 h-3.5 text-amber-300 shrink-0 mt-0.5" />
                     <span>
-                      <strong>Autofinancement Tranche 3 :</strong> Vos récoltes du 3ᵉ mois couvrent intégralement le solde de {simulation.harvestPayment30.toLocaleString()} FCFA !
+                      <strong>Autofinancement Tranche 3 :</strong> Vos récoltes du 3ᵉ mois couvrent très largement le solde de {simulation.harvestPayment25.toLocaleString()} FCFA (seulement 25%) !
                     </span>
                   </div>
                 </div>
