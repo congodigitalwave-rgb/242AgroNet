@@ -11,8 +11,7 @@ import { ContactSection } from "./components/ContactSection";
 import { Footer } from "./components/Footer";
 import { QRCodeModal } from "./components/QRCodeModal";
 import { AnimatedBackground } from "./components/AnimatedBackground";
-import { MessageSquare, Calculator, QrCode } from "lucide-react";
-import { CONTACT_INFO } from "./data";
+import { FloatingActions } from "./components/FloatingActions";
 import { AgroPack } from "./types";
 
 export default function App() {
@@ -82,42 +81,8 @@ export default function App() {
         onClose={() => setIsQRCodeOpen(false)}
       />
 
-      {/* Floating Action Buttons - elevated to bottom-20 / bottom-24 so Netlify badge does not obstruct */}
-      <div className="fixed bottom-20 sm:bottom-24 right-4 sm:right-6 z-40 flex flex-col items-end gap-2.5 sm:gap-3 pointer-events-none">
-        
-        {/* Floating Simulator Quick Jump */}
-        <button
-          onClick={handleOpenSimulator}
-          className="pointer-events-auto flex items-center gap-2 bg-[#84cc16] hover:bg-[#65a30d] text-slate-950 hover:text-white px-3.5 py-2.5 rounded-full font-black text-xs shadow-xl shadow-lime-950/30 transition-all hover:scale-105 cursor-pointer border border-lime-300"
-          title="Lancer le simulateur de devis"
-        >
-          <Calculator className="w-4 h-4" />
-          <span className="hidden sm:inline">Simuler Devis</span>
-        </button>
-
-        {/* Floating QR Code Button */}
-        <button
-          onClick={() => setIsQRCodeOpen(true)}
-          className="pointer-events-auto flex items-center gap-2 bg-[#0c1322]/90 hover:bg-[#131d33] text-emerald-400 hover:text-emerald-300 px-3.5 py-2.5 rounded-full font-bold text-xs shadow-xl shadow-black/60 transition-all hover:scale-105 cursor-pointer border border-emerald-500/30 backdrop-blur-md"
-          title="Code QR du site https://242agropn.netlify.app/"
-        >
-          <QrCode className="w-4 h-4 text-emerald-400" />
-          <span className="hidden sm:inline">Code QR</span>
-        </button>
-
-        {/* Floating WhatsApp Quick Link */}
-        <a
-          href={CONTACT_INFO.whatsappUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="pointer-events-auto flex items-center gap-2 bg-emerald-600/90 hover:bg-emerald-500 text-white px-4 py-3 rounded-full font-bold text-xs shadow-xl shadow-emerald-950/50 transition-all hover:scale-105 border border-emerald-400/40 backdrop-blur-md"
-          title="WhatsApp 242Agro"
-        >
-          <MessageSquare className="w-4 h-4" />
-          <span className="hidden sm:inline">WhatsApp (+242 06 874 22 77)</span>
-        </a>
-
-      </div>
+      {/* Floating Action Buttons: Simulateur & WhatsApp only, auto-hides over text to prevent obstructing reading */}
+      <FloatingActions onOpenSimulator={handleOpenSimulator} />
 
     </div>
   );
