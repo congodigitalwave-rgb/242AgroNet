@@ -5,6 +5,7 @@ import harvestImg from "./assets/images/fresh_harvest_1788211795414.jpg";
 import schoolFarmImg from "./assets/images/urban_school_farming_1788214797112.jpg";
 import rabbitHutchImg from "./assets/images/cuniculture_clapier_1788214814197.jpg";
 import courtyardHarvestImg from "./assets/images/courtyard_harvest_1788214830244.jpg";
+import marketingPosterImg from "./assets/images/affiche_demarchage_242agro_1792222274344.jpg";
 
 export const IMAGES = {
   hero: heroImg,
@@ -13,6 +14,7 @@ export const IMAGES = {
   schoolFarm: schoolFarmImg,
   rabbitHutch: rabbitHutchImg,
   courtyardHarvest: courtyardHarvestImg,
+  marketingPoster: marketingPosterImg,
 };
 
 export interface HeroSlide {

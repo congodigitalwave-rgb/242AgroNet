@@ -18,10 +18,9 @@ import { Logo242Agro } from "./Logo242Agro";
 
 interface HeroProps {
   onOpenSimulator: () => void;
-  onOpenAdvisor: () => void;
 }
 
-export const Hero: React.FC<HeroProps> = ({ onOpenSimulator, onOpenAdvisor }) => {
+export const Hero: React.FC<HeroProps> = ({ onOpenSimulator }) => {
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
 
@@ -132,15 +131,6 @@ export const Hero: React.FC<HeroProps> = ({ onOpenSimulator, onOpenAdvisor }) =>
                 <Sprout className="w-5 h-5 text-[#65a30d]" />
                 <span>Voir les 4 Packs 242Agro</span>
               </a>
-
-              <button
-                onClick={onOpenAdvisor}
-                className="inline-flex items-center justify-center gap-2 bg-amber-50 hover:bg-amber-100 text-amber-900 font-bold px-4 py-4 rounded-2xl border border-amber-300 shadow-xs transition-all text-sm cursor-pointer active:scale-95"
-                title="Conseiller IA"
-              >
-                <Sparkles className="w-4 h-4 text-amber-600" />
-                <span>Conseiller IA</span>
-              </button>
             </div>
 
             {/* Reassurance Footer in Hero */}

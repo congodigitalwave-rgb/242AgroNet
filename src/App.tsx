@@ -9,15 +9,13 @@ import { QuoteSimulator } from "./components/QuoteSimulator";
 import { PaymentSchedule } from "./components/PaymentSchedule";
 import { ContactSection } from "./components/ContactSection";
 import { Footer } from "./components/Footer";
-import { AIAgronomistAdvisor } from "./components/AIAgronomistAdvisor";
 import { QRCodeModal } from "./components/QRCodeModal";
 import { AnimatedBackground } from "./components/AnimatedBackground";
-import { MessageSquare, Calculator, Sparkles, Phone, QrCode } from "lucide-react";
+import { MessageSquare, Calculator, QrCode } from "lucide-react";
 import { CONTACT_INFO } from "./data";
 import { AgroPack } from "./types";
 
 export default function App() {
-  const [isAdvisorOpen, setIsAdvisorOpen] = useState(false);
   const [isQRCodeOpen, setIsQRCodeOpen] = useState(false);
   const [selectedPackForSimulator, setSelectedPackForSimulator] = useState<AgroPack | null>(null);
 
@@ -45,14 +43,12 @@ export default function App() {
       {/* Navigation */}
       <Navbar
         onOpenSimulator={handleOpenSimulator}
-        onOpenAdvisor={() => setIsAdvisorOpen(true)}
       />
 
       {/* Main Content */}
       <main className="relative z-10">
         <Hero
           onOpenSimulator={handleOpenSimulator}
-          onOpenAdvisor={() => setIsAdvisorOpen(true)}
         />
 
         {/* Problem Section (Slide 2) */}
@@ -80,12 +76,6 @@ export default function App() {
       {/* Footer */}
       <Footer onOpenQRCode={() => setIsQRCodeOpen(true)} />
 
-      {/* AI Agronomist Modal (Gemini 3.7 Flash) */}
-      <AIAgronomistAdvisor
-        isOpen={isAdvisorOpen}
-        onClose={() => setIsAdvisorOpen(false)}
-      />
-
       {/* QR Code Modal for Netlify URL */}
       <QRCodeModal
         isOpen={isQRCodeOpen}
@@ -95,6 +85,16 @@ export default function App() {
       {/* Floating Action Buttons - elevated to bottom-20 / bottom-24 so Netlify badge does not obstruct */}
       <div className="fixed bottom-20 sm:bottom-24 right-4 sm:right-6 z-40 flex flex-col items-end gap-2.5 sm:gap-3 pointer-events-none">
         
+        {/* Floating Simulator Quick Jump */}
+        <button
+          onClick={handleOpenSimulator}
+          className="pointer-events-auto flex items-center gap-2 bg-[#84cc16] hover:bg-[#65a30d] text-slate-950 hover:text-white px-3.5 py-2.5 rounded-full font-black text-xs shadow-xl shadow-lime-950/30 transition-all hover:scale-105 cursor-pointer border border-lime-300"
+          title="Lancer le simulateur de devis"
+        >
+          <Calculator className="w-4 h-4" />
+          <span className="hidden sm:inline">Simuler Devis</span>
+        </button>
+
         {/* Floating QR Code Button */}
         <button
           onClick={() => setIsQRCodeOpen(true)}
@@ -103,16 +103,6 @@ export default function App() {
         >
           <QrCode className="w-4 h-4 text-emerald-400" />
           <span className="hidden sm:inline">Code QR</span>
-        </button>
-
-        {/* Floating AI Button */}
-        <button
-          onClick={() => setIsAdvisorOpen(true)}
-          className="pointer-events-auto flex items-center gap-2 bg-gradient-to-r from-amber-500 to-amber-400 hover:from-amber-400 hover:to-amber-300 text-stone-950 px-4 py-2.5 rounded-full font-bold text-xs shadow-xl shadow-amber-950/40 transition-all hover:scale-105 cursor-pointer border border-amber-300/50 backdrop-blur-md"
-          title="Diagnostic IA 242Agro"
-        >
-          <Sparkles className="w-4 h-4" />
-          <span className="hidden sm:inline">Diagnostic IA</span>
         </button>
 
         {/* Floating WhatsApp Quick Link */}

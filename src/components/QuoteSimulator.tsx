@@ -844,7 +844,7 @@ export const QuoteSimulator: React.FC<QuoteSimulatorProps> = ({ initialPack }) =
                       <div className="bg-slate-50 p-2 rounded-xl border border-slate-200 text-[11px]">
                         <div className="text-slate-500 text-[10px]">🥬 Légumes frais</div>
                         <div className="font-bold text-slate-900 flex justify-between mt-0.5">
-                          <span>{simulation.estimated6MonthProduction.vegetablesKg} kg</span>
+                          <span>{simulation.estimated6MonthProduction.vegetablesKg.toLocaleString()} kg</span>
                           <span className="text-emerald-700">~{simulation.estimated6MonthValue.vegetablesValue.toLocaleString()} F</span>
                         </div>
                       </div>
@@ -853,7 +853,7 @@ export const QuoteSimulator: React.FC<QuoteSimulatorProps> = ({ initialPack }) =
                       <div className="bg-slate-50 p-2 rounded-xl border border-slate-200 text-[11px]">
                         <div className="text-slate-500 text-[10px]">🥚 Œufs de ferme</div>
                         <div className="font-bold text-slate-900 flex justify-between mt-0.5">
-                          <span>{simulation.estimated6MonthProduction.eggsCount} unités</span>
+                          <span>{simulation.estimated6MonthProduction.eggsCount.toLocaleString()} unités</span>
                           <span className="text-amber-700">~{simulation.estimated6MonthValue.eggsValue.toLocaleString()} F</span>
                         </div>
                       </div>
@@ -862,7 +862,7 @@ export const QuoteSimulator: React.FC<QuoteSimulatorProps> = ({ initialPack }) =
                       <div className="bg-slate-50 p-2 rounded-xl border border-slate-200 text-[11px]">
                         <div className="text-slate-500 text-[10px]">🐰 Viande saine</div>
                         <div className="font-bold text-slate-900 flex justify-between mt-0.5">
-                          <span>{simulation.estimated6MonthProduction.meatKg} kg</span>
+                          <span>{simulation.estimated6MonthProduction.meatKg.toLocaleString()} kg</span>
                           <span className="text-purple-700">~{simulation.estimated6MonthValue.meatValue.toLocaleString()} F</span>
                         </div>
                       </div>
@@ -871,7 +871,7 @@ export const QuoteSimulator: React.FC<QuoteSimulatorProps> = ({ initialPack }) =
                       <div className="bg-slate-50 p-2 rounded-xl border border-slate-200 text-[11px]">
                         <div className="text-slate-500 text-[10px]">🌱 Compost mûr</div>
                         <div className="font-bold text-slate-900 flex justify-between mt-0.5">
-                          <span>{simulation.estimated6MonthProduction.compostBags} sacs</span>
+                          <span>{simulation.estimated6MonthProduction.compostBags.toLocaleString()} sacs</span>
                           <span className="text-teal-700">~{simulation.estimated6MonthValue.compostValue.toLocaleString()} F</span>
                         </div>
                       </div>

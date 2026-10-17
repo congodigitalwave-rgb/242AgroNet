@@ -1,14 +1,13 @@
 import React, { useState } from "react";
-import { Phone, MessageSquare, Menu, X, Calculator, Sparkles, ShieldCheck } from "lucide-react";
+import { Phone, MessageSquare, Menu, X, Calculator } from "lucide-react";
 import { CONTACT_INFO } from "../data";
 import { Logo242Agro } from "./Logo242Agro";
 
 interface NavbarProps {
   onOpenSimulator: () => void;
-  onOpenAdvisor: () => void;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ onOpenSimulator, onOpenAdvisor }) => {
+export const Navbar: React.FC<NavbarProps> = ({ onOpenSimulator }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
@@ -58,14 +57,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenSimulator, onOpenAdvisor }
               <a href="#production" className="hover:text-[#65a30d] transition-colors py-1">Rendements & ROI</a>
               <a href="#packs" className="hover:text-[#65a30d] transition-colors py-1">Nos 4 Packs</a>
               <a href="#paiement" className="hover:text-[#65a30d] transition-colors py-1">Paiement 3X</a>
-              <button 
-                onClick={onOpenAdvisor}
-                className="flex items-center gap-1.5 text-slate-800 hover:text-[#65a30d] transition-all cursor-pointer bg-lime-50 hover:bg-lime-100/80 px-3.5 py-1.5 rounded-full border border-lime-300 font-bold shadow-xs"
-              >
-                <Sparkles className="w-3.5 h-3.5 text-[#65a30d] animate-pulse" />
-                <span>Agronome IA</span>
-                <span className="text-[9px] bg-rose-500 text-white font-black px-1.5 py-0.5 rounded-full uppercase">IA</span>
-              </button>
+              <a href="#contact" className="hover:text-[#65a30d] transition-colors py-1">Contact & Visite 48h</a>
             </nav>
 
             {/* Action CTAs */}
@@ -143,19 +135,13 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenSimulator, onOpenAdvisor }
             >
               Paiement Échelonné en 3 Fois
             </a>
-            <button
-              onClick={() => {
-                setMobileMenuOpen(false);
-                onOpenAdvisor();
-              }}
-              className="flex items-center justify-between px-3 py-2.5 rounded-xl bg-lime-50 text-slate-900 border border-lime-300 font-bold"
+            <a 
+              href="#contact" 
+              onClick={() => setMobileMenuOpen(false)}
+              className="px-3 py-2 rounded-xl hover:bg-lime-50 hover:text-[#65a30d]"
             >
-              <div className="flex items-center gap-2">
-                <Sparkles className="w-4 h-4 text-[#65a30d]" />
-                <span>Diagnostic Agronome IA</span>
-              </div>
-              <span className="text-[10px] bg-rose-500 text-white font-black px-2 py-0.5 rounded-full">NOUVEAU</span>
-            </button>
+              Contact & Visite 48h
+            </a>
           </div>
 
           <div className="pt-3 border-t border-slate-200 flex flex-col gap-2">

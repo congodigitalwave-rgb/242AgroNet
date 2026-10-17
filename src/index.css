@@ -43,8 +43,13 @@
   }
 }
 
-/* Base high-contrast light font and smooth text rendering */
-body {
+/* Base high-contrast light font, force light color-scheme on tablets & phones */
+:root {
+  color-scheme: light;
+}
+
+html, body {
+  color-scheme: light;
   background-color: #f8fafc;
   color: #0f172a;
   -webkit-font-smoothing: antialiased;
@@ -68,4 +73,19 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
   background: #65a30d;
+}
+
+/* Print optimizations for A4 Flyer */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 10mm;
+  }
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+  header, footer, nav, .print\:hidden {
+    display: none !important;
+  }
 }
